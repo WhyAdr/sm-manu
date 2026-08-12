@@ -43,11 +43,13 @@ This framework outlines the exact key sections, subsections, 14-metric comparati
 ---
 
 ### 3. Secondary Metabolite BGCs, Metabolic Capacity, and Virulence Profiling
-- **3.1 Biosynthetic Gene Clusters (antiSMASH)**: Structural prediction of secondary metabolite BGCs (NRPS, PKS, terpenes, bacteriocins, prodigiosin, serrawettin).
-- **3.2 Distillation of Microbial Metabolism (DRAM)**: Functional metabolic distillation heatmaps (`Figure3_DRAM.jpeg` / `Figure3_DRAM2.jpeg`) covering carbon, nitrogen, sulfur, and energy conversion networks across 13 *Serratia* genomes and the *Prodigiosinella aquatilis* PA-LS101 outgroup.
+- **3.1 Biosynthetic Gene Clusters (antiSMASH)**: antiSMASH v8.0.4 overview maps (`Figure3_SM-NMZ-antismash-overview.jpeg` / `Figure3_C14-NMZ-antismash-overview.jpeg`) showing 11 detected BGC regions per chromosome. Interpret product calls as biosynthetic potential; independent red/pink culture phenotype and LC-HRMS results support the reported prodigiosin- and serrawettin-associated observations.
+- **3.2 Distillation of Microbial Metabolism (DRAM)**: Functional metabolic distillation heatmaps (`Figure3_DRAM.jpeg` / `Figure3_DRAM2.jpeg`, presented as **Figure 4A/B**) covering carbon, nitrogen, sulfur, and energy-conversion categories across 13 *Serratia* genomes and the *Prodigiosinella aquatilis* PA-LS101 outgroup. DRAM module scores represent annotation-derived genomic potential rather than measured activity or pathway completion.
 - **3.3 Comparative Virulence-Factor Profiling (VFDB / VF_classifier)**: Comparative virulence-factor analysis (`Figure4_vf_heatmap.jpg`) contextualized against environmental, MEOR, and bioremediation comparative genomes. The profile describes sequence similarity and genomic repertoire; it is not a formal biosafety determination.
 - **Figure 3**:
-  > **[Figure 3]**: *DRAM metabolic distillation heatmaps highlighting carbon, nitrogen, sulfur, and energy metabolism pathways in Serratia sp. SM-NMZ and C14-NMZ.*
+  > **[Figure 3]**: *antiSMASH v8.0.4 overview maps showing 11 predicted BGC regions on each chromosome, including NRPS/NRPS-like loci, NRP-metallophores, the prodigiosin-associated pig locus, beta-lactones, terpene precursors, RiPPs, redox cofactors, and an opine-like metallophore. The map does not by itself establish product identity or production.*
+- **Figure 4**:
+  > **[Figure 4]**: *DRAM module-completeness heatmaps across the 14-genome panel, covering central-carbon, respiratory, CAZy, nitrogen, sulfur, arsenate-reduction, photosynthesis-control, and methanogenesis/methanotrophy categories. Scores summarize annotation evidence rather than direct physiological activity.*
 - **Figure S1 (Supplementary Figure)**:
   > **[Figure S1]**: *Comparative virulence-factor heatmap (VFDB / VF_classifier) contrasting SM-NMZ and C14-NMZ against the environmental comparative panel (moved to Supplementary Materials due to vertical length); the panel provides genomic context rather than a standalone biosafety assessment.*
 
@@ -93,5 +95,5 @@ This framework outlines the exact key sections, subsections, 14-metric comparati
 ## Verification Plan
 
 ### Scripted & Manual Verification
-- Verify image paths in `d:\W\serratia-research\manuscript` (`Figure1_SM-NMZ.png`, `Figure1_C14-NMZ.png`, `Figure2_SM-genome-phylogram.png`, `Figure2_C14-genome-phylogram.png`, `Figure3_DRAM.jpeg`, `Figure4_vf_heatmap.jpg`, `Figure5_Bubbles-Subpathways-HADEG.png`, `Figure6_serrawettin.jpeg`, `Figure7_prodigiosin.jpeg`, `Figure8_LadA-validation-phylotree.svg`, `Figure9_LadA-cluster-curated.jpeg`).
+- Verify image paths in `d:\W\serratia-research\manuscript` (`Figure1_SM-NMZ.png`, `Figure1_C14-NMZ.png`, `Figure2_SM-genome-phylogram.png`, `Figure2_C14-genome-phylogram.png`, `Figure3_SM-NMZ-antismash-overview.jpeg`, `Figure3_C14-NMZ-antismash-overview.jpeg`, `Figure3_DRAM.jpeg`, `Figure3_DRAM2.jpeg`, `Figure4_vf_heatmap.jpg`, `Figure5_Bubbles-Subpathways-HADEG.png`, `Figure6_serrawettin.jpeg`, `Figure7_prodigiosin.jpeg`, `Figure8_LadA-validation-phylotree.svg`, `Figure9_LadA-cluster-curated.jpeg`).
 - Run the local citation verification check after any reference edits to ensure inline citations `[1]`–`[35]` and the `## References` list remain 100% matched and uncorrupted.

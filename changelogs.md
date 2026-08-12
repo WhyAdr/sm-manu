@@ -20,7 +20,7 @@ This document maintains a chronological record of all project milestones, manusc
 * **Key Achievements**:
   - Authored **Section A (Whole Genome Sequencing)**: PromethION long-read sequencing protocols, GeneAid gDNA extraction, SQK-RBK114.24 library prep, R10.4.1 flow cell, and MinKNOW basecalling (`dna_r10.4.1_e8.2_400bps_sup@v5.0.0`).
   - Authored **Section B (De Novo Assembly and Genome Annotation)**: NanoPlot QC, Chopper/Filtlong read filtering, Autocycler ensemble assembly integrating 7 assemblers (Flye, Canu, Hifiasm, Raven, Plassembler, Myloasm, metaMDBG), `dnaapler` circular chromosome reorientation, Dorado polish, Bakta annotation, and CANT-HYD HMM hydrocarbon profiling.
-  - Authored **Section C (Taxonomic Identity Confirmation, BGC Analysis, & Characterization)**: TYGS whole-genome species identification, GTDB-Tk `classify_wf`, LPSN/GTDB nomenclature, antiSMASH 7.0 secondary metabolite BGC mining, DRAM functional distillation, and VFDB (`VF_classifier`) virulence factor analysis.
+  - Authored **Section C (Taxonomic Identity Confirmation, BGC Analysis, & Characterization)**: TYGS whole-genome species identification, GTDB-Tk `classify_wf`, LPSN/GTDB nomenclature, antiSMASH secondary metabolite BGC mining, DRAM functional distillation, and VFDB (`VF_classifier`) virulence factor analysis.
   - Authored **Section D (Profiling of Hydrocarbonoclastic and Biosurfactant Production Potential)**: HADEG pipeline integration and custom Biopython scripts (`genbank-parser`, `antiSMASH-review`).
   - Authored **Section E (Comparative Proteome Orthology and LadA Monooxygenase Phylogeny)**: ProteinOrtho (v6.3.6) DIAMOND-based orthology clustering (PoFF mode), BLASTp identification of LadA family enzymes ($ladA\alpha$, $ladA\beta$, $ladB$ from *G. thermoleovorans* B23, canonical LadA from *G. thermodenitrificans* NG80-2, and 19 functional controls), MAFFT L-INS-i alignment, ClipKIT smart-gap trimming, IQ-TREE 3 maximum-likelihood tree (`Q.PFAM+R3` model, 1,000 UFBoot2), iTOL annotation, and `clinker` gene cluster synteny.
   - Linked author's public GitHub repositories: `WhyAdr/genbank-parser`, `WhyAdr/antiSMASH-review`, `WhyAdr/ProkaryONT`, `WhyAdr/Serratia_genomes`.
@@ -79,7 +79,8 @@ This document maintains a chronological record of all project milestones, manusc
   - Integrated live native Markdown image embeds with full publication-grade figure legends:
     - **Figure 1**: Bakta circular maps (`Figure1_SM-NMZ.png` [Panel A: 5.0 Mbp + ~3.5 kb plasmid] & `Figure1_C14-NMZ.png` [Panel B: 5.1 Mbp chromosome]).
     - **Figure 2**: Auto-constructed TYGS GBDP/FastME phylograms (`Figure2_SM-genome-phylogram.png` [Panel A] & `Figure2_C14-genome-phylogram.png` [Panel B]).
-    - **Figure 3**: DRAM metabolic distillation covering **Figure 3A** (`Figure3_DRAM.jpeg`: central carbon metabolism & ETC Complexes I–V) and **Figure 3B** (`Figure3_DRAM2.jpeg`: CAZy, nitrogen, sulfur, arsenate reduction, and methanogenesis pathways).
+    - **Figure 3**: antiSMASH overview maps (`Figure3_SM-NMZ-antismash-overview.jpeg` and `Figure3_C14-NMZ-antismash-overview.jpeg`) showing 11 predicted BGC regions per chromosome.
+    - **Figure 4**: DRAM metabolic distillation covering **Figure 4A** (`Figure3_DRAM.jpeg`: central carbon metabolism and respiratory categories) and **Figure 4B** (`Figure3_DRAM2.jpeg`: auxiliary metabolic and reductase categories).
     - **Figure S1 (Supplementary)**: VFDB virulence factor heatmap (`Figure4_vf_heatmap.jpg`) detailing 12 categories across the environmental comparative panel.
     - **Figure 5**: HADEG hydrocarbon degradation subpathway bubble plot (`Figure5_Bubbles-Subpathways-HADEG.png`) across 4 compound classes (**A_Alkanes**, **C_Aromatics**, **D_Biosurfactants**, **E_Plastics**).
     - **Figure 6**: Serrawettin BGC synteny (`Figure6_serrawettin.jpeg`) detailing the central *swrW* NRPS gene and flanking operons (*msrP-pyrG*, *IrgBA-tyrB*).
@@ -106,8 +107,45 @@ This document maintains a chronological record of all project milestones, manusc
 
 ---
 
+### Milestone 7: Section 1 Descriptive Prose Authoring
+* **Date / Phase**: Phase 7
+* **Git Commit**: `0f985c9` (*Author Section 1 Genomic and Proteomic Feature Characteristics and streamline isolate nomenclature*)
+* **Status**: Completed.
+* **Key Achievements**:
+  - Authored Section 1 with the paired Bakta genome and proteome metrics, direct isolate nomenclature, and environmental source context.
+
+### Milestone 8: Section 2 Descriptive Prose Authoring and Taxonomic Identification
+* **Date / Phase**: Phase 8
+* **Git Commit**: `f085fe9` (*Author Section 2 Taxonomic Identity and Whole-Genome Comparisons with TYGS and GTDB-Tk metrics*)
+* **Status**: Completed.
+* **Key Achievements**:
+  - Authored Section 2 with the TYGS dDDH confidence intervals and GTDB-Tk ANI screening values for both isolates.
+  - Recorded that placement-dependent rank metrics were omitted because the GTDB-Tk run did not require pplacer placement.
+
+### Milestone 9: Section 3 Descriptive Prose Authoring and Figure Layout Update
+* **Date / Phase**: Phase 9
+* **Git Commit**: `435f4ae` (*Author Section 3 with antiSMASH BGC overview (Figure 3), DRAM (Figure 4), and VFDB (Figure S1)*)
+* **Status**: Completed.
+* **Key Achievements**:
+  - Added the antiSMASH overview maps as Figure 3, shifted the DRAM panels to Figure 4, and retained the VFDB heatmap as Supplementary Figure S1.
+
+### Milestone 10: Evidence-Calibrated Refinement of Sections 1–3
+* **Date / Phase**: Phase 10
+* **Git Commit**: Not yet committed; changes remain in the working tree.
+* **Status**: In progress.
+* **Key Achievements**:
+  - Refined Sections 1–3 to distinguish measured assembly, annotation, dDDH/ANI, BGC, DRAM, and VFDB evidence from claims about function, ecology, pathogenicity, or safety.
+  - Corrected the local antiSMASH version to v8.0.4, removed placement-dependent rank-metric discussion, and synchronized the Figure 3 antiSMASH / Figure 4 DRAM mapping across planning files and workspace guidance.
+  - Preserved the independent red/pink culture phenotype and LC-HRMS detections of serrawettin W1 and serratamolide C, and retained the branch-support and sequence-versus-biochemistry guardrail for Section 5.
+  - The two Figure 3 antiSMASH JPEGs remain untracked pending an explicit commit.
+
+---
+
 ## Commit History Summary (`git log --oneline`)
 ```text
+435f4ae Author Section 3 with antiSMASH BGC overview (Figure 3), DRAM (Figure 4), and VFDB (Figure S1)
+f085fe9 Author Section 2 Taxonomic Identity and Whole-Genome Comparisons with TYGS and GTDB-Tk metrics
+0f985c9 Author Section 1 Genomic and Proteomic Feature Characteristics and streamline isolate nomenclature
 b99f82e Complete manuscript evidence and caption pass
 8eef114 Create changelogs.md documenting historical milestones, commits, and figure curations
 260319f Add publication-ready figure captions and both DRAM panels (3A & 3B) to Results and Discussion
@@ -127,6 +165,7 @@ a5eceb7 Initial draft of Materials and Methods (Genomics)
 - [x] Table 1 populated from the paired Bakta outputs.
 - [x] Results & Discussion and Sections 1–5 converted to Markdown headings.
 - [x] Figures 1–9 and Supplementary Figure S1 embedded with publication-ready captions.
+- [x] Sections 1–3 narrative prose authored and subsequently evidence-calibrated.
 - [x] Evidence-calibrated wording added to captions and planning artifacts; branch-support reporting and sequence-versus-biochemistry limits documented.
 - [x] Full changelog recorded in `changelogs.md`.
-- [ ] **Next Step**: Draft the descriptive prose for Results & Discussion Sections 1–5 and report the TYGS dDDH/ANI results plus the relevant LadA branch-support values.
+- [ ] **Next Step**: Draft Section 4 and Section 5 prose, including the relevant LadA branch-support values.
