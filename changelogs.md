@@ -92,7 +92,8 @@ This document maintains a chronological record of all project milestones, manusc
 
 ### Milestone 6: Quantitative Table 1 and Evidence-Calibrated Manuscript Pass
 * **Date / Phase**: Phase 6
-* **Status**: Current release pass following `8eef114`.
+* **Git Commit**: `b99f82e` (*Complete manuscript evidence and caption pass*)
+* **Status**: Committed.
 * **Key Achievements**:
   - Populated Table 1 from the paired Bakta v1.12.0 summary and TSV outputs for SM-NMZ and C14-NMZ, including genome size, feature counts, annotation cross-references, RNA features, hypothetical proteins, pseudogenes, and plasmid status.
   - Converted Materials & Methods, Results & Discussion, and Sections 1–5 into explicit Markdown heading levels.
@@ -106,7 +107,8 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Commit History Summary (`git log --oneline`)
 ```text
-8eef114 (HEAD -> master) Create changelogs.md documenting historical milestones, commits, and figure curations
+b99f82e Complete manuscript evidence and caption pass
+8eef114 Create changelogs.md documenting historical milestones, commits, and figure curations
 260319f Add publication-ready figure captions and both DRAM panels (3A & 3B) to Results and Discussion
 1d2bad7 Embed live Markdown image tags for Figures 1-9 and Figure S1 in Results and Discussion
 bcffe2e Add Results and Discussion section framework (Sections 1-5, Table 1, Figures 1-9, Figure S1)
