@@ -7,7 +7,7 @@ This document maintains a chronological record of all project milestones, manusc
 ## Workspace & Project Summary
 - **Primary Draft File**: [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md)
 - **Workspace Memory**: [.agents/AGENTS.md](file:///d:/W/serratia-research/.agents/AGENTS.md)
-- **Git Repository**: `d:\W\serratia-research\manuscript` (branch `master`)
+- **Git Repository**: `d:\W\serratia-research\manuscript` (branch `main`, remote: `https://github.com/WhyAdr/sm-manu`)
 - **Key Focus**: Whole Genome Sequencing, consensus assembly, functional annotation, hydrocarbonoclastic (MEOR / alkane degradation), biosurfactant / pour point depressant (PPD), and comparative phylogenomic analysis across a 14-genome dataset.
 
 ---
