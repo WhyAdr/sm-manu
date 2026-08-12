@@ -90,9 +90,24 @@ This document maintains a chronological record of all project milestones, manusc
 
 ---
 
+### Milestone 6: Quantitative Table 1 and Evidence-Calibrated Manuscript Pass
+* **Date / Phase**: Phase 6
+* **Status**: Current release pass following `8eef114`.
+* **Key Achievements**:
+  - Populated Table 1 from the paired Bakta v1.12.0 summary and TSV outputs for SM-NMZ and C14-NMZ, including genome size, feature counts, annotation cross-references, RNA features, hypothetical proteins, pseudogenes, and plasmid status.
+  - Converted Materials & Methods, Results & Discussion, and Sections 1–5 into explicit Markdown heading levels.
+  - Restricted the GTDB-Tk discussion to ANI screening because this run did not require pplacer placement; placement-dependent rank metrics are omitted.
+  - Added an explicit instruction to report LadA-tree branch-support values and to treat phylogenetic placement as sequence-level evidence rather than biochemical proof.
+  - Recast VFDB, HADEG, and LadA captions and planning language as evidence-calibrated genomic interpretations, while incorporating the supplied red-culture and LC-HRMS evidence for serrawettin/prodigiosin-associated metabolite production.
+  - Updated Figures 6–7 and their planning captions to record the red-culture phenotype and LC-HRMS detections of serrawettin W1 and serratamolide C, removed the redundant gray-band sentence, and retained the colored-linkage explanation as pairwise amino-acid sequence identity.
+  - Recorded the previously omitted changelog-creation commit, `8eef114`, in the commit history summary below.
+
+---
+
 ## Commit History Summary (`git log --oneline`)
 ```text
-260319f (HEAD -> master) Add publication-ready figure captions and both DRAM panels (3A & 3B) to Results and Discussion
+8eef114 (HEAD -> master) Create changelogs.md documenting historical milestones, commits, and figure curations
+260319f Add publication-ready figure captions and both DRAM panels (3A & 3B) to Results and Discussion
 1d2bad7 Embed live Markdown image tags for Figures 1-9 and Figure S1 in Results and Discussion
 bcffe2e Add Results and Discussion section framework (Sections 1-5, Table 1, Figures 1-9, Figure S1)
 01ae8b7 Add inline citations [1]-[35] and References section to Materials and Methods
@@ -106,6 +121,9 @@ a5eceb7 Initial draft of Materials and Methods (Genomics)
 - [x] References section strictly alphabetized with verified DOIs.
 - [x] Workspace memory `.agents/AGENTS.md` established and updated.
 - [x] Results & Discussion framework inserted with Table 1 (14 metrics).
+- [x] Table 1 populated from the paired Bakta outputs.
+- [x] Results & Discussion and Sections 1–5 converted to Markdown headings.
 - [x] Figures 1–9 and Supplementary Figure S1 embedded with publication-ready captions.
+- [x] Evidence-calibrated wording added to captions and planning artifacts; branch-support reporting and sequence-versus-biochemistry limits documented.
 - [x] Full changelog recorded in `changelogs.md`.
-- [ ] **Next Step**: Populate Table 1 data values and draft the descriptive prose for Results & Discussion Sections 1–5.
+- [ ] **Next Step**: Draft the descriptive prose for Results & Discussion Sections 1–5 and report the TYGS dDDH/ANI results plus the relevant LadA branch-support values.
