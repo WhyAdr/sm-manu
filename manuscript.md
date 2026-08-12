@@ -15,15 +15,20 @@ To assess orthologous relationships and syntenic conservation across the compara
 ## Results & Discussion
 
 ### 1. Genomic and Proteomic Feature Characteristics
-Concise overview of basic genomic and proteomic features of *Serratia* sp. SM-NMZ and *Serratia* sp. C14-NMZ.
 
-![Figure 1A. Circular genomic map of Serratia sp. SM-NMZ](Figure1_SM-NMZ.png)
-![Figure 1B. Circular genomic map of Serratia sp. C14-NMZ](Figure1_C14-NMZ.png)
-**Figure 1. Circular genomic feature maps of *Serratia* isolates.** Bakta-annotated circular representations of **(A)** *Serratia* sp. SM-NMZ (5.0 Mbp, comprising the circular chromosome and a ~3.5 kb circular plasmid) and **(B)** *Serratia* sp. C14-NMZ (5.1 Mbp circular chromosome). Concentric rings from outside to inside display: (1) Genomic coordinate markers (Mbp) with `oriC` origin of replication; (2) Forward-strand coding sequences (CDS, gray); (3) Reverse-strand CDS (gray), with highlighted structural and non-coding RNA features including tRNA (light green), rRNA (coral), ncRNA (orange), regulatory ncRNA (blue), and CRISPR arrays (purple); (4) GC content plot (+ deviation in green, − in red); and (5) GC skew plot (+ skew in light orange, − skew in blue).
+Genome-resolved characterization of isolates SM-NMZ (recovered from slaughterhouse effluent) and C14-NMZ (obtained from the rhizosphere of *Calotropis gigantea* shrubs in the savanna settings of Baluran National Park) revealed complete, circularized genome architectures consistent with the genomic boundaries of environmental *Serratia* lineages. The genome of SM-NMZ spans 4,974,098 bp (4.974 Mbp) across two circular replicons—a 4,970,517 bp circular chromosome and an extrachromosomal circular plasmid of 3,581 bp (~3.58 kb)—with an overall G + C content of 59.8%. In contrast, the assembly of C14-NMZ resolved into a single, contiguous circular chromosome of 5,050,553 bp (5.051 Mbp) with an identical G + C content of 59.8% and no detectable plasmid replicons (**Figure 1A, B**; **Table 1**). Both genomes exhibit pronounced GC-skew symmetry with clean inflection points flanking the *oriC* origin of replication, indicating structural assembly fidelity and chromosomal equilibrium typical of closed circular Gammaproteobacterial replicons (**Figure 1**).
 
-Table 1. Comparative genomic and proteomic annotation features of *Serratia* sp. SM-NMZ and *Serratia* sp. C14-NMZ.
+Functional annotation using the Bakta pipeline cataloged 4,794 total genomic features for SM-NMZ and 4,850 for C14-NMZ, reflecting high coding densities of 4,566 and 4,626 protein-coding sequences (CDS), respectively (**Table 1**). The structural RNA machinery across both isolates comprises 22 ribosomal RNA genes arranged in standard operonic units (including 16S, 23S, and 5S rRNAs) and 92 non-coding translational RNA features (comprising 91 tRNAs and 1 tmRNA per genome). This rich translational apparatus indicates strong capacity for rapid protein synthesis and metabolic responsiveness. Functional database cross-referencing yielded extensive proteome coverage: 4,542 (99.5%) and 4,613 (99.7%) CDSs were successfully mapped to UniRef database entries, 3,682 and 4,205 CDSs were cross-referenced against NCBI RefSeq, 3,456 and 3,496 CDSs were classified into Clusters of Orthologous Groups (COGs), and 1,470 and 1,513 CDSs were assigned to Kyoto Encyclopedia of Genes and Genomes (KEGG) Orthology (KO) identifiers for SM-NMZ and C14-NMZ, respectively (**Table 1**).
 
-| Genomic / Annotation Metric | *Serratia* sp. SM-NMZ | *Serratia* sp. C14-NMZ |
+Both isolates exhibit a low burden of pseudogenization (9 pseudogenes in SM-NMZ and 5 in C14-NMZ) and a low fraction of hypothetical proteins lacking functional assignment (127 CDSs [2.8%] in SM-NMZ and 100 CDSs [2.2%] in C14-NMZ), demonstrating intact and streamlined coding repertoires. Furthermore, Bakta identified 60 regulatory non-coding RNA features (`ncRNA-region`) in SM-NMZ and 56 in C14-NMZ, encompassing conserved riboswitches, leader peptides, and small regulatory RNAs (sRNAs). Together with the plasmid-borne content unique to SM-NMZ, these genomic properties provide a robust genetic inventory and regulatory foundation capable of supporting specialized metabolic versatility, cellular adaptation, and environmental persistence across distinct anthropogenic and savanna habitats.
+
+![Figure 1A. Circular genomic map of SM-NMZ](Figure1_SM-NMZ.png)
+![Figure 1B. Circular genomic map of C14-NMZ](Figure1_C14-NMZ.png)
+**Figure 1. Circular genomic feature maps of isolates SM-NMZ and C14-NMZ.** Bakta-annotated circular representations of **(A)** SM-NMZ (5.0 Mbp, comprising the circular chromosome and a ~3.58 kb circular plasmid) and **(B)** C14-NMZ (5.1 Mbp circular chromosome). Concentric rings from outside to inside display: (1) Genomic coordinate markers (Mbp) with `oriC` origin of replication; (2) Forward-strand coding sequences (CDS, gray); (3) Reverse-strand CDS (gray), with highlighted structural and non-coding RNA features including tRNA (light green), rRNA (coral), ncRNA (orange), regulatory ncRNA (blue), and CRISPR arrays (purple); (4) GC content plot (+ deviation in green, − in red); and (5) GC skew plot (+ skew in light orange, − skew in blue).
+
+Table 1. Comparative genomic and proteomic annotation features of isolates SM-NMZ and C14-NMZ.
+
+| Genomic / Annotation Metric | SM-NMZ | C14-NMZ |
 | :--- | :---: | :---: |
 | Genome Size (Mbp) | 4.974 | 5.051 |
 | Total Gene / Feature Count | 4,794 | 4,850 |
@@ -38,7 +43,7 @@ Table 1. Comparative genomic and proteomic annotation features of *Serratia* sp.
 | Hypothetical Proteins (No Function Prediction) | 127 | 100 |
 | Pseudogenes | 9 | 5 |
 | Regulatory ncRNAs (Bakta `ncRNA-region`) | 60 | 56 |
-| Additional Replicon (Plasmid) | 1 circular plasmid (~3,500 bp) | None (0) |
+| Additional Replicon (Plasmid) | 1 circular plasmid (~3,581 bp) | None (0) |
 
 *Table 1 note.* Values are derived from the paired Bakta v1.12.0 summary and TSV outputs. Total feature count includes all Bakta feature rows; UniRef, RefSeq, COG, and KEGG/KO values count CDS rows carrying the corresponding database cross-reference; tRNA and tmRNA values are shown separately and as a combined total; and regulatory ncRNAs correspond to Bakta `ncRNA-region` features.
 
