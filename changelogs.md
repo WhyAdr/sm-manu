@@ -101,6 +101,7 @@ This document maintains a chronological record of all project milestones, manusc
   - Added an explicit instruction to report LadA-tree branch-support values and to treat phylogenetic placement as sequence-level evidence rather than biochemical proof.
   - Recast VFDB, HADEG, and LadA captions and planning language as evidence-calibrated genomic interpretations, while incorporating the supplied red-culture and LC-HRMS evidence for serrawettin/prodigiosin-associated metabolite production.
   - Updated Figures 6–7 and their planning captions to record the red-culture phenotype and LC-HRMS detections of serrawettin W1 and serratamolide C, removed the redundant gray-band sentence, and retained the colored-linkage explanation as pairwise amino-acid sequence identity.
+  - Follow-up caption refinement: Figure 6 now attributes the confirmation sentence specifically to LC-HRMS profiling, while Figure 7 uses the red/pink-pigmented culture phenotype for prodigiosin-associated confirmation.
   - Recorded the previously omitted changelog-creation commit, `8eef114`, in the commit history summary below.
 
 ---
