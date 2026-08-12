@@ -141,7 +141,7 @@ This document maintains a chronological record of all project milestones, manusc
 
 ### Milestone 11: Full antiSMASH Cluster Audit and Section 3 Discussion Refinement
 * **Date / Phase**: 2026-08-12
-* **Git Commit**: Pending; this entry will be updated after commit.
+* **Git Commit**: `e3b55b2` (*Audit antiSMASH clusters and refine Section 3*)
 * **Status**: Completed.
 * **Key Achievements**:
   - Audited all 11 antiSMASH chromosome regions in both SM-NMZ and C14-NMZ using aggregate records and ClusterBlast/known-cluster evidence, confirming that the region numbers are ordinal and all region records are internal to the chromosome.
@@ -154,6 +154,7 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Commit History Summary (`git log --oneline`)
 ```text
+e3b55b2 Audit antiSMASH clusters and refine Section 3
 a56a6fc Refine Sections 1-3 evidence interpretation and figure planning
 435f4ae Author Section 3 with antiSMASH BGC overview (Figure 3), DRAM (Figure 4), and VFDB (Figure S1)
 f085fe9 Author Section 2 Taxonomic Identity and Whole-Genome Comparisons with TYGS and GTDB-Tk metrics
