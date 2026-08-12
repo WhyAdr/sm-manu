@@ -131,18 +131,30 @@ This document maintains a chronological record of all project milestones, manusc
 
 ### Milestone 10: Evidence-Calibrated Refinement of Sections 1–3
 * **Date / Phase**: Phase 10
-* **Git Commit**: Not yet committed; changes remain in the working tree.
-* **Status**: In progress.
+* **Git Commit**: `a56a6fc` (*Refine Sections 1-3 evidence interpretation and figure planning*)
+* **Status**: Completed.
 * **Key Achievements**:
   - Refined Sections 1–3 to distinguish measured assembly, annotation, dDDH/ANI, BGC, DRAM, and VFDB evidence from claims about function, ecology, pathogenicity, or safety.
   - Corrected the local antiSMASH version to v8.0.4, removed placement-dependent rank-metric discussion, and synchronized the Figure 3 antiSMASH / Figure 4 DRAM mapping across planning files and workspace guidance.
   - Preserved the independent red/pink culture phenotype and LC-HRMS detections of serrawettin W1 and serratamolide C, and retained the branch-support and sequence-versus-biochemistry guardrail for Section 5.
-  - The two Figure 3 antiSMASH JPEGs remain untracked pending an explicit commit.
+  - The two Figure 3 antiSMASH JPEGs were included in `a56a6fc` and are tracked in the repository.
+
+### Milestone 11: Full antiSMASH Cluster Audit and Section 3 Discussion Refinement
+* **Date / Phase**: 2026-08-12
+* **Git Commit**: Pending; this entry will be updated after commit.
+* **Status**: Completed.
+* **Key Achievements**:
+  - Audited all 11 antiSMASH chromosome regions in both SM-NMZ and C14-NMZ using aggregate records and ClusterBlast/known-cluster evidence, confirming that the region numbers are ordinal and all region records are internal to the chromosome.
+  - Reframed partial trichrysobactin, viobactin, and yersinopine matches as siderophore/metallophore potential rather than named-product identifications; retained the azole-containing RiPP and ranthipeptide calls as rule-supported genomic potential without mature-product evidence.
+  - Corrected the weak SM-NMZ “ririwpeptide” match to a Serrawettin W1-associated Region 11 NRPS interpretation using the source product annotation, Ser-selective C–A–PCP–TE architecture, and independent LC-HRMS evidence.
+  - Distinguished the conserved prodigiosin *pig* locus from lower-specificity cluster classes and separated the Gap1-like SM-NMZ Region 10 locus from the C14-NMZ D-Val Region 10/T6SS context.
+  - Added reference [36] for the UENF-22GI Gap1 precedent and preserved explicit genotype–metabolite and sequence–function limitations.
 
 ---
 
 ## Commit History Summary (`git log --oneline`)
 ```text
+a56a6fc Refine Sections 1-3 evidence interpretation and figure planning
 435f4ae Author Section 3 with antiSMASH BGC overview (Figure 3), DRAM (Figure 4), and VFDB (Figure S1)
 f085fe9 Author Section 2 Taxonomic Identity and Whole-Genome Comparisons with TYGS and GTDB-Tk metrics
 0f985c9 Author Section 1 Genomic and Proteomic Feature Characteristics and streamline isolate nomenclature
@@ -158,7 +170,7 @@ a5eceb7 Initial draft of Materials and Methods (Genomics)
 ---
 
 ## Current Status & Next Steps
-- [x] Materials & Methods drafted and fully cited `[1]`–`[35]`.
+- [x] Materials & Methods drafted and fully cited `[1]`–`[36]`.
 - [x] References section strictly alphabetized with verified DOIs.
 - [x] Workspace memory `.agents/AGENTS.md` established and updated.
 - [x] Results & Discussion framework inserted with Table 1 (14 metrics).
@@ -166,6 +178,7 @@ a5eceb7 Initial draft of Materials and Methods (Genomics)
 - [x] Results & Discussion and Sections 1–5 converted to Markdown headings.
 - [x] Figures 1–9 and Supplementary Figure S1 embedded with publication-ready captions.
 - [x] Sections 1–3 narrative prose authored and subsequently evidence-calibrated.
+- [x] All 22 chromosome-localized antiSMASH regions audited and Section 3 interpretations refined with evidence-calibrated named-product limits.
 - [x] Evidence-calibrated wording added to captions and planning artifacts; branch-support reporting and sequence-versus-biochemistry limits documented.
 - [x] Full changelog recorded in `changelogs.md`.
 - [ ] **Next Step**: Draft Section 4 and Section 5 prose, including the relevant LadA branch-support values.
