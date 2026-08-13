@@ -16,8 +16,8 @@ This implementation plan provides a rigorous, visual-inspection-verified critiqu
 | **Figure 5** | `Figure5_Bubbles-Subpathways-HADEG.png` | Curated HADEG marker-gene bubble plot across 14 genomes. Categorized into 4 compound classes: **A_Alkanes** (dark blue: hydrocarbon uptake, alkane auxiliary genes, terminal/biterminal oxidation, Finnerty pathway), **C_Aromatics** (yellow: phenylacetate, homoprotocatechuate, protocatechuate, catechol ortho/meta, benzoate, gallate, gentisate), **D_Biosurfactants** (orange: emulsan, serrawettin), and **E_Plastics** (red: P3HV/PHA/PHBV, PU). Bubble diameter indicates gene hit counts (1 to 6); the plot represents genomic marker distribution rather than demonstrated pathway activity. |
 | **Figure 6** | `Figure6_serrawettin.jpeg` | `clinker` gene synteny (2.5 kb scale) across 9 representative genomes showing the serrawettin-associated non-ribosomal peptide synthetase (*swrW*, orange arrow), flanked by conserved operon members (*msrP-msrQ-aroQ-accBC*, *lld-Smc-MFS*, *yhdT-panF-prmA*, *dusB-fis*, *lpxOP-pyrG* upstream; *IrgBA-lysR-nhaP*, *transporter-gstA-lipocalin-fabG-SSB1-uvrA-adhP-maa-tyrB* downstream). The red culture phenotype and LC-HRMS profiling detected serrawettin W1 and serratamolide C; connecting colored linkages represent pairwise amino-acid sequence identity. |
 | **Figure 7** | `Figure7_prodigiosin.jpeg` | `clinker` synteny diagram (2.5 kb scale) across 9 genomes illustrating the 14-gene prodigiosin-associated *pig* arrangement (*pigA*–*pigN*, colored block arrows), flanked by upstream regulatory/transport genes (*dacB*, *ybak*, *traB*, *copZ*) and downstream loci (*cueR*, *ybbJ*, *hflC*, *cfa*, *cnoX*, *allSAR*, *GCL*). The red culture phenotype and LC-HRMS profiling, with serrawettin W1 and serratamolide C detected, provide experimental confirmation of the serrawettin- and prodigiosin-associated metabolite phenotype under the tested conditions. |
-| **Figure 8** | `Figure8_LadA-validation-phylotree.svg` | Radial maximum-likelihood phylogenetic tree (IQ-TREE 3, `Q.PFAM+R3` model) placing candidate monooxygenases from SM-NMZ and C14-NMZ relative to reference enzymes: LadA alpha (`BAM76377.1`), canonical LadA (`A4IU28`), LadA beta (`BAM76372.1`), LadB (`BAM76371.1`), DszA (`P54995`), NtaA (`P54989`), and SsuD (`P80645`, `A4W8V4`). The candidate sequences fall within a LadA-associated sequence clade; report branch-support values and do not treat placement as biochemical proof. |
-| **Figure 9** | `Figure9_LadA-cluster-curated.jpeg` | `clinker` micro-synteny alignment (2.5 kb scale) of a candidate *ladA*-associated genomic neighborhood across 10 *Serratia* genomes. Annotates the flavin-dependent monooxygenase-like core (*ssuD* / *ladA* homolog pair, salmon arrows), upstream methionine/sulfur transport (*metQPN*, *prop*, *MFS*, *wrbA*, *nfnB*, *nac*, *mtnN*), and downstream regulators and alkane-associated genes (*atoC*, *glnG*, *nikD*, *ddpABCD*, *nhaP*, *lysR*, *alkB*, *rarD*, *dhbA*). Conserved neighborhood does not establish biochemical activity or substrate turnover. |
+| **Figure 8** | `Figure8_LadA-validation-phylotree.svg` | Radial maximum-likelihood phylogram inferred from 34 sequences and 448 retained positions under `Q.PFAM+R3`. SM-NMZ `NNLMDO_015255` and C14-NMZ `OJMJKD_015520` form a 100%-UFBoot pair within a 99%-supported clade containing canonical LadA `A4IU28` and LadA-alpha `BAM76377.1`. |
+| **Figure 9** | `Figure9_LadA-cluster-curated.jpeg` | `clinker` micro-synteny alignment (2.5 kb scale) resolving ten K20938-centered regions into an eight-isolate LadA-alpha-like/SsuD Family I and a two-isolate SPL NtaA/Sfn Family II. C14-NMZ and SM-NMZ share the Family-I core but carry distinct subtype-specific redox, transport, and regulatory extensions. |
 
 ---
 
@@ -105,17 +105,30 @@ Gene-cluster comparison map generated using `clinker` (scale bar = 2.5 kb) illus
 ```
 
 ### Figure 8
+
+#### Section 5 phylogeny discussion plan
+
+1. Report the 34-sequence, 448-position maximum-likelihood analysis and the exact UFBoot values for the SM-NMZ/C14-NMZ focal pair (100%), the canonical `A4IU28`/B23 LadA-alpha reference pair (68%), and the combined focal/reference clade (99%).
+2. Interpret the tree as strong focal orthology and placement within a LadA-associated sequence clade, while using the neighborhood analysis to resolve physiological context.
+
 ```markdown
 ![Figure 8. Maximum-likelihood phylogenetic tree of LadA-family monooxygenases](Figure8_LadA-validation-phylotree.svg)
 **Figure 8. Maximum-likelihood phylogram placing candidate LadA-family flavin-dependent monooxygenases.**
-Radial unrooted phylogenetic tree inferred with IQ-TREE 3 under the `Q.PFAM+R3` substitution model (determined by ModelFinder via BIC) based on MAFFT (L-INS-i) alignment and ClipKIT trimming. Candidate monooxygenases identified in *Serratia* sp. SM-NMZ (`NNLMDO_015255`) and *Serratia* sp. C14-NMZ (`OJMJKD_015520`) fall within a LadA-associated sequence clade alongside canonical long-chain alkane monooxygenase LadA from *Geobacillus thermodenitrificans* NG80-2 (`A4IU28`) and LadA alpha from *Geobacillus thermoleovorans* B23 (`BAM76377.1`), distinct from reference clades comprising DszA dibenzothiophene monooxygenases (`P54995`, `Q0ZIH7`), NtaA nitrilotriacetate monooxygenases (`P54989`), SsuD alkanesulfonate monooxygenases (`P80645`, `A4W8V4`), and bacterial luciferases. Report the relevant branch-support values; this sequence-level placement does not establish biochemical activity, substrate specificity, or alkane turnover.
+Radial unrooted phylogenetic tree inferred with IQ-TREE 3 under the `Q.PFAM+R3` substitution model (determined by ModelFinder via BIC) from a MAFFT L-INS-i alignment trimmed with ClipKIT smart-gap. The 34-sequence, 448-position dataset included six candidates from each focal isolate and LadA/LadB, SsuD, DszA, NtaA, bacterial luciferase, and other LLM/group-C flavin monooxygenase references. From 1,000 UFBoot replicates, SM-NMZ `NNLMDO_015255` and C14-NMZ `OJMJKD_015520` form a 100%-supported pair within a 99%-supported clade containing canonical LadA `A4IU28` and LadA-alpha `BAM76377.1`.
 ```
 
 ### Figure 9
+
+#### Section 5 synteny and orthology discussion plan
+
+1. Resolve the ten displayed regions into the eight-isolate LadA-alpha-like/SsuD Family I and the two-isolate SPL NtaA/Sfn Family II.
+2. Compare SM-NMZ subtype IB (`ssuD–ydhS–focal–metNPQ` plus aliphatic-sulfonate/regulatory genes) with C14-NMZ subtype IA (the same core plus the `glnG–yciW1–third ssuD–nik/ddp` extension), then trace the matching isolates and local exceptions.
+3. Integrate the ProteinOrtho result: 10,252 sequence-based groups, 2,140 groups represented in all 14 proteomes, and one ten-member focal K20938 orthogroup absent from PA-LS101, SR-SY163, SSU-5b, and SSU-YD25. State that broad orthogroup membership does not collapse the two syntenically distinct monooxygenase families.
+
 ```markdown
-![Figure 9. LadA alkane monooxygenase gene cluster synteny](Figure9_LadA-cluster-curated.jpeg)
-**Figure 9. Micro-synteny and genomic neighborhood of a candidate *ladA*-associated locus.**
-Curated genomic synteny alignment (`clinker`, scale bar = 2.5 kb) surrounding the *ladA*-associated locus across 10 *Serratia* genomes. Highlights the flavin-dependent monooxygenase-like core gene pair (*ssuD* / *ladA* homolog and *ydhS*, pink arrows) in SM-NMZ (`NNLMDO_015255`) and C14-NMZ (`OJMJKD_015520`), accompanied by upstream sulfur/methionine uptake transport systems (*metQPN*, *prop*, *MFS*, *wrbA*, *nfnB*, *nac*, *mtnN*) and downstream regulatory/alkane-adaptation genes (*atoC*, *glnG*, *nikD*, *ddpABCD*, *nhaP*, *alkB*, *rarD*, *dhbA*). Syntenic linkage bands indicate pairwise amino acid sequence identity; locus conservation does not establish biochemical activity or substrate turnover.
+![Figure 9. LadA-alpha-like and NtaA/Sfn-associated locus synteny](Figure9_LadA-cluster-curated.jpeg)
+**Figure 9. Micro-synteny and genomic neighborhood of candidate LadA-alpha-like and NtaA/Sfn-associated loci.**
+Curated `clinker` alignment (scale bar = 2.5 kb) of ten K20938-centered regions. The eight-isolate Family-I architecture contains a conserved `ssuD–ydhS–focal monooxygenase–metNPQ` core, with the C14-NMZ subtype carrying a `glnG–yciW1–additional ssuD–nik/ddp` extension and the SM-NMZ subtype carrying an aliphatic-sulfonate-binding/regulatory extension. The two *S. plymuthica* regions form Family II, in which divergent NtaA-like focal proteins occur in `sfnB–metQNP–ssuA` sulfur-acquisition neighborhoods. Connecting colored bands denote pairwise amino-acid sequence identity and show conserved gene order within, but not between, the two locus families.
 ```
 
 ---
