@@ -77,17 +77,31 @@ Bubble plot illustrating the distribution and hit counts of curated aerobic hydr
 ```
 
 ### Figure 6
+
+#### Comparative architecture discussion plan
+
+1. Establish the nearly collinear SM-NMZ/C14-NMZ `msrPQ–aroQ–accBC` to `swrW–lrgBA–lysR–nhaP` architecture and the high identity of their focal synthetases.
+2. Contrast this focal architecture with the conserved *Serratia* backbone in SM-S217, SM-SMTT, SM-ZPG19, and SNEM-G5.M166, including small downstream cassette substitutions around `fabG–SSB1`.
+3. Describe the stepwise loss of collinearity in SPL-PAMC2277 and SSU-YD25 at the synthetase position and flanks, and the unrelated PA-LS101 NRPS/PKS neighborhood.
+
 ```markdown
 ![Figure 6. Serrawettin BGC synteny](Figure6_serrawettin.jpeg)
 **Figure 6. Genomic synteny and neighborhood architecture of a serrawettin-associated locus.**
-Comparative gene-cluster alignment constructed with `clinker` (scale bar = 2.5 kb) detailing the serrawettin-associated non-ribosomal peptide synthetase (*swrW*, orange block arrow) across *Serratia* sp. SM-NMZ, *Serratia* sp. C14-NMZ, and 7 comparative genomes. Flanking conserved genomic architecture highlights upstream cell division/metabolism genes (*msrP*, *aroQ*, *lld*, *Smc*, *MFS*, *yhdT*, *panF*, *dusB*, *fis*, *lpxOP*, *pyrG*) and downstream transport/stress-response operons (*IrgBA*, *lysR*, *nhaP*, *gstA*, *lipocalin*, *fabG*, *SSB1*, *uvrA*, *adhP*, *tyrB*). The red culture phenotype and LC-HRMS profiling detected serrawettin W1 and serratamolide C; connecting colored linkages represent pairwise amino-acid sequence identity.
+Comparative gene-cluster alignment constructed with `clinker` (scale bar = 2.5 kb) detailing the serrawettin-associated non-ribosomal peptide synthetase (*swrW*, orange block arrow) across SM-NMZ, C14-NMZ, and seven comparative genomes. Flanking conserved genomic architecture highlights upstream cell division/metabolism genes (*msrP*, *aroQ*, *lld*, *Smc*, *MFS*, *yhdT*, *panF*, *dusB*, *fis*, *lpxOP*, *pyrG*) and downstream transport/stress-response genes (*lrgBA*, *lysR*, *nhaP*, *gstA*, *lipocalin*, *fabG*, *SSB1*, *uvrA*, *adhP*, *tyrB*). LC-HRMS profiling detected serrawettin W1 and serratamolide C under the tested conditions; connecting colored linkages represent pairwise amino-acid sequence identity.
 ```
 
 ### Figure 7
+
+#### Comparative architecture discussion plan
+
+1. Describe the continuous, co-oriented `pigN–pigA` core and identical boundary architecture in SM-NMZ and C14-NMZ.
+2. Separate conservation of the biosynthetic core from two downstream-flank states: `CFA synthase–cnoX–yqjQ–tesA–ybbA` in the focal isolates/SM-ZPG19 versus `allS–allR–GCL`-associated genes in SM-S217, SM-SMTT, SNEM-G5.M166, and SSU-YD25.
+3. Highlight the stronger boundary replacement in SPL-PAMC2277 and PA-LS101, where the `pig` block remains recognizable but the surrounding genes change sharply.
+
 ```markdown
 ![Figure 7. Prodigiosin BGC synteny](Figure7_prodigiosin.jpeg)
 **Figure 7. Syntenic organization of the 14-gene prodigiosin (*pig*) locus.**
-Gene-cluster comparison map generated using `clinker` (scale bar = 2.5 kb) illustrating the *pigA*–*pigN* arrangement associated with prodigiosin biosynthesis across SM-NMZ, C14-NMZ, and reference *Serratia* genomes. Arrows represent open reading frames with direction of transcription: *pigA*–*pigE* (proline incorporation and MAP condensation, light green), *pigF*–*pigH* (MBC biosynthesis, orange), *pigI*–*pigN* (condensing and tailoring enzymes, pink/red). Flanking boundaries show conserved upstream (*dacB*, *ybak*, *traB*, *copZ*) and downstream (*cueR*, *ybbJ*, *hflC*, *cfa*, *allSAR*) loci. The red culture phenotype and LC-HRMS profiling, with serrawettin W1 and serratamolide C detected, provide experimental confirmation of the serrawettin- and prodigiosin-associated metabolite phenotype under the tested conditions alongside the conserved *pig* arrangement.
+Gene-cluster comparison map generated using `clinker` (scale bar = 2.5 kb) illustrating the *pigA*–*pigN* arrangement associated with prodigiosin biosynthesis across SM-NMZ, C14-NMZ, and reference *Serratia* genomes. Arrows represent open reading frames with direction of transcription: *pigA*–*pigE* (proline incorporation and MAP condensation, light green), *pigF*–*pigH* (MBC biosynthesis, orange), *pigI*–*pigN* (condensing and tailoring enzymes, pink/red). Flanking boundaries show conserved upstream (*dacB*, *ybak*, *traB*, *copZ*) and downstream (*cueR*, *ybbJ*, *hflC*, *cfa*, *allSAR*) loci. The red/pink-pigmented culture phenotype provides experimental confirmation of the prodigiosin-associated metabolite phenotype under the tested conditions alongside the conserved *pig* arrangement.
 ```
 
 ### Figure 8
