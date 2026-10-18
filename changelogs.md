@@ -5,7 +5,7 @@ This document maintains a chronological record of all project milestones, manusc
 ---
 
 ## Workspace & Project Summary
-- **Primary Draft File**: [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md)
+- **Primary Draft File**: [master-manuscript.md](master-manuscript.md)
 - **Workspace Memory**: [.agents/AGENTS.md](file:///d:/W/serratia-research/.agents/AGENTS.md)
 - **Git Repository**: `d:\W\serratia-research\manuscript` (branch `main`, remote: `https://github.com/WhyAdr/sm-manu`)
 - **Key Focus**: Whole Genome Sequencing, consensus assembly, functional annotation, hydrocarbonoclastic (MEOR / alkane degradation), biosurfactant / pour point depressant (PPD), and comparative phylogenomic analysis across a 14-genome dataset.
@@ -151,6 +151,11 @@ This document maintains a chronological record of all project milestones, manusc
   - Added reference [36] for the UENF-22GI Gap1 precedent and preserved explicit genotype–metabolite and sequence–function limitations.
 
 ---
+
+### 18 October 2026: Master manuscript rename and neighborhood figure integration
+
+- Renamed the original manuscript to `master-manuscript.md` and embedded the generated aromatic, EPS/CPS and focal LadA-like maps beside their findings as Figures 6, 7 and 11. Existing main figures now run consecutively from 1 to 12; all original figure assets and the full manuscript narrative are retained.
+- Added the DNA Features Viewer method/reference, alphabetized and remapped the bibliography, and carried over the verified Feng, CANT-HYD and Plassembler reference corrections. Updated current links; historical source-commit links retain their original paths.
 
 ## Commit History Summary (`git log --oneline`)
 ```text

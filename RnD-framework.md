@@ -1,6 +1,8 @@
 # Framework & Implementation Plan: Results and Discussion (`RnD-framework`)
 
-This framework outlines the exact key sections, subsections, 14-metric comparative data table, and figure mappings (Figures 1–9 and Supplementary Figure S1) for the **Results & Discussion** section of [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md).
+This document preserves the earlier nine-figure plan. Current numbering and the three added neighborhood maps are in [master-manuscript.md](master-manuscript.md); see the [editorial notes](sm-manu-genomics-editorial-and-integration-notes-2026-10-18.md) for the master/concise figure mapping.
+
+This framework outlines the exact key sections, subsections, 14-metric comparative data table, and figure mappings (Figures 1–9 and Supplementary Figure S1) for the **Results & Discussion** section of [master-manuscript.md](master-manuscript.md).
 
 ---
 
@@ -87,7 +89,7 @@ This framework outlines the exact key sections, subsections, 14-metric comparati
 
 ## Proposed Changes to Manuscript
 
-### [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md)
+### [master-manuscript.md](master-manuscript.md)
 - The `## Results & Discussion` framework is now inserted directly following Section E of *Materials & Methods* and preceding `## References`; Table 1 is populated, Sections 1–5 use explicit heading levels, and Figures 1–9 plus Figure S1 are embedded with evidence-calibrated captions.
 
 ---

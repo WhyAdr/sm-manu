@@ -1,6 +1,8 @@
 # Scrutiny & Refined Implementation Plan: Publication-Ready Figure Captions
 
-This implementation plan provides a rigorous, visual-inspection-verified critique and enhancement of all figure legends in [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md). Every detail has been checked against the rendered figure files in the `manuscript/` directory, including the antiSMASH overview maps and both DRAM panels (**Figure 4A** & **Figure 4B**).
+This document preserves the earlier nine-figure plan. Current numbering and the three added neighborhood maps are in [master-manuscript.md](master-manuscript.md); see the [editorial notes](sm-manu-genomics-editorial-and-integration-notes-2026-10-18.md) for the master/concise figure mapping.
+
+This implementation plan provides a rigorous, visual-inspection-verified critique and enhancement of all figure legends in [master-manuscript.md](master-manuscript.md). Every detail has been checked against the rendered figure files in the `manuscript/` directory, including the antiSMASH overview maps and both DRAM panels (**Figure 4A** & **Figure 4B**).
 
 ---
 
@@ -21,7 +23,7 @@ This implementation plan provides a rigorous, visual-inspection-verified critiqu
 
 ---
 
-## 2. Refined, Publication-Ready Figure Captions for `manuscript.md`
+## 2. Refined, Publication-Ready Figure Captions for `master-manuscript.md`
 
 ### Figure 1
 ```markdown
@@ -135,8 +137,8 @@ Curated `clinker` alignment (scale bar = 2.5 kb) of ten K20938-centered regions.
 
 ## 3. Proposed Changes
 
-### [MODIFY] [manuscript.md](file:///d:/W/serratia-research/manuscript/manuscript.md)
-- Replace lines containing brief figure captions in `manuscript.md` with the fully scrutinized, publication-grade legends above, keeping the antiSMASH overview maps as Figure 3 and the DRAM panels (`Figure3_DRAM.jpeg` and `Figure3_DRAM2.jpeg`) as Figure 4A and Figure 4B.
+### [MODIFY] [master-manuscript.md](master-manuscript.md)
+- Replace lines containing brief figure captions in `master-manuscript.md` with the fully scrutinized, publication-grade legends above, keeping the antiSMASH overview maps as Figure 3 and the DRAM panels (`Figure3_DRAM.jpeg` and `Figure3_DRAM2.jpeg`) as Figure 4A and Figure 4B.
 
 ---
 

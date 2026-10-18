@@ -6,7 +6,7 @@
 
 - [Original-theme draft](sm-manu-genomics-original-themes-draft-2026-10-18.md): concise genomic methods and results with six selected source passages retained, apart from reference renumbering. Surface/matrix prose appears once in the biosynthesis section; the emulsion synthesis sentence follows the aromatic findings. Neither placement introduces an E24 result.
 - [Placeholder-integrated draft](sm-manu-genomics-placeholder-integrated-draft-2026-10-18.md): the same manuscript structure, with one continuous treatment of each of the four assays. Square-bracketed words describe unavailable data. They are not observed values. There are no template instructions or competing alternatives inside this draft.
-- Both follow the formatting of [the source manuscript](manuscript.md): `# Manuscript`, lettered Methods, numbered Results & Discussion, figures beside the relevant results, numbered references, and a final blockquote headed **Study-wide interpretation note**. The note acknowledges the existing chemistry and pigmentation observations.
+- Both follow the formatting of [the source manuscript](master-manuscript.md): `# Manuscript`, lettered Methods, numbered Results & Discussion, figures beside the relevant results, numbered references, and a final blockquote headed **Study-wide interpretation note**. The note acknowledges the existing chemistry and pigmentation observations.
 - Source baseline: [commit f1de07b](https://github.com/WhyAdr/sm-manu/commit/f1de07bb47755c9277f5d067954b21eea0be63f9). The source manuscript and all original image files remain unchanged.
 
 The original four-theme passages are retained in draft A at the author's request; preservation is not endorsement of every claim. Draft B supplies the evidence-calibrated integration treatment. Use one draft as the contribution to the collaborative paper, rather than combining both.
@@ -91,3 +91,17 @@ python scripts/generate_genomic_neighborhood_figures.py --refresh-data --genbank
 ```
 
 The default redraw requires DNA Features Viewer and Matplotlib; data refresh additionally requires the installed genbank-parser skill/package. Software versions are recorded in the structured data. [Artifact hashes](figures/neighborhoods/artifact-manifest.json) cover all three figures and their supporting tables. The manuscript Methods and References now cite [Zulkower and Rosser (2020)](https://doi.org/10.1093/bioinformatics/btaa213).
+
+## Master manuscript integration
+
+The complete original manuscript is now [master-manuscript.md](master-manuscript.md). Its full narrative and original figures are retained, with the three generated neighborhood maps inserted beside their corresponding discussions. Its figure sequence is independent of the two concise alternatives:
+
+| Neighborhood map | Master manuscript | Concise drafts |
+|---|---|---|
+| Aromatic metabolism | Figure 6 | Figure 5 |
+| EPS/CPS and matrix systems | Figure 7 | Figure 3 |
+| Focal LadA-like neighborhoods | Figure 11 | Figure 6 |
+
+In the master, the original SwrW/pig comparisons are Figures 8/9, the LadA tree is Figure 10, and the broader clinker comparison is Figure 12. Image filenames and image bytes remain unchanged. The master Methods now describes the DNA Features Viewer visualization, with its citation included in the rebuilt alphabetized bibliography. The previously verified Feng, CANT-HYD and Plassembler corrections are carried into the master bibliography. The outstanding TYGS rerun and assay-integration tasks remain as documented above.
+
+Frozen-commit source links in this document deliberately retain `manuscript.md`: they refer to the historical source before the rename. The two concise manuscript drafts are unchanged by this integration.
