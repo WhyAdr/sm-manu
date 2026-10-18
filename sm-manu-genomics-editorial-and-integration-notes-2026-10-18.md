@@ -18,14 +18,14 @@ The original four-theme passages are retained in draft A at the author's request
 | Bakta Table 1 | Genome-feature results; original table and note reproduced exactly | None for this revision. Retain the annotation-inventory interpretation. |
 | TYGS phylograms | Figure 1A and 1B beside the taxonomy results | Existing images and dDDH values are explicitly from earlier submissions. The author is rerunning TYGS with the final Dorado-polished assemblies. Replace both panels and associated values with the consolidated focal-pair analysis when it is available. |
 | SwrW clinker comparison | Figure 2 beside SwrW/LC-HRMS findings | Original image retained. Extended comparator-by-comparator interpretation belongs in supplementary text. |
-| HADEG bubble plot | Figure 3 beside hydrocarbon-associated metabolic results | Original image retained without curation or regeneration. Caption clarifies “Emulsan” and “Toluene_degradation.” Plastics rows remain background marker categories, not new polymer-degradation claims. |
-| EPS/CPS neighborhoods | Genomic findings retained in the biosynthesis section | New DNA Features Viewer plots remain to be generated. Emphasize SM-NMZ and C14-NMZ, capsule/EPS differences and the contiguous SM-NMZ *pgaDCBA* locus. Place the eventual image beside these findings. |
-| Aromatic neighborhoods | Gene content and pathway interpretation retained in metabolic results | New focal-pair DNA Features Viewer plots remain to be generated. Prioritize shared *hpa/paa* loci and informative SM-NMZ additions. |
-| Putative LadA-like neighborhood | Candidate placement and neighborhood interpretation retained in Section 5 | New focal-pair DNA Features Viewer plot remains to be generated. Preserve the sulfur/methionine-associated context and candidate designation. |
+| HADEG bubble plot | Figure 4 beside hydrocarbon-associated metabolic results | Original image retained without curation or regeneration. Caption clarifies “Emulsan” and “Toluene_degradation.” Plastics rows remain background marker categories, not new polymer-degradation claims. |
+| EPS/CPS neighborhoods | Figure 3 beside matrix-associated results | Generated focal-pair maps for capsule, EPS2, cellulose and the SM-NMZ *pgaDCBA* interval. PNG and SVG exports are in `figures/`. |
+| Aromatic neighborhoods | Figure 5 beside aromatic findings | Generated shared *hpa/paa* comparisons and SM-NMZ hydroxybenzoate, protocatechuate and gentisate-associated maps. PNG and SVG exports are in `figures/`. |
+| Putative LadA-like neighborhood | Figure 6 beside candidate-placement results | Generated focal-pair maps showing the conserved sulfur/methionine-associated core and distinct flanks. PNG and SVG exports are in `figures/`. |
 | Pig comparison | Genomic/pigmentation finding retained in the main text | Detailed [comparative figure](Figure7_prodigiosin.jpeg) goes to supplementary material. |
 | Other analyses | Detailed evidence reserved for supplementary material | Circular maps, antiSMASH overviews, DRAM and VF heatmaps, detailed LadA tree/broad synteny, and long orthogroup inventories. |
 
-Figure numbers now follow the order of appearance within these abridged drafts. Original filenames remain unchanged. Renumber against the complete collaborative manuscript at final assembly. No missing graphic is represented by a fabricated image, caption or completed-method claim.
+Figure numbers now follow the order of appearance within these abridged drafts. Original filenames remain unchanged. Renumber against the complete collaborative manuscript at final assembly. The final-assembly consolidated TYGS tree remains pending; the three neighborhood figure sets are now generated from the verified Bakta GenBank annotations.
 
 ## Qualifications for the source-preserving version
 
@@ -62,4 +62,32 @@ When inserting this alternative, cite Prieto et al. (1996), Teufel et al. (2010)
 - Feng et al. is corrected in both draft bibliographies to *PNAS* 104(13):5602–5607, DOI [10.1073/pnas.0609650104](https://doi.org/10.1073/pnas.0609650104).
 - CANT-HYD is corrected to Khot, Zorz, Gittins et al. (2022), *Frontiers in Microbiology* 12:764058, DOI [10.3389/fmicb.2021.764058](https://doi.org/10.3389/fmicb.2021.764058).
 - When listing the individual assemblers in supplementary methods, cite Plassembler as Bouras, Sheppard, Mallawaarachchi and Vreugde (2023), *Bioinformatics* 39(7):btad409, DOI [10.1093/bioinformatics/btad409](https://doi.org/10.1093/bioinformatics/btad409). The source's btad382 DOI belongs to an unrelated article.
-- Neither draft adds a newly completed TYGS rerun, new DNA Features Viewer analysis, compound-specific functional validation or wet-lab result. The explanatory PowerPoint remains deferred.
+- The DNA Features Viewer figures are complete. The final TYGS rerun, compound-specific functional validation and outstanding assay datasets are not supplied by these sequence visualizations. The explanatory PowerPoint remains deferred.
+
+## Neighborhood figure provenance and regeneration
+
+The figures use the final-size SM-NMZ and C14-NMZ Bakta annotation files. The copies in `serratia-hydrocarbon-faa` are byte-identical to the corresponding `bakta-serratia-genomes/*_bakta` GenBank files. Input SHA-256 values and chromosome lengths are recorded in the [structured neighborhood data](figures/neighborhoods/neighborhoods.json). All regions were parsed using the genbank-feature-parser skill's canonical `read_genbank` and `build_neighborhood` APIs; its native DNA Features Viewer renderer was also exercised. The composite figures use DNA Features Viewer for every gene arrow, with a shared physical scale within each lettered panel. The figures are gene maps, not protein-alignment ribbons or inferred operons.
+
+| Figure | Raster preview | Editable vector |
+|---|---|---|
+| EPS/CPS and matrix loci | [PNG](figures/Figure3_EPS-CPS-neighborhoods.png) | [SVG](figures/Figure3_EPS-CPS-neighborhoods.svg) |
+| Aromatic loci | [PNG](figures/Figure5_Aromatic-neighborhoods.png) | [SVG](figures/Figure5_Aromatic-neighborhoods.svg) |
+| LadA-like neighborhoods | [PNG](figures/Figure6_LadA-like-neighborhoods.png) | [SVG](figures/Figure6_LadA-like-neighborhoods.svg) |
+
+The [plotted feature table](figures/neighborhoods/plotted-features.tsv) records every displayed CDS's locus tag, genomic/local coordinates, strand, raw gene/product qualifiers, label basis, annotation class and candidate status. The [selection configuration](figures/neighborhoods/selection.json) defines reproducible region boundaries. Anonymous CDSs use source-product abbreviations or their locus-tag suffixes; their full descriptions remain in the table. No functional gene names were added to the input annotations. The orange LadA-like labels explicitly overlay the unresolved candidate designation on source `ssuD` annotations.
+
+The PNAG comparison uses corresponding DUF805/HicB-like/cybB/alaC flanks. C14-NMZ lacks the intervening contiguous *pgaDCBA* cluster in that interval; its separate `OJMJKD_020200` *pgaB* homolog is not shown as though it occupied that interval. The raw *bcsE* and *galU* labels are retained even when repeated, rather than silently reannotated. Additional SM-NMZ aromatic regions retain their incomplete/uncertain-pathway qualifications.
+
+Run the [generator](scripts/generate_genomic_neighborhood_figures.py) from the repository root to redraw the checked-in structured data:
+
+```powershell
+python scripts/generate_genomic_neighborhood_figures.py
+```
+
+To rebuild the structured data from complete GenBank inputs, supply a directory containing `SM-NMZ.gbff` and `C14-NMZ.gbff`:
+
+```powershell
+python scripts/generate_genomic_neighborhood_figures.py --refresh-data --genbank-dir PATH
+```
+
+The default redraw requires DNA Features Viewer and Matplotlib; data refresh additionally requires the installed genbank-parser skill/package. Software versions are recorded in the structured data. [Artifact hashes](figures/neighborhoods/artifact-manifest.json) cover all three figures and their supporting tables. The manuscript Methods and References now cite [Zulkower and Rosser (2020)](https://doi.org/10.1093/bioinformatics/btaa213).

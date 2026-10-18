@@ -1,0 +1,60 @@
+{
+  "schema_version": "sm-manu.neighborhood-selection.v1",
+  "figures": [
+    {
+      "stem": "Figure3_EPS-CPS-neighborhoods",
+      "title": "Capsule, EPS and matrix-associated loci",
+      "panels": [
+        {"letter": "A", "title": "Capsule-associated locus", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_007285", "last": "NNLMDO_007370"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_007435", "last": "OJMJKD_007515"}
+        ]},
+        {"letter": "B", "title": "Putative EPS2 locus between narG and narK", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_013630", "last": "NNLMDO_013695"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_013915", "last": "OJMJKD_013980"}
+        ]},
+        {"letter": "C", "title": "Cellulose-associated bcs locus", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_000480", "last": "NNLMDO_000520"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_000475", "last": "OJMJKD_000515"}
+        ]},
+        {"letter": "D", "title": "SM-NMZ pgaDCBA locus and corresponding C14-NMZ flanks", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_016935", "last": "NNLMDO_016970"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_017200", "last": "OJMJKD_017220"}
+        ]}
+      ]
+    },
+    {
+      "stem": "Figure5_Aromatic-neighborhoods",
+      "title": "Oxygenated-aromatic metabolism loci",
+      "panels": [
+        {"letter": "A", "title": "Shared hpa region: 4-hydroxyphenylacetate-associated metabolism", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_002625", "last": "NNLMDO_002680"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_002635", "last": "OJMJKD_002690"}
+        ]},
+        {"letter": "B", "title": "Shared paa region: phenylacetate-associated metabolism", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_014780", "last": "NNLMDO_014845"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_015005", "last": "OJMJKD_015070"}
+        ]},
+        {"letter": "C", "title": "SM-NMZ hydroxybenzoate-hydroxylase / pcaK neighborhood", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_011760", "last": "NNLMDO_011775"}
+        ]},
+        {"letter": "D", "title": "SM-NMZ protocatechuate-associated region", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_014965", "last": "NNLMDO_015005"}
+        ]},
+        {"letter": "E", "title": "SM-NMZ gentisate-associated region", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_016045", "last": "NNLMDO_016065"}
+        ]}
+      ]
+    },
+    {
+      "stem": "Figure6_LadA-like-neighborhoods",
+      "title": "Putative LadA-like monooxygenase neighborhoods",
+      "panels": [
+        {"letter": "A", "title": "Conserved core and distinct flanking genes in the focal pair", "tracks": [
+          {"isolate": "SM-NMZ", "first": "NNLMDO_015240", "last": "NNLMDO_015285", "target": "NNLMDO_015255"},
+          {"isolate": "C14-NMZ", "first": "OJMJKD_015505", "last": "OJMJKD_015560", "target": "OJMJKD_015520"}
+        ]}
+      ]
+    }
+  ]
+}

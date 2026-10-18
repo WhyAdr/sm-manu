@@ -1,0 +1,5 @@
+figures/*.png -text
+figures/*.svg text eol=lf
+figures/neighborhoods/*.json text eol=lf
+figures/neighborhoods/*.tsv text eol=lf
+scripts/generate_genomic_neighborhood_figures.py text eol=lf

@@ -1,0 +1,42 @@
+{
+  "figures/Figure3_EPS-CPS-neighborhoods.svg": {
+    "sha256": "1d9b2ab3a591e6b32a8f7419196ca0559937ba0502dd952aee5043e09490f0bc",
+    "bytes": 109399
+  },
+  "figures/Figure3_EPS-CPS-neighborhoods.png": {
+    "sha256": "9d755b022f5f38bce7639100bf94ac301772139129f4beb8bba289f4de324137",
+    "bytes": 615664
+  },
+  "figures/Figure5_Aromatic-neighborhoods.svg": {
+    "sha256": "097af0037239214dbcc5bf8c8e4c6cf8292ffff92b08fda556c4ffc5a803ccba",
+    "bytes": 79073
+  },
+  "figures/Figure5_Aromatic-neighborhoods.png": {
+    "sha256": "5280352dc1fc1754b0ef63a7f3fd61626fce88da085243ebb5ca5d61fdca5734",
+    "bytes": 534924
+  },
+  "figures/Figure6_LadA-like-neighborhoods.svg": {
+    "sha256": "77bfb246497d6e10ad09f5eb69db01e7d51db2557a17d1c8204d8a13389b7ab4",
+    "bytes": 26444
+  },
+  "figures/Figure6_LadA-like-neighborhoods.png": {
+    "sha256": "a6f774b6f4c5e9f942c355456bb9f91e6df5946a57ef6667e178ad6d3c6fe100",
+    "bytes": 224905
+  },
+  "figures/neighborhoods/selection.json": {
+    "sha256": "7d0e06700c17a14c47d4486fb46167710678222a4dc13ecffc25a88b6dc9d0d6",
+    "bytes": 3056
+  },
+  "figures/neighborhoods/neighborhoods.json": {
+    "sha256": "aaeaec4170def752194501090c7b6f52d30c3f6b145e8ece55c27b465fd5069c",
+    "bytes": 208758
+  },
+  "figures/neighborhoods/plotted-features.tsv": {
+    "sha256": "9af6990c39d960972ad5374d7f8f1e69b9d210d231c7efab531001251decaa89",
+    "bytes": 38223
+  },
+  "scripts/generate_genomic_neighborhood_figures.py": {
+    "sha256": "bc5c841357e9af8859dea4c0181025eda73bbda96777dd458cac1535ba2b2a33",
+    "bytes": 18771
+  }
+}

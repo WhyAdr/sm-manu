@@ -16,7 +16,7 @@ Genome relatedness was assessed using digital DNA–DNA hybridization (dDDH) thr
 
 ### D. Metabolic and Biosurfactant-Associated Genomic Profiling
 
-Annotated proteomes were examined using DRAM [31], HADEG [28] and VFDB-based profiling [20]. Locus organization was assessed from curated annotations and clinker comparisons [12]. The comparative panel comprised 14 proteomes: SM-NMZ, C14-NMZ, 11 additional *Serratia* genomes and *Prodigiosinella aquatilis* PA-LS101 as an outgroup.
+Annotated proteomes were examined using DRAM [31], HADEG [28] and VFDB-based profiling [20]. Locus organization was assessed from curated annotations and clinker comparisons [12]. The comparative panel comprised 14 proteomes: SM-NMZ, C14-NMZ, 11 additional *Serratia* genomes and *Prodigiosinella aquatilis* PA-LS101 as an outgroup. Selected focal-pair neighborhoods were extracted using genbank-parser and rendered using DNA Features Viewer [40], preserving annotated strand and genomic spacing.
 
 ### E. Comparative Proteome Orthology and Monooxygenase Phylogeny
 
@@ -74,19 +74,31 @@ Both genomes also retain the conserved *pig* locus corresponding to the characte
 
 Both isolates contain group-1 capsule-associated and second extracellular polysaccharide (EPS) loci, together with cellulose-associated *bcs* genes. SM-NMZ additionally carries a contiguous *pgaDCBA* locus associated with poly-N-acetylglucosamine (PNAG) matrix production [35]; C14-NMZ contains a *pgaB* homolog without the corresponding contiguous locus. Extracellular polymeric matrices contribute to cellular cohesion and structured microbial aggregates [11].
 
+The capsule, EPS2, cellulose and PNAG-associated genomic arrangements distinguish shared matrix-associated systems from the SM-NMZ-specific contiguous *pgaDCBA* locus (**Figure 3**).
+
+![Figure 3. EPS/CPS and matrix-associated genomic neighborhoods](figures/Figure3_EPS-CPS-neighborhoods.png)
+
+**Figure 3. Capsule, EPS and matrix-associated loci in the focal isolates.** **(A)** Capsule-associated loci. **(B)** Putative EPS2 regions between *narG* and *narK*. **(C)** Cellulose-associated *bcs* regions. **(D)** SM-NMZ's contiguous *pgaDCBA* locus and the corresponding C14-NMZ interval between conserved flanks. C14-NMZ's separate *pgaB* homolog (`OJMJKD_020200`) lies outside the interval shown. Labels follow source gene names or compact product descriptions; repeated *galU* and *bcsE* labels preserve the original annotations. Arrows show annotated strand, with equal physical scale within each lettered panel. Colors distinguish broad annotation classes, rather than sequence identity or demonstrated activity.
+
 The [test material] from SM-NMZ and C14-NMZ reduced surface tension to [SM value ± uncertainty] and [C14 value ± uncertainty] mN/m, respectively, compared with [control value ± uncertainty] mN/m under [measurement conditions; replicate definition and n]. The conserved SwrW-associated locus and reported LC-HRMS serratamolides identify these aminolipids as candidate contributors to the measured surface activity. Serrawettin W1 has demonstrated surface-tension reduction and emulsion activity in another *S. marcescens* strain [39], supporting the biological plausibility of this interpretation.
 
 With [oil or hydrocarbon], the [test material] from SM-NMZ and C14-NMZ yielded E24 values of [SM value ± uncertainty]% and [C14 value ± uncertainty]%, respectively, compared with [control result], after 24 h under [mixing and settling conditions; replicate definition and n]. E24 expresses emulsion-layer height as a percentage of total liquid-column height. SwrW-associated biosynthesis identifies an amphiphile candidate, while the capsule/EPS and cellulose loci identify possible matrix contributors to emulsion persistence. SM-NMZ's contiguous *pgaDCBA* locus provides an additional matrix-associated genomic difference [35]. The shared *wzb/wzc* markers do not identify the characterized *Acinetobacter* emulsan polymer [24].
 
 ### 4. Hydrocarbon-Associated Metabolic Potential
 
-HADEG profiles identified shared biosurfactant-associated markers and oxygenated-aromatic metabolic candidates across the comparative panel (**Figure 3**). Interpretation of the focal loci was based on their gene content and neighborhood organization, allowing broad database categories to be resolved into more specific substrate-associated candidates.
+HADEG profiles identified shared biosurfactant-associated markers and oxygenated-aromatic metabolic candidates across the comparative panel (**Figure 4**). Interpretation of the focal loci was based on their gene content and neighborhood organization, allowing broad database categories to be resolved into more specific substrate-associated candidates.
 
-![Figure 3. HADEG marker-category bubble plot](Figure5_Bubbles-Subpathways-HADEG.png)
+![Figure 4. HADEG marker-category bubble plot](Figure5_Bubbles-Subpathways-HADEG.png)
 
-**Figure 3. HADEG marker-category profiles across the comparative genome panel.** Bubble sizes represent displayed marker-hit counts across 14 proteomes. Raw HADEG category names are retained; marker matches do not independently establish pathway completeness or activity. In the focal isolates, “Emulsan” comprises generic *wzb/wzc* capsule-associated markers rather than evidence of the characterized *Acinetobacter* emulsan system. The SM-NMZ hit in “Toluene_degradation” is interpreted from its genomic context as a hydroxybenzoate-hydroxylase candidate rather than a complete toluene-degradation route.
+**Figure 4. HADEG marker-category profiles across the comparative genome panel.** Bubble sizes represent displayed marker-hit counts across 14 proteomes. Raw HADEG category names are retained; marker matches do not independently establish pathway completeness or activity. In the focal isolates, “Emulsan” comprises generic *wzb/wzc* capsule-associated markers rather than evidence of the characterized *Acinetobacter* emulsan system. The SM-NMZ hit in “Toluene_degradation” is interpreted from its genomic context as a hydroxybenzoate-hydroxylase candidate rather than a complete toluene-degradation route.
 
 Both isolates carry organized 12-gene *hpa* cassettes and 14-gene *paa* blocks with annotated core functions for 4-hydroxyphenylacetate and phenylacetate processing, respectively [27,34]. SM-NMZ additionally contains hydroxybenzoate/protocatechuate and gentisate-associated candidates, supporting a broader annotated oxygenated-aromatic repertoire [29]. Some downstream assignments remain unresolved, including the immediate *pcaC* step and downstream gentisate-processing annotations.
+
+The shared *hpa/paa* organization and additional SM-NMZ aromatic regions are illustrated in **Figure 5**.
+
+![Figure 5. Aromatic-metabolism genomic neighborhoods](figures/Figure5_Aromatic-neighborhoods.png)
+
+**Figure 5. Genomic organization of oxygenated-aromatic metabolic candidates.** **(A)** Shared *hpa* loci associated with 4-hydroxyphenylacetate metabolism. **(B)** Shared *paa* loci associated with phenylacetate metabolism. **(C)** SM-NMZ's hydroxybenzoate-hydroxylase/*pcaK* neighborhood. **(D)** Its protocatechuate-associated region. **(E)** Its gentisate-associated region. Only SM-NMZ is shown in C–E; downstream pathway assignments remain partly unresolved. HBH denotes the annotated hydroxybenzoate-hydroxylase candidate; other labels retain source gene names or abbreviate product descriptions. Arrows preserve annotated strand and spacing, with equal physical scale within each lettered panel.
 
 During [incubation conditions], SM-NMZ and C14-NMZ showed [substrate-specific conversion results, uncertainty and replicate definition/n] for [named substrate], relative to [abiotic and biological controls], with [product, recovery or carbon-accounting evidence]. Correspondence between [tested substrate] and [relevant locus] supports this substrate-specific interpretation.
 
@@ -97,6 +109,12 @@ At [dose], treatment with [test material] from SM-NMZ and C14-NMZ changed the po
 The analyses did not resolve a convincing canonical alkane-initiation system. The alkB-named proteins were DNA oxidative demethylases rather than membrane alkane hydroxylases. Fatty-acid activation and beta-oxidation genes provide downstream assimilation options without establishing the initial attack on an alkane.
 
 The focal monooxygenases `NNLMDO_015255` and `OJMJKD_015520` formed a 100%-UFBoot pair within a 99%-supported grouping containing canonical LadA and LadA-alpha references. Their conserved *ssuD–ydhS–focal–metNPQ* neighborhood provides sulfur/methionine-associated context without identifying their substrate. Earlier studies reported purified-enzyme activity for canonical LadA and heterologous complementation by LadA-type genes [2,10], whereas a biochemical reassessment did not detect long-chain alkane hydroxylation by tested LadA proteins under its conditions [22]. The focal proteins therefore remain LadA-like candidates with unresolved substrate specificity.
+
+The focal-pair comparison resolves a conserved core and distinct flanking genes around the putative LadA-like candidates (**Figure 6**).
+
+![Figure 6. Putative LadA-like genomic neighborhoods](figures/Figure6_LadA-like-neighborhoods.png)
+
+**Figure 6. Genomic neighborhoods of the putative LadA-like candidates.** DNA Features Viewer comparison of SM-NMZ and C14-NMZ. Orange arrows mark `NNLMDO_015255` and `OJMJKD_015520`, respectively; the “LadA-like” label is the manuscript's candidate designation, whereas both source gene qualifiers are *ssuD*. The shared neighborhood includes methionine-transporter genes, *ydhS* and an adjacent *ssuD*-annotated CDS. The flanking regions differ, including the C14-NMZ *glnG–yciW1–ssuD–nik/ddp* extension. Arrows retain annotated strand and genomic spacing on a common scale. Neighborhood conservation and candidate labels do not assign alkane-oxidation activity.
 
 ### 6. Comparative Features Relevant to Environmental Application
 
@@ -147,3 +165,4 @@ Both isolates also carry ShlA–ShlB, Has and T6SS-associated homologs, represen
 37. Wick, R. R., Howden, B. P., & Stinear, T. P. (2025). Autocycler: long-read consensus assembly for bacterial genomes. *Bioinformatics*, 41(9), btaf474. https://doi.org/10.1093/bioinformatics/btaf474
 38. Wong, T. K. F., Ly-Trong, N., Ren, H., Demotte, P., Banos, H., Roger, A. J., Susko, E., Bielow, C., De Maio, N., Goldman, N., Hahn, M. W., dos Reis, M., Vinh, L. S., Huttley, G., Lanfear, R., & Minh, B. Q. (2026). IQ-TREE 3: Phylogenomic inference software using complex evolutionary models. *Molecular Biology and Evolution*, msag117. https://doi.org/10.1093/molbev/msag117
 39. Zhang, K., Tao, W., Lin, J., Wang, W., & Li, S. (2021). Production of the biosurfactant serrawettin W1 by *Serratia marcescens* S-1 improves hydrocarbon degradation. *Bioprocess and Biosystems Engineering*, 44(12), 2541–2552. https://doi.org/10.1007/s00449-021-02625-4
+40. Zulkower, V., & Rosser, S. (2020). DNA Features Viewer: a sequence annotation formatting and plotting library for Python. *Bioinformatics*, 36(15), 4350–4352. https://doi.org/10.1093/bioinformatics/btaa213
