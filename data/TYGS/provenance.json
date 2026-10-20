@@ -3,12 +3,12 @@
   "results_date": "2026-10-18",
   "report_print_date": "2026-10-20",
   "files": {
-    "SM-C14-16S-phylogram.png": "0770df012e1336a4f9efa1092068834603112e8a97acf44a8bd792966e2f9a9f",
-    "SM-C14-16S-phylogram.svg": "69555ec628cc3dd8951c6ef7a0887cef7778e37c74e517feb3055743f3a1ad4c",
+    "SM-C14-16S-phylogram.png": "1e4b527c07ea3cffc7329d00b117d3f3e465f9a185faf237488ec332f4da2347",
+    "SM-C14-16S-phylogram.svg": "ee0ec34d215a8ce33108f6182ba4fca2ca66a642830bf58c24de2f74954bc6b6",
     "SM-C14-GBDP_16s_coverage_D5.phy": "0029e0dbe661c1babaf3cd2cae778dd0304f0b8f194f87aa74f2d7025a896246",
     "SM-C14-GBDP_genomes_trimming_D5.phy": "1ed3c42752688a7218f9d2fe5b2d9dbd3591531a42f3c800d43208872cc7e295",
-    "SM-C14-genome-phylogram.png": "765324a836957c9f78d6cdc1e66855da0c37d2a981699bcc5800d4f7a6d172be",
-    "SM-C14-genome-phylogram.svg": "35cfb2a437fe2f71e9e864a69f997642ca0261d41bfbd393470a0e44bcd7ad51",
+    "SM-C14-genome-phylogram.png": "b4a7983c01d9ce73ee1f8cd7a12717e0ffda04196ab48111bde58f99127e79ce",
+    "SM-C14-genome-phylogram.svg": "9491a197bca6f81b87a76f600747eed77878511ec893dc153424f18003ba319a",
     "SM-C14-TYGS-PairComp.xlsx": "be3e0c1b0deaca86dd0a7d75d7f631064625a2f70fd7b7fd81a20ef73460d3e4",
     "SM-C14-TYGS-Report.pdf": "ae75e72c0620428f3f1fb442fcdb78e42ae5fd8f103de7a4044b4d8b2a7fb540",
     "SM-C14-TYGS-StrainDataset.xlsx": "ceb7a86712d50f6bbca54a55cb3f1617183e986cfb6cf6b338841f85e33dcb45"
@@ -49,5 +49,6 @@
       "tygs_species_cluster": "6",
       "tygs_subspecies_cluster": "10"
     }
-  }
+  },
+  "figure_export_date": "2026-10-21"
 }

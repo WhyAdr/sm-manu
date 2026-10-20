@@ -6,8 +6,10 @@ const python=process.env.RUNTIME_PYTHON;
 if(!skill||!python)throw new Error('Set PRESENTATIONS_SKILL_DIR and RUNTIME_PYTHON.');
 const {finalizePresentation}=await import(pathToFileURL(path.join(skill,'container_tools/artifact_tool_utils.mjs')).href);
 const workspaceDir=path.resolve(import.meta.dirname,'../..');
-const build=path.join(workspaceDir,'tmp/explainer-2026-10-20');
-const finalPath=path.join(import.meta.dirname,'NMZ-Serratia-genomics-explainer-2026-10-20.pptx');
+const build=path.join(workspaceDir,'tmp/explainer-2026-10-21');
+const runId=new Date().toISOString().replace(/[:.]/g,'-');
+const finalPath=path.join(build,'validated',runId,'NMZ-Serratia-genomics-explainer-2026-10-20.pptx');
+await fs.mkdir(path.dirname(finalPath),{recursive:true});
 const requiredNativeTableOwnerSlides=[2,3,4,8,10,11,12,13,15,18];
 const result=await finalizePresentation({
  workspaceDir,candidatePath:path.join(build,'candidate.pptx'),finalPath,
@@ -19,6 +21,6 @@ const result=await finalizePresentation({
  requiredNativeTableOwnerSlides,
  fontPolicy:{basis:'design',families:['Arial']},
  verifyArtifactToolImport:true,
- receiptPath:path.join(build,'final-validation.json')
+ receiptPath:path.join(build,`final-validation-${runId}.json`)
 });
-console.log(JSON.stringify(result,null,2));
+console.log(JSON.stringify({finalPath:result.finalPath,receiptPath:result.receiptPath,sha256:result.finalSha256,slides:result.packageIntegrity.slide_count,layoutFindings:result.presentationLayout.findingCount,importPassed:result.firstPartyImport.passed},null,2));

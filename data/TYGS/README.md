@@ -1,6 +1,6 @@
-# Unified final-assembly TYGS analysis
+# Final-assembly TYGS analysis
 
-Job: `04c9ebd7-bb0c-440e-bcba-4a11ef017a82`. Results provided 18 October 2026; supplied PDF printed 20 October 2026. The original exports came from the author's `unified-TYGS` folder. The original PNG/SVG, PDF, workbooks and distance matrices are preserved byte for byte. `provenance.json` records checksums and Bakta FASTA sequence lengths/hashes.
+Job: `04c9ebd7-bb0c-440e-bcba-4a11ef017a82`. Results provided 18 October 2026; supplied PDF printed 20 October 2026. The exports came from the author-supplied TYGS results folder. Tree images were re-exported on 21 October 2026 at a wider canvas size. The analysis report and comparison tables are unchanged. The original PNG/SVG, PDF, workbooks and distance matrices are preserved byte for byte. `provenance.json` records checksums and Bakta FASTA sequence lengths/hashes.
 
 `pairwise-comparisons.tsv` and `strain-dataset.tsv` transcribe the workbook cells without changing source labels. They were extracted directly from OOXML because the supplied workbook's style definitions are incompatible with openpyxl. Source spelling and encoding anomalies remain unchanged in the raw exports.
 
@@ -27,6 +27,6 @@ Lengths now agree exactly. The exports do not contain the submitted sequence con
 
 The genome tree uses **GBDP distance formula d5**, trimming distances and FastME 2.1.6.1 with SPR postprocessing and midpoint rooting. The report states 100 pseudo-bootstrap replicates and mean support 85.9%. In the supplied view red labels are branch distances, blue labels are support values above 60%, and the right-hand columns encode metadata. The recommended **dDDH formula d4** is a separate calculation from the d5 tree distances.
 
-The main manuscript asset in `../../figures/Figure_TYGS-unified-genome-phylogram.svg` is an exact copy of the supplied vector export. The older separate trees remain as historical assets but no longer appear in the three current manuscripts.
+The main manuscript asset in `../../figures/Figure_TYGS-genome-phylogram.svg` is an exact copy of the supplied vector export. The older separate trees remain as historical assets but no longer appear in the three current manuscripts.
 
 Nomenclature checked 20 October 2026: [LPSN S. marcescens](https://lpsn.dsmz.de/species/serratia-marcescens) and [LPSN S. nematodiphila](https://lpsn.dsmz.de/species/serratia-nematodiphila) remain correct species names. The former lists subsp. sakuensis as a synonym. Preserve exported labels when reproducing the tree, with this qualification in its caption.

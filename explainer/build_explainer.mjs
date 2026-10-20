@@ -8,7 +8,7 @@ if (!runtime) throw new Error('Set RUNTIME_NODE_MODULES to the bundled node_modu
 const { Presentation, PresentationFile } = await import(pathToFileURL(path.join(runtime,'@oai/artifact-tool/dist/artifact_tool.mjs')).href);
 const root=path.resolve(import.meta.dirname,'..');
 const output=path.resolve(import.meta.dirname);
-const build=path.resolve(root,'../tmp/explainer-2026-10-20');
+const build=path.resolve(root,'../tmp/explainer-2026-10-21');
 await fs.mkdir(build,{recursive:true});
 const P=Presentation.create({slideSize:{width:1280,height:720}});
 const C={ink:'#183642',teal:'#136C74',muted:'#526770',line:'#D5DFE1',pale:'#EFF5F4',white:'#FFFFFF',amber:'#A76022'};
@@ -45,8 +45,8 @@ async function img(s,relative,x,y,w,h,alt,crop=null){
   alt,fit:'contain',position:{left:x,top:y,width:w,height:h},...(crop?{crop}:{}),geometry:'rect'});
 }
 const src={
- tygs:'Source: data/unified-TYGS/SM-C14-TYGS-Report.pdf, pp. 1–2 and 7; strain-dataset.tsv; pairwise-comparisons.tsv. Job 04c9ebd7-bb0c-440e-bcba-4a11ef017a82, results 18 October 2026.',
- genome:'Source: final Bakta v1.12.0/database v6.0 summary, JSON and FASTA for SM-NMZ and C14-NMZ. Genome properties match manuscript Table 1.',
+ tygs:'Source: data/TYGS/SM-C14-TYGS-Report.pdf, pp. 1–2 and 7; strain-dataset.tsv; pairwise-comparisons.tsv. Job 04c9ebd7-bb0c-440e-bcba-4a11ef017a82, results 18 October 2026.',
+ genome:'Source: final Bakta v1.12.0/database v6.0 summary, JSON and FASTA for SM-NMZ and C14-NMZ. Genome properties are reported in manuscript Table 1.',
  swrw:'Sources: focal antiSMASH Region 11, original SwrW clinker figure, and manuscript biosynthesis results. Shanks et al. (2012), https://doi.org/10.1371/journal.pone.0036398, provides reference-strain genetic/chemical evidence, not an NMZ perturbation experiment.',
  loci:'Source: figures/neighborhoods/neighborhoods.json and plotted-features.tsv, generated from the final-size Bakta annotations. DNA Features Viewer: https://doi.org/10.1093/bioinformatics/btaa213.',
  chem:'Source: author-supplied LC-HRMS-SM/hasil.pdf and hasil.pptx, especially screening/filter settings and serratamolide tables. Following the author\'s instruction, the presentation covers both focal isolates. No authentic-standard comparison, per-isolate peak-area mapping or endpoint values are added by inference.',
@@ -78,10 +78,9 @@ const src={
 }
 {
  const s=slide('Genome resources and identity',
-  'About 2 minutes. A megabase is one million base pairs. The chromosome sizes are rounded here, while the plasmid is 3,581 bp. Bakta CDS counts are 4,566 and 4,626. The final TYGS queries total 4,974,098 and 5,050,553 bp and match Bakta total lengths exactly. SM includes its plasmid. TYGS identifies both as S. marcescens in one species cluster, with different subspecies clusters. GTDB r232 assigns separate species names through ANI screening. C14 has 98.22% ANI to the nematodiphila representative. Its 96.82% match to the marcescens representative falls below that representative\'s 96.86% radius. Use isolate names so this operational taxonomy difference does not obscure the focal comparison. '+src.genome+' '+src.tygs+' GTDB-Tk: https://ecogenomics.github.io/GTDBTk/faq.html. LPSN: https://lpsn.dsmz.de/species/serratia-nematodiphila and https://lpsn.dsmz.de/species/serratia-marcescens, checked 20 October 2026.');
+  'About 2 minutes. A megabase is one million base pairs. The chromosome sizes are rounded here, while the plasmid is 3,581 bp. Bakta CDS counts are 4,566 and 4,626. TYGS identifies both as S. marcescens in one species cluster, with different subspecies clusters. GTDB r232 assigns separate species names through ANI screening. C14 has 98.22% ANI to the nematodiphila representative. Its 96.82% match to the marcescens representative falls below that representative\'s 96.86% radius. Use isolate names so this operational taxonomy difference does not obscure the focal comparison. '+src.genome+' '+src.tygs+' GTDB-Tk: https://ecogenomics.github.io/GTDBTk/faq.html. LPSN: https://lpsn.dsmz.de/species/serratia-nematodiphila and https://lpsn.dsmz.de/species/serratia-marcescens, checked 20 October 2026.');
  table(s,[['Feature','SM-NMZ','C14-NMZ'],['Chromosome','4.971 Mb','5.051 Mb'],['Additional replicon','3.581-kb plasmid','None recovered'],['Bakta CDSs','4,566','4,626'],['GTDB r232 label','S. marcescens','S. nematodiphila']],{h:350,widths:[368,392,392],size:27});
- text(s,'Unified TYGS: one species cluster, separate subspecies clusters',64,555,1130,42,28,C.teal,true);
- text(s,'Final TYGS total lengths now match Bakta exactly.',64,609,1120,35,25,C.muted);
+ text(s,'TYGS: one species cluster, separate subspecies clusters',64,555,1130,42,28,C.teal,true);
 }
 {
  const s=slide('SwrW and reported serratamolides',
@@ -140,7 +139,7 @@ const src={
 }
 {
  const s=slide('The genomics contribution to the paper',
-  'About 1 minute, then discussion. Lead with the conserved swrW candidate alongside the reported serratamolides, the pig locus with the observed pigmentation, and the extracellular-matrix loci with a meaningful focal difference at pga. Aromatic routes should connect only to matching substrate experiments. Keep the LadA-like candidate as a bounded comparative finding. The new unified TYGS analysis gives exact size parity and makes the operational species-label difference explicit. The most useful next discussion is which experimental endpoint leads the paper and what material generated that endpoint. Match those results to these candidate systems before attributing a mechanism. Source: revised master and both concise manuscripts, unified TYGS report, and the focal gene-neighborhood sidecars.');
+  'About 1 minute, then discussion. Lead with the conserved swrW candidate alongside the reported serratamolides, the pig locus with the observed pigmentation, and the extracellular-matrix loci with a meaningful focal difference at pga. Aromatic routes should connect only to matching substrate experiments. Keep the LadA-like candidate as a bounded comparative finding. The TYGS and GTDB results differ in their species assignment for C14-NMZ. The most useful next discussion is which experimental endpoint leads the paper and what material generated that endpoint. Match those results to these candidate systems before attributing a mechanism. Source: revised master and both concise manuscripts, TYGS report, and the focal gene-neighborhood sidecars.');
  table(s,[['Finding','Contribution'],['SwrW and reported serratamolides','Specific surface-active metabolite lead'],['pig locus and red/pink cultures','Pigment-associated finding'],['Matrix loci and SM pga cluster','Shared systems plus a focal difference'],['Aromatic loci and LadA-like comparison','Substrate-specific context and an unresolved enzyme']],{h:355,widths:[535,617],size:27});
  text(s,'Which measured endpoint and material should lead the paper?',64,575,1150,64,31,C.teal,true);
 }
@@ -148,23 +147,21 @@ const src={
 // Optional technical backups follow the main narrative.
 {
  const s=slide('Workflow and tools by purpose',
-  'Optional backup. Explain the biological question before each software name. Consensus assembly, polishing, feature prediction and functional interpretation are different operations. A tool can reuse another database\'s evidence. Final assembly totals now agree with TYGS. Read/assembly quality, accessions and raw sequence equivalence documentation remain separate from that size check. Sources: manuscript Methods and corrected bibliography. Bakta https://doi.org/10.1099/mgen.0.000685; CANT-HYD https://doi.org/10.3389/fmicb.2021.764058; Plassembler https://doi.org/10.1093/bioinformatics/btad409.',true);
+  'Optional backup. Explain the biological question before each software name. Consensus assembly, polishing, feature prediction and functional interpretation are different operations. A tool can reuse another database\'s evidence. Sources: manuscript Methods and corrected bibliography. Bakta https://doi.org/10.1099/mgen.0.000685; CANT-HYD https://doi.org/10.3389/fmicb.2021.764058; Plassembler https://doi.org/10.1093/bioinformatics/btad409.',true);
  table(s,[['Question','Tools and evidence'],['Which read evidence enters assembly?','NanoPlot, Chopper, Filtlong'],['How are sequences reconstructed?','Autocycler/assemblers, dnaapler, Dorado'],['Where are genes and what are candidates?','Bakta, antiSMASH, DRAM, CANT-HYD, HADEG'],['How are genomes and proteins related?','TYGS, GTDB-Tk, ProteinOrtho/PoFF, IQ-TREE'],['How are local arrangements compared?','clinker and DNA Features Viewer']],{h:425,widths:[515,637],size:26});
 }
 {
- const s=slide('The unified TYGS genome phylogram',
-  'Optional backup. This is the entire supplied genome-tree view. The original export is preserved in data/unified-TYGS. Red decimals show branch lengths and blue integers show support above 60%. Colored metadata squares encode clustering and other properties. They are not activity measurements. The same species-cluster color covers both user strains and the marcescens/nematodiphila type references, while subspecies-cluster colors distinguish the two focal neighborhoods. The server midpoint-roots the tree. It is not an experimentally determined ancestor tree. '+src.tygs,true);
- await img(s,'figures/Figure_TYGS-unified-genome-phylogram.png',66,126,655,532,'Complete TYGS tree and metadata, with surrounding white margins cropped',{left:0.04,top:0.04,right:0.09,bottom:0.21});
- text(s,'15 genomes\n13 type-strain references\n2 focal isolates',760,170,456,150,29);
- text(s,'One species cluster\nTwo focal subspecies clusters',760,368,456,105,30,C.teal,true);
- text(s,'GBDP d5 distances\n100 pseudo-bootstrap replicates',760,530,456,90,25,C.muted);
+ const s=slide('The TYGS genome phylogram',
+  'Optional backup. This is the entire supplied genome-tree view. The original export is preserved in data/TYGS. Red decimals show branch lengths and blue integers show support above 60%. Colored metadata squares encode clustering and other properties. They are not activity measurements. The same species-cluster color covers both user strains and the marcescens/nematodiphila type references, while subspecies-cluster colors distinguish the two focal neighborhoods. The server midpoint-roots the tree. It is not an experimentally determined ancestor tree. '+src.tygs,true);
+ await img(s,'figures/Figure_TYGS-genome-phylogram.png',287,123,706,500,'TYGS whole-genome distance phylogram with complete reference and cluster metadata',{left:0.025,top:0.035,right:0.07,bottom:0.215});
+ text(s,'Blue labels: pseudo-bootstrap support (%) from 100 replicates.',64,636,1152,28,23,C.muted);
 }
 {
- const s=slide('Taxonomy comparisons and length parity',
-  'Optional backup. dDDH uses the recommended d4 formula, separate from d5 tree distances. The focal-pair confidence interval is 71.2–77.0%. SM versus KCTC 42172 is 95.7% (94.2–96.8%). Both queries cross the broad species threshold against both named-species references. The server reports one species cluster and labels both S. marcescens, while GTDB gives C14 a nematodiphila label. GTDB ANI/AF values are SM 98.86%/0.947 to GCF_017299535.1 and C14 98.22%/0.932 to GCF_000738675.1. C14\'s 96.82% match to the marcescens representative is below its 96.86% radius. TYGS predicts 4,569/4,628 proteins and Bakta reports 4,566/4,626 CDSs. Different prediction schemes need not return equal counts. Matching sequence lengths alone does not independently establish sequence identity. '+src.tygs+' '+src.genome,true);
+ const s=slide('Taxonomic comparisons',
+  'Optional backup. dDDH uses the recommended d4 formula, separate from d5 tree distances. The focal-pair confidence interval is 71.2–77.0%. SM versus KCTC 42172 is 95.7% (94.2–96.8%). Both queries cross the broad species threshold against both named-species references. The server reports one species cluster and labels both S. marcescens, while GTDB gives C14 a nematodiphila label. GTDB ANI/AF values are SM 98.86%/0.947 to GCF_017299535.1 and C14 98.22%/0.932 to GCF_000738675.1. C14\'s 96.82% match to the marcescens representative is below its 96.86% radius. TYGS predicts 4,569/4,628 proteins and Bakta reports 4,566/4,626 CDSs. Different prediction schemes need not return equal counts. '+src.tygs+' '+src.genome,true);
  table(s,[['dDDH(d4), %','SM-NMZ','C14-NMZ'],['S. marcescens ATCC 13880','90.7','73.7'],['S. nematodiphila DSM 21420','74.7','85.5'],['Direct focal comparison','74.2 (71.2–77.0)','Same comparison']],{h:275,widths:[560,296,296],size:27});
- text(s,'TYGS total = Bakta total',64,478,1140,42,30,C.teal,true);
- text(s,'SM   4,970,517 + 3,581 = 4,974,098 bp\nC14   5,050,553 bp',64,539,1120,94,29);
+ text(s,'GTDB ANI screening',64,478,1140,42,30,C.teal,true);
+ text(s,'SM   98.86% ANI (AF 0.947)\nC14   98.22% ANI (AF 0.932)',64,539,1120,94,29);
 }
 {
  const s=slide('Reading the SwrW neighborhood',

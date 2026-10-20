@@ -1,6 +1,7 @@
 """Render the checked slide PNGs as a PDF preview and typeset the glossary."""
 from pathlib import Path
 import re
+import sys
 from xml.sax.saxutils import escape
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib import colors
@@ -11,7 +12,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, LongTable, TableStyle, PageBreak
 
 OUT=Path(__file__).resolve().parent
-BUILD=OUT.parent.parent/'tmp/explainer-2026-10-20'
+BUILD=OUT.parent.parent/'tmp/explainer-2026-10-21'
 pdfmetrics.registerFont(TTFont('Arial', 'C:/Windows/Fonts/arial.ttf'))
 pdfmetrics.registerFont(TTFont('ArialBold', 'C:/Windows/Fonts/arialbd.ttf'))
 pdfmetrics.registerFont(TTFont('ArialItalic', 'C:/Windows/Fonts/ariali.ttf'))
@@ -24,6 +25,9 @@ for slide in sorted(BUILD.glob('slide-??.png')):
     preview.drawImage(str(slide),0,0,width=960,height=540)
     preview.showPage()
 preview.save()
+if '--preview-only' in sys.argv:
+    print('Created updated slide PDF preview.')
+    raise SystemExit(0)
 
 def clean(text):
     text=text.replace('–','-').replace('—','-').replace('\u2011','-').replace('\u2013','-')

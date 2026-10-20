@@ -3,13 +3,13 @@ figures/*.svg text eol=lf
 figures/neighborhoods/*.json text eol=lf
 figures/neighborhoods/*.tsv text eol=lf
 scripts/generate_genomic_neighborhood_figures.py text eol=lf
-data/unified-TYGS/SM-C14-* -text
-data/unified-TYGS/*.pdf -text -diff
-data/unified-TYGS/*.tsv text eol=lf
+data/TYGS/SM-C14-* -text
+data/TYGS/*.pdf -text -diff
+data/TYGS/*.tsv text eol=lf
 # Empty terminal TSV fields preserve the workbook's complete column schema.
-data/unified-TYGS/strain-dataset.tsv whitespace=-blank-at-eol
-data/unified-TYGS/*.json text eol=lf
-data/unified-TYGS/README.md text eol=lf
+data/TYGS/strain-dataset.tsv whitespace=-blank-at-eol
+data/TYGS/*.json text eol=lf
+data/TYGS/README.md text eol=lf
 explainer/*.md text eol=lf
 explainer/*.mjs text eol=lf
 explainer/*.py text eol=lf

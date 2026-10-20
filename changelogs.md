@@ -14,7 +14,16 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Chronological Progress & Milestones
 
-### Unified final-assembly TYGS integration and research-group explainer
+### Phylogram export and publication wording revision
+
+* **Date**: 21 October 2026
+* Replaced the genome phylogram in the master, both concise drafts and the PowerPoint with the author's wider 1,112 × 950 px export. The displayed taxon, support and branch-length labels are unchanged.
+* Standardized manuscript and presentation wording to “TYGS analysis” and “whole-genome distance phylogram.” Renamed the published evidence directory to `data/TYGS` and the figure to `Figure_TYGS-genome-phylogram`.
+* Removed sequence-length reconciliation remarks from manuscript narrative, slides and speaker notes. The taxonomy backup now presents GTDB ANI/AF values alongside the dDDH comparisons. Refreshed the presentation and PDF preview, retaining 12 main slides and 8 backups.
+
+---
+
+### final-assembly TYGS integration and research-group explainer
 
 * **Date**: 20 October 2026
 * Replaced the separate TYGS trees with the consolidated final-assembly phylogram in the master and both concise manuscripts. Archived the report, workbooks, distance matrices and tree exports with checksums and extracted TSV tables.

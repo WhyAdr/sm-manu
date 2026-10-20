@@ -1,10 +1,10 @@
 # Presentation outline and glossary: interpreting the NMZ Serratia genomes
 
-Prepared 4 October 2026; independently audited and revised **18 October 2026**. Based on [sm-manu commit f1de07b](https://github.com/WhyAdr/sm-manu/commit/f1de07bb47755c9277f5d067954b21eea0be63f9), local analysis outputs and the primary-source validation recorded in the workspace audit. Updated for production on 20 October 2026 with the unified final-assembly TYGS analysis. The presentation outputs and glossary are in `manuscript/explainer/`. This file remains the content outline.
+Prepared 4 October 2026; independently audited and revised **18 October 2026**. Based on [sm-manu commit f1de07b](https://github.com/WhyAdr/sm-manu/commit/f1de07bb47755c9277f5d067954b21eea0be63f9), local analysis outputs and the primary-source validation recorded in the workspace audit. Updated for production on 20 October 2026 with the final-assembly TYGS analysis. The presentation outputs and glossary are in `manuscript/explainer/`. This file remains the content outline.
 
 **Audience:** biology/wet-lab colleagues with limited genomics experience. **Format:** 12 main slides, approximately 18–20 minutes, followed by discussion. The glossary is a handout; technical backup slides are optional. Colleagues should leave able to explain what the genomes suggest, what the assays measure and which mechanism remains unresolved.
 
-The produced deck retains the 12-slide main sequence below and uses eight optional backups: workflow, unified TYGS tree, taxonomy/length comparisons, SwrW figure reading, HADEG categories, chemical assignments, additional aromatic candidates, and focal LadA-like neighborhoods. The original five backup topics below remain content guidance rather than final slide numbers. The glossary is a three-page handout.
+The produced deck retains the 12-slide main sequence below and uses eight optional backups: workflow, TYGS tree, taxonomic comparisons, SwrW figure reading, HADEG categories, chemical assignments, additional aromatic candidates, and focal LadA-like neighborhoods. The original five backup topics below remain content guidance rather than final slide numbers. The glossary is a three-page handout.
 
 ## Audit decisions about the previous outline
 
@@ -12,7 +12,7 @@ The produced deck retains the 12-slide main sequence below and uses eight option
 |---|---|
 | **Agree** | Retain the evidence distinctions, one biological point per slide, focused gene-neighborhood examples and separation of assays from predictions. |
 | **Revise** | Reduce the 14-slide main sequence to 12. Move the software workflow, detailed taxonomy, NRPS domains and database troubleshooting to backup slides. The previous main slides introduced too many acronyms. |
-| **Revise** | Present C14's actual GTDB assignment, verified tree support and documented PoFF run. Explain the final-assembly unified TYGS result and its species-label difference from GTDB; total-length parity is now resolved. |
+| **Revise** | Present C14's actual GTDB assignment, verified tree support and documented PoFF run. Explain the final-assembly TYGS result and its species-label difference from GTDB; the report identifies both isolates within one TYGS species cluster. |
 | **Revise** | Follow the author's working assumption that the chemistry deck/PDF covers both isolates. Present reported serrawettin W1/serratamolide C assignments without inventing authentic-standard evidence or endpoint-assay data. Avoid teaching peak-area percentage as concentration. |
 | **Reject** | Any slide implying a 99% tree support means 99% certainty of enzyme activity; a BGC label confirms a compound; oxygenated-aromatic pathways prove petroleum degradation; or emulsification/tension/pour point are interchangeable. |
 
@@ -78,9 +78,9 @@ For slide production, use short English labels, define each essential term once 
 | Additional circular element | 3.581 kb, annotated plasmid | None recovered |
 | GTDB species assignment | S. marcescens | S. nematodiphila |
 
-**Visible qualification:** “Final TYGS lengths match Bakta. TYGS groups both isolates as S. marcescens; GTDB separates their species labels.”
+**Visible qualification:** “TYGS groups both isolates as S. marcescens; GTDB separates their species labels.”
 
-**Speaker notes:** Sizes and counts were checked in Bakta outputs. A circular drawing does not validate circularization or sequence accuracy. GTDB-Tk v2.7.2/r232 explicitly assigned both species through ANI screening, not a protein-tree placement. The unified TYGS queries total 4,974,098 and 5,050,553 bp, exactly matching Bakta. SM includes its plasmid. TYGS identifies both as S. marcescens in species cluster 6, with separate subspecies clusters 11/10. Its protein counts use a different prediction pipeline from Bakta. Detailed thresholds and nomenclature belong in backup B2 rather than the main talk.
+**Speaker notes:** Sizes and counts were checked in Bakta outputs. A circular drawing does not validate circularization or sequence accuracy. GTDB-Tk v2.7.2/r232 explicitly assigned both species through ANI screening, not a protein-tree placement. TYGS identifies both as S. marcescens in species cluster 6, with separate subspecies clusters 11/10. Its protein counts use a different prediction pipeline from Bakta. Detailed thresholds and nomenclature belong in backup B2 rather than the main talk.
 
 **Terms:** chromosome, plasmid, CDS, Mb/kb. **Evidence:** focal Bakta JSON/summaries; GTDB classification table; TYGS strain datasets.
 
@@ -231,7 +231,7 @@ Explain the biological question before naming its tool. Software agreement may r
 
 Show the actual GTDB classification/representative/ANI/AF table. SM: 98.86%/0.947 to GCF_017299535.1, with a 96.86% radius. C14: 98.22%/0.932 to GCF_000738675.1, radius 95%. C14's 96.82% match to the SM representative is below that representative's radius. Do not replace these with a universal 95% rule.
 
-Unified TYGS: SM–ATCC 13880, 90.7%; SM–DSM 21420, 74.7%; C14–DSM 21420, 85.5%; C14–ATCC 13880, 73.7%; direct C14–SM, 74.2% (71.2–77.0%). The report identifies both as S. marcescens in species cluster 6, but separate subspecies clusters 11/10. GTDB retains separate species labels. Explain the operational difference without proposing synonymy. LPSN treats sakuensis as a synonym within S. marcescens. Final TYGS total query lengths match Bakta exactly, with the SM plasmid included. Show TYGS protein counts separately from Bakta CDS counts.
+TYGS: SM–ATCC 13880, 90.7%; SM–DSM 21420, 74.7%; C14–DSM 21420, 85.5%; C14–ATCC 13880, 73.7%; direct C14–SM, 74.2% (71.2–77.0%). The report identifies both as S. marcescens in species cluster 6, but separate subspecies clusters 11/10. GTDB retains separate species labels. Explain the operational difference without proposing synonymy. LPSN treats sakuensis as a synonym within S. marcescens. Show TYGS protein counts separately from Bakta CDS counts.
 
 **Sources:** original workbooks/GTDB files; [GTDB-Tk documentation](https://ecogenomics.github.io/GTDBTk/faq.html); [LPSN](https://lpsn.dsmz.de/subspecies/serratia-marcescens-sakuensis).
 
