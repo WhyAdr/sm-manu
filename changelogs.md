@@ -14,6 +14,17 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Chronological Progress & Milestones
 
+### Unified final-assembly TYGS integration and research-group explainer
+
+* **Date**: 20 October 2026
+* Replaced the separate TYGS trees with the consolidated final-assembly phylogram in the master and both concise manuscripts. Archived the report, workbooks, distance matrices and tree exports with checksums and extracted TSV tables.
+* Verified exact TYGS/Bakta total-length parity: SM-NMZ 4,974,098 bp, including its 3,581-bp plasmid; C14-NMZ 5,050,553 bp. Kept TYGS protein predictions distinct from Bakta CDS counts.
+* Added the direct focal-pair dDDH(d4) of 74.2% (71.2–77.0%). Explicitly reported TYGS's identification of both queries as S. marcescens in one species cluster alongside GTDB's separate species assignments. Subspecies-cluster IDs remain operational labels.
+* Preserved the Bakta table, bibliography, all non-taxonomy Results prose and existing scientific figures, including both agreed assay-theme treatments.
+* Created the explainer in `explainer/`: 12 main slides with 8 optional technical backups, explanatory speaker notes and primary references, a slide PDF preview, and a three-page glossary. Scientific figure crops and a source-derived LadA subtree teach interpretation without inventing unavailable assay results.
+
+---
+
 ### Milestone 1: Materials & Methods Authoring (Sections A–E)
 * **Date / Phase**: Phase 1
 * **Git Commit**: `a5eceb7` (*Initial draft of Materials and Methods (Genomics)*)

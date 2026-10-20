@@ -1,13 +1,13 @@
 # Editorial and integration notes for the paired genomics drafts
 
-18 October 2026. This document contains author-facing guidance and revision provenance. It is separate from both manuscript drafts.
+18 October 2026; updated 20 October 2026 with the unified TYGS results. This document contains author-facing guidance and revision provenance. It is separate from both manuscript drafts.
 
 ## Version purpose and source
 
 - [Original-theme draft](sm-manu-genomics-original-themes-draft-2026-10-18.md): concise genomic methods and results with six selected source passages retained, apart from reference renumbering. Surface/matrix prose appears once in the biosynthesis section; the emulsion synthesis sentence follows the aromatic findings. Neither placement introduces an E24 result.
 - [Placeholder-integrated draft](sm-manu-genomics-placeholder-integrated-draft-2026-10-18.md): the same manuscript structure, with one continuous treatment of each of the four assays. Square-bracketed words describe unavailable data. They are not observed values. There are no template instructions or competing alternatives inside this draft.
 - Both follow the formatting of [the source manuscript](master-manuscript.md): `# Manuscript`, lettered Methods, numbered Results & Discussion, figures beside the relevant results, numbered references, and a final blockquote headed **Study-wide interpretation note**. The note acknowledges the existing chemistry and pigmentation observations.
-- Source baseline: [commit f1de07b](https://github.com/WhyAdr/sm-manu/commit/f1de07bb47755c9277f5d067954b21eea0be63f9). The source manuscript and all original image files remain unchanged.
+- Source baseline: [commit f1de07b](https://github.com/WhyAdr/sm-manu/commit/f1de07bb47755c9277f5d067954b21eea0be63f9). The original image files remain preserved. The current master and both concise drafts now incorporate the unified final-assembly TYGS results.
 
 The original four-theme passages are retained in draft A at the author's request; preservation is not endorsement of every claim. Draft B supplies the evidence-calibrated integration treatment. Use one draft as the contribution to the collaborative paper, rather than combining both.
 
@@ -16,7 +16,7 @@ The original four-theme passages are retained in draft A at the author's request
 | Evidence | Placement in the drafts | Remaining work |
 |---|---|---|
 | Bakta Table 1 | Genome-feature results; original table and note reproduced exactly | None for this revision. Retain the annotation-inventory interpretation. |
-| TYGS phylograms | Figure 1A and 1B beside the taxonomy results | Existing images and dDDH values are explicitly from earlier submissions. The author is rerunning TYGS with the final Dorado-polished assemblies. Replace both panels and associated values with the consolidated focal-pair analysis when it is available. |
+| Unified TYGS phylogram | Figure 1 beside taxonomy results; Figure 2 in the master | Final-assembly rerun integrated. Total query lengths match Bakta exactly. TYGS identifies both queries as S. marcescens in one species cluster, unlike the separate GTDB labels. See the archived report and extracted tables in `data/unified-TYGS/`. |
 | SwrW clinker comparison | Figure 2 beside SwrW/LC-HRMS findings | Original image retained. Extended comparator-by-comparator interpretation belongs in supplementary text. |
 | HADEG bubble plot | Figure 4 beside hydrocarbon-associated metabolic results | Original image retained without curation or regeneration. Caption clarifies “Emulsan” and “Toluene_degradation.” Plastics rows remain background marker categories, not new polymer-degradation claims. |
 | EPS/CPS neighborhoods | Figure 3 beside matrix-associated results | Generated focal-pair maps for capsule, EPS2, cellulose and the SM-NMZ *pgaDCBA* interval. PNG and SVG exports are in `figures/`. |
@@ -25,7 +25,7 @@ The original four-theme passages are retained in draft A at the author's request
 | Pig comparison | Genomic/pigmentation finding retained in the main text | Detailed [comparative figure](Figure7_prodigiosin.jpeg) goes to supplementary material. |
 | Other analyses | Detailed evidence reserved for supplementary material | Circular maps, antiSMASH overviews, DRAM and VF heatmaps, detailed LadA tree/broad synteny, and long orthogroup inventories. |
 
-Figure numbers now follow the order of appearance within these abridged drafts. Original filenames remain unchanged. Renumber against the complete collaborative manuscript at final assembly. The final-assembly consolidated TYGS tree remains pending; the three neighborhood figure sets are now generated from the verified Bakta GenBank annotations.
+Figure numbers now follow the order of appearance within these abridged drafts. Original filenames remain unchanged. Renumber against the complete collaborative manuscript at final assembly. The final-assembly consolidated TYGS tree is now integrated; the three neighborhood figure sets are now generated from the verified Bakta GenBank annotations.
 
 ## Qualifications for the source-preserving version
 
@@ -62,7 +62,7 @@ When inserting this alternative, cite Prieto et al. (1996), Teufel et al. (2010)
 - Feng et al. is corrected in both draft bibliographies to *PNAS* 104(13):5602–5607, DOI [10.1073/pnas.0609650104](https://doi.org/10.1073/pnas.0609650104).
 - CANT-HYD is corrected to Khot, Zorz, Gittins et al. (2022), *Frontiers in Microbiology* 12:764058, DOI [10.3389/fmicb.2021.764058](https://doi.org/10.3389/fmicb.2021.764058).
 - When listing the individual assemblers in supplementary methods, cite Plassembler as Bouras, Sheppard, Mallawaarachchi and Vreugde (2023), *Bioinformatics* 39(7):btad409, DOI [10.1093/bioinformatics/btad409](https://doi.org/10.1093/bioinformatics/btad409). The source's btad382 DOI belongs to an unrelated article.
-- The DNA Features Viewer figures are complete. The final TYGS rerun, compound-specific functional validation and outstanding assay datasets are not supplied by these sequence visualizations. The explanatory PowerPoint remains deferred.
+- The DNA Features Viewer figures and final TYGS rerun are complete and integrated. Compound-specific functional validation and outstanding assay datasets remain separate evidence needs. The [explanatory PowerPoint, PDF preview and glossary](explainer/README.md) are now available.
 
 ## Neighborhood figure provenance and regeneration
 
@@ -102,6 +102,14 @@ The complete original manuscript is now [master-manuscript.md](master-manuscript
 | EPS/CPS and matrix systems | Figure 7 | Figure 3 |
 | Focal LadA-like neighborhoods | Figure 11 | Figure 6 |
 
-In the master, the original SwrW/pig comparisons are Figures 8/9, the LadA tree is Figure 10, and the broader clinker comparison is Figure 12. Image filenames and image bytes remain unchanged. The master Methods now describes the DNA Features Viewer visualization, with its citation included in the rebuilt alphabetized bibliography. The previously verified Feng, CANT-HYD and Plassembler corrections are carried into the master bibliography. The outstanding TYGS rerun and assay-integration tasks remain as documented above.
+In the master, the original SwrW/pig comparisons are Figures 8/9, the LadA tree is Figure 10, and the broader clinker comparison is Figure 12. Image filenames and image bytes remain unchanged. The master Methods now describes the DNA Features Viewer visualization, with its citation included in the rebuilt alphabetized bibliography. The previously verified Feng, CANT-HYD and Plassembler corrections are carried into the master bibliography. The unified TYGS rerun replaces the earlier panels and taxonomy interpretation in all three manuscripts. Assay-integration tasks remain as documented above.
 
-Frozen-commit source links in this document deliberately retain `manuscript.md`: they refer to the historical source before the rename. The two concise manuscript drafts are unchanged by this integration.
+Frozen-commit source links in this document deliberately retain `manuscript.md`: they refer to the historical source before the rename. The 18 October rename itself did not alter the concise drafts; the subsequent unified TYGS revision updates taxonomy in all three manuscripts.
+
+## Unified TYGS revision, 20 October 2026
+
+The final-assembly analysis reports both queries as **S. marcescens**, with shared species cluster 6 and separate subspecies clusters 10/11. This is a material interpretive correction to the former claim of straightforward agreement between TYGS and GTDB. Nearest-reference affinities remain consistent, while the operational species labels differ for C14-NMZ. The new focal-pair dDDH(d4) is 74.2% (71.2–77.0%). The original type-strain d4 values remain unchanged at the reported precision.
+
+SM's TYGS size is **total assembly length**, not just chromosome length: 4,970,517 + 3,581 = 4,974,098 bp. C14 is 5,050,553 bp. Both match the final Bakta totals. The exports do not include the uploaded sequence content, so length agreement plus the author's submission provenance should not be described as independently verified sequence identity. TYGS protein counts (4,569/4,628) and Bakta CDS counts (4,566/4,626) use different prediction pipelines and remain distinct.
+
+The [archived results](data/unified-TYGS/README.md) include the raw report/workbooks/trees, extracted comparison tables and checksums. Results were provided on 18 October; the supplied PDF was printed on 20 October. Existing four-theme source passages in draft A remain preserved. The PowerPoint treats the chemistry presentation as covering both isolates, following the author's stated working assumption, without adding authentic-standard evidence or missing assay values.

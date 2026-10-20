@@ -12,7 +12,7 @@ Read quality was assessed using NanoPlot [8]. Chopper retained reads with qualit
 
 ### C. Taxonomic Identity and Biosynthetic Gene Cluster Analysis
 
-Genome relatedness was assessed using digital DNA–DNA hybridization (dDDH) through TYGS [21] and average nucleotide identity (ANI) screening with GTDB-Tk v2.7.2 against GTDB r232 [6]. This GTDB-Tk run did not require pplacer placement. The TYGS phylograms and dDDH comparisons derive from earlier genome submissions; the annotation results describe the Dorado-polished assemblies. Biosynthetic gene clusters were identified using antiSMASH v8.0.4 [1].
+Genome relatedness was assessed using digital DNA–DNA hybridization (dDDH) through TYGS [21] and average nucleotide identity (ANI) screening with GTDB-Tk v2.7.2 against GTDB r232 [6]. This GTDB-Tk run did not require pplacer placement. The final Dorado-polished assemblies were submitted together to TYGS, including both SM-NMZ replicons. GBDP trimming distances (formula d5) informed a midpoint-rooted FastME v2.1.6.1 tree with 100 pseudo-bootstrap replicates; dDDH used GGDC 4.0 and the recommended d4 formula. Biosynthetic gene clusters were identified using antiSMASH v8.0.4 [1].
 
 ### D. Metabolic and Biosurfactant-Associated Genomic Profiling
 
@@ -53,12 +53,11 @@ Table 1. Comparative genomic and proteomic annotation features of isolates SM-NM
 
 GTDB-Tk assigned SM-NMZ to *Serratia marcescens* (98.86% ANI; alignment fraction [AF], 0.947 to GCF_017299535.1) and C14-NMZ to *S. nematodiphila* (98.22% ANI; AF, 0.932 to GCF_000738675.1). For C14-NMZ, the 96.82% ANI to the *S. marcescens* representative was below that representative's 96.86% circumscription radius.
 
-Earlier TYGS comparisons returned dDDH values of 90.7% between SM-NMZ and *S. marcescens* ATCC 13880^T^ and 85.5% between C14-NMZ and *S. nematodiphila* DSM 21420^T^ (**Figure 1A, B**). Both isolates also exceeded 70% dDDH against the alternate species reference, indicating overlapping operational species boundaries. The results support the respective species affiliations while retaining this genome-based ambiguity.
+The unified TYGS query lengths matched Bakta's total assembly lengths exactly: 4,974,098 bp for SM-NMZ, including its plasmid, and 5,050,553 bp for C14-NMZ. Recommended d4 dDDH values were 90.7% between SM-NMZ and *S. marcescens* ATCC 13880^T^ and 85.5% between C14-NMZ and *S. nematodiphila* DSM 21420^T^ (**Figure 1**). Both isolates also exceeded 70% dDDH against the alternate named-species reference, and their direct comparison was 74.2% (confidence interval, 71.2–77.0%). TYGS consequently identified both as *S. marcescens* in species cluster 6, separating SM-NMZ and C14-NMZ into subspecies clusters 11 and 10, respectively. The analyses therefore agree on nearest-reference affinities but differ in species assignment for C14-NMZ. We retain the GTDB affiliations with this qualification and use isolate names throughout; TYGS cluster numbers do not establish formal subspecies names.
 
-![Figure 1A. TYGS whole-genome phylogram of SM-NMZ](Figure2_SM-genome-phylogram.png)
-![Figure 1B. TYGS whole-genome phylogram of C14-NMZ](Figure2_C14-genome-phylogram.png)
+![Figure 1. Unified TYGS whole-genome phylogram of SM-NMZ and C14-NMZ](figures/Figure_TYGS-unified-genome-phylogram.png)
 
-**Figure 1. Whole-genome comparative phylograms of SM-NMZ and C14-NMZ.** TYGS phylograms constructed using Genome BLAST Distance Phylogeny and FastME, with branch support from 100 pseudo-bootstrap replicates. **(A)** SM-NMZ clusters with the *S. marcescens* reference group, including ATCC 13880^T^ and subsp. *sakuensis* KCTC 42172. **(B)** C14-NMZ clusters near *S. nematodiphila* DSM 21420^T^. Both panels derive from the earlier TYGS genome submissions.
+**Figure 1. Unified whole-genome distance phylogram of SM-NMZ and C14-NMZ.** TYGS used the final assemblies, GBDP trimming distances (formula d5) and FastME v2.1.6.1 with midpoint rooting. Red labels show branch distances; blue labels show pseudo-bootstrap support above 60% from 100 replicates (mean support, 85.9%). The focal isolates share species cluster 6 but occupy different subspecies clusters. The right-hand protein-count column uses TYGS predictions (4,569/4,628), distinct from the Bakta CDS counts in Table 1. Reference names follow the export; the historical subsp. *sakuensis* label does not assign that subspecies to SM-NMZ.
 
 ### 3. Secondary Metabolite Biosynthesis and Extracellular Polysaccharide Systems
 

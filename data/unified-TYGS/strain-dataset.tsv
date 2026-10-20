@@ -1,0 +1,16 @@
+TYGS ID	Kind	Species cluster	Subspecies cluster	Preferred name	Deposit	Authority	Other deposits	Synonymous taxon names	Base pairs	Percent G+C	No. proteins	Goldstamp	Bioproject accession	Biosample accession	Assembly accession	IMG OID	BacDive
+122080	type strain	1	0	Serratia entomophila	DSM 12358	Grimont et al. 1988	A1; CIP 102919; ATCC 43705	Serratia entomophila	5147822	58.92	4716		PRJNA727746	SAMN19031985	GCA_021462285		strain page
+133374	type strain	2	1	Enterobacter pasteurii	A-8	Rahi et al. 2024	CIP 103550; ATCC 23355; CCUG 33777; CECT 5075; DSM 26481; NCTC 13380; WDCM 82	Enterobacter pasteurii	4810455	56.41	4376		PRJNA937600	SAMN33411377	GCA_028890245		species page
+25342	type strain	3	2	'Serratia montpellierensis'	PsyLou2A	Blackburn et al. 2024	NRRL B-65689; LMG 32817; Lou2A	Serratia montpellierensis	5149841	59.58	4734		PRJNA556397	SAMN12349642	GCA_020858655		species page
+25349	type strain	4	3	Serratia ureilytica	JCM 16474	Bhadra et al. 2005	CCUG 55856; DSM 16952; LMG 22860; NIVA 51	Serratia ureilytica	5310236	59.46	4988		PRJDB10510	SAMD00645019	GCA_039523675		strain page
+25651	type strain	5	4	Serratia sarumanii	K-M0706	Klages et al. 2024	DSM 116040; LMG 33111	Serratia sarumanii	5185617	59.86	4769		PRJNA923618	SAMN32727621	GCA_029962605		species page
+3720	type strain	6	10	Serratia nematodiphila	DSM 21420	Zhang et al. 2009	CGMCC 1.6853; KCTC 22130; DZ0503SBS1	Serratia nematodiphila	5224920	59.54	4629	Gp0103438	PRJNA257492	SAMN02952129	GCA_000738675		strain page
+U1382415	user strain	6	10	C14-NMZ					5050553	59.83	4628						
+15353	type strain	6	11	Serratia marcescens subsp. sakuensis	KCTC 42172	Ajithkumar et al. 2003	CIP 107489; DSM 17174; JCM 11315; KRED	Serratia marcescens subsp. sakuensis	5058045	59.65	4719		PRJNA484649	SAMN09767465	GCA_003428265		strain page
+3016	type strain	6	11	Serratia marcescens	ATCC 13880	Bizio 1823	CIP 103235; NRRL B-2544; CCUG 1647; DSM 30121; JCM 1239; NBRC 102204; NCTC 10211; VKM B-1248; CFBP 4226; HAMBI 1286; LMG 2792	Serratia marcescens; Serratia marcescens subsp. marcescens	5092451	59.84	4739	Gp0009486	PRJNA59561	SAMN02743269	GCA_000735445		strain page
+U1382416	user strain	6	11	SM-NMZ					4974098	59.82	4569						
+4006	type strain	7	5	Serratia ficaria	NBRC 102596	Grimont et al. 1981 emend. García-Fraile et al. 2020	4024; CIP 79.23; ATCC 33105; DSM 4569; JCM 1241; NCTC 12148; ICPB 4050; LMG 7881	Serratia ficaria	5261721	59.91	4830	Gp0070998	PRJDB1514	SAMD00046907	GCA_001590885		strain page
+6547	type strain	8	6	Klebsiella trevisanii	DSM 2688	Ferragut et al. 1983	CIP 81.36; ATCC 33558; CUETM 78-120; Gavini K70; HAMBI 1303; LMG 3072	Klebsiella trevisanii	6215359	55.15	5947	Gp0290555	PRJNA500331	SAMN10362885	GCA_004345285	2788499846	species page
+69916	type strain	9	7	'Serratia surfactantfaciens'	YD25T	Su et al. 2016	KCTC 42987; CCTCC AB 2015384	Serratia surfactantfaciens	5117644	59.61	4657		PRJNA303098	SAMN04226521	GCA_001642805		species page
+88988	type strain	10	8	Dryocola clanedunensis	H11S18	Maddock et al. 2023	CCUG 76181; LMG 32611	Dryocola clanedunensis; Dryocola clanedunensis subsp. clanedunensis	5220473	53.85	4755		PRJNA814476	SAMN26554632	GCA_025215155		species page
+93306	type strain	11	9	Serratia bockelmannii	S3 T	Cho et al. 2020	DSM 110152; LMG 31535	Serratia bockelmannii	5284737	59.05	4907		PRJNA554602	SAMN12274630	GCA_008011855		species page

@@ -1,0 +1,28 @@
+Query strain	Subject strain	dDDH (d0, in %)	C.I. (d0, in %)	dDDH (d4, in %)	C.I. (d4, in %)	dDDH (d6, in %)	C.I. (d6, in %)	G+C content difference (in %)
+'SM-NMZ'	Serratia marcescens subsp. sakuensis KCTC 42172	96.2	[94.3 - 97.5]	95.7	[94.2 - 96.8]	97.6	[96.4 - 98.4]	0.17
+'SM-NMZ'	Serratia marcescens ATCC 13880	93.7	[91.1 - 95.6]	90.7	[88.4 - 92.5]	95.3	[93.5 - 96.7]	0.02
+'C14-NMZ'	Serratia nematodiphila DSM 21420	91.1	[88.0 - 93.4]	85.5	[82.8 - 87.8]	92.7	[90.3 - 94.5]	0.29
+'SM-NMZ'	Serratia nematodiphila DSM 21420	88.1	[84.7 - 90.9]	74.7	[71.7 - 77.5]	88.7	[85.8 - 91.0]	0.28
+'C14-NMZ'	'SM-NMZ'	90.8	[87.6 - 93.2]	74.2	[71.2 - 77.0]	90.7	[88.0 - 92.8]	0.01
+'C14-NMZ'	Serratia marcescens subsp. sakuensis KCTC 42172	88.4	[84.9 - 91.1]	73.9	[70.9 - 76.7]	88.7	[85.8 - 91.1]	0.18
+'C14-NMZ'	Serratia marcescens ATCC 13880	88.5	[85.1 - 91.2]	73.7	[70.7 - 76.6]	88.8	[85.9 - 91.2]	0.01
+'SM-NMZ'	Serratia bockelmannii S3 T	82.6	[78.7 - 85.9]	66.5	[63.5 - 69.3]	82.4	[79.1 - 85.3]	0.77
+'SM-NMZ'	Serratia sarumanii K-M0706	83.6	[79.8 - 86.8]	64.0	[61.1 - 66.8]	82.7	[79.4 - 85.6]	0.05
+'C14-NMZ'	Serratia bockelmannii S3 T	81.2	[77.3 - 84.6]	63.4	[60.4 - 66.2]	80.5	[77.1 - 83.5]	0.78
+'C14-NMZ'	Serratia sarumanii K-M0706	82.2	[78.4 - 85.5]	63.1	[60.2 - 65.9]	81.3	[77.9 - 84.3]	0.03
+'SM-NMZ'	Serratia ureilytica JCM 16474	80.9	[77.0 - 84.3]	62.8	[59.9 - 65.6]	80.1	[76.7 - 83.1]	0.35
+'SM-NMZ'	Serratia montpellierensis PsyLou2A	82.8	[78.9 - 86.0]	62.1	[59.2 - 64.9]	81.5	[78.1 - 84.5]	0.24
+'C14-NMZ'	Serratia ureilytica JCM 16474	82.0	[78.1 - 85.3]	62.1	[59.2 - 64.9]	80.9	[77.5 - 83.9]	0.37
+'C14-NMZ'	Serratia montpellierensis PsyLou2A	85.0	[81.3 - 88.1]	60.2	[57.4 - 63.0]	82.9	[79.6 - 85.8]	0.26
+'C14-NMZ'	Serratia surfactantfaciens YD25T	87.3	[83.7 - 90.1]	58.7	[55.9 - 61.4]	84.4	[81.1 - 87.1]	0.22
+'SM-NMZ'	Serratia surfactantfaciens YD25T	84.2	[80.4 - 87.3]	56.9	[54.1 - 59.6]	81.3	[77.9 - 84.2]	0.21
+'SM-NMZ'	Serratia ficaria NBRC 102596	62.0	[58.3 - 65.6]	34.8	[32.4 - 37.4]	55.2	[52.0 - 58.3]	0.1
+'C14-NMZ'	Serratia ficaria NBRC 102596	60.5	[56.9 - 64.1]	34.8	[32.3 - 37.3]	54.0	[50.9 - 57.1]	0.08
+'SM-NMZ'	Serratia entomophila DSM 12358	65.8	[62.0 - 69.5]	33.7	[31.3 - 36.2]	57.4	[54.2 - 60.5]	0.89
+'C14-NMZ'	Serratia entomophila DSM 12358	64.8	[61.0 - 68.4]	33.7	[31.3 - 36.2]	56.6	[53.5 - 59.8]	0.91
+'SM-NMZ'	Dryocola clanedunensis H11S18	16.2	[13.3 - 19.7]	20.6	[18.3 - 23.0]	16.2	[13.6 - 19.1]	5.97
+'C14-NMZ'	Enterobacter pasteurii A-8	17.6	[14.5 - 21.1]	20.6	[18.4 - 23.0]	17.3	[14.7 - 20.3]	3.42
+'C14-NMZ'	Klebsiella trevisanii DSM 2688	15.8	[12.8 - 19.2]	20.6	[18.3 - 23.0]	15.8	[13.3 - 18.7]	4.68
+'C14-NMZ'	Dryocola clanedunensis H11S18	16.4	[13.4 - 19.9]	20.6	[18.4 - 23.0]	16.3	[13.7 - 19.2]	5.98
+'SM-NMZ'	Klebsiella trevisanii DSM 2688	15.9	[13.0 - 19.4]	20.6	[18.3 - 23.0]	15.9	[13.4 - 18.8]	4.66
+'SM-NMZ'	Enterobacter pasteurii A-8	17.6	[14.5 - 21.1]	20.4	[18.2 - 22.9]	17.3	[14.7 - 20.3]	3.41
