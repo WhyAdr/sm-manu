@@ -12,7 +12,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, LongTable, TableStyle, PageBreak
 
 OUT=Path(__file__).resolve().parent
-BUILD=OUT.parent.parent/'tmp/explainer-2026-10-21'
+BUILD=OUT.parent.parent/'tmp/explainer-expansion-2026-10-21'
 pdfmetrics.registerFont(TTFont('Arial', 'C:/Windows/Fonts/arial.ttf'))
 pdfmetrics.registerFont(TTFont('ArialBold', 'C:/Windows/Fonts/arialbd.ttf'))
 pdfmetrics.registerFont(TTFont('ArialItalic', 'C:/Windows/Fonts/ariali.ttf'))
@@ -41,7 +41,7 @@ title=ParagraphStyle('title',parent=term,fontSize=23,leading=27,spaceAfter=12)
 header=ParagraphStyle('header',parent=term,textColor=colors.white)
 parts=[]
 text=(OUT/'glossary.md').read_text(encoding='utf-8')
-parts.extend([Paragraph('NMZ Serratia genomics',title),Paragraph('Glossary for the research group. Companion to the 20 October 2026 explainer.',body),Spacer(1,12)])
+parts.extend([Paragraph('NMZ Serratia genomics',title),Paragraph('Glossary for the research group. Companion to the 21 October 2026 explainer.',body),Spacer(1,12)])
 section_rows=[]
 def flush():
     global section_rows
@@ -51,7 +51,7 @@ def flush():
     tab=LongTable(data,colWidths=[153,358],repeatRows=1,hAlign='LEFT')
     tab.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#136C74')),
         ('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),9),('RIGHTPADDING',(0,0),(-1,-1),9),
-        ('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),
+        ('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),
         ('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#D5DFE1')),
         ('ROWBACKGROUNDS',(0,1),(-1,-1),[colors.white,colors.HexColor('#EFF5F4')])]))
     parts.append(tab)

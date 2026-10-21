@@ -1,0 +1,87 @@
+{
+  "source": "figures/neighborhoods/neighborhoods.json",
+  "source_sha256": "aaeaec4170def752194501090c7b6f52d30c3f6b145e8ece55c27b465fd5069c",
+  "panels": [
+    {
+      "stem": "Capsule-loci",
+      "original_figure": "Figure3_EPS-CPS-neighborhoods",
+      "panel": "A",
+      "locus_tags": [
+        "NNLMDO_007285",
+        "NNLMDO_007290",
+        "NNLMDO_007295",
+        "NNLMDO_007300",
+        "NNLMDO_007305",
+        "NNLMDO_007310",
+        "NNLMDO_007315",
+        "NNLMDO_007320",
+        "NNLMDO_007325",
+        "NNLMDO_007330",
+        "NNLMDO_007335",
+        "NNLMDO_007340",
+        "NNLMDO_007345",
+        "NNLMDO_007350",
+        "NNLMDO_007355",
+        "NNLMDO_007360",
+        "NNLMDO_007365",
+        "NNLMDO_007370",
+        "OJMJKD_007435",
+        "OJMJKD_007440",
+        "OJMJKD_007445",
+        "OJMJKD_007450",
+        "OJMJKD_007455",
+        "OJMJKD_007460",
+        "OJMJKD_007465",
+        "OJMJKD_007470",
+        "OJMJKD_007475",
+        "OJMJKD_007480",
+        "OJMJKD_007485",
+        "OJMJKD_007490",
+        "OJMJKD_007495",
+        "OJMJKD_007500",
+        "OJMJKD_007505",
+        "OJMJKD_007510",
+        "OJMJKD_007515"
+      ],
+      "display_change": "Only source gene qualifiers and export/PTP/Wzc product labels displayed; all CDS retained"
+    },
+    {
+      "stem": "Cellulose-loci",
+      "original_figure": "Figure3_EPS-CPS-neighborhoods",
+      "panel": "C",
+      "locus_tags": [
+        "NNLMDO_000480",
+        "NNLMDO_000485",
+        "NNLMDO_000490",
+        "NNLMDO_000495",
+        "NNLMDO_000500",
+        "NNLMDO_000505",
+        "NNLMDO_000510",
+        "NNLMDO_000515",
+        "NNLMDO_000520",
+        "OJMJKD_000475",
+        "OJMJKD_000480",
+        "OJMJKD_000485",
+        "OJMJKD_000490",
+        "OJMJKD_000495",
+        "OJMJKD_000500",
+        "OJMJKD_000505",
+        "OJMJKD_000510",
+        "OJMJKD_000515"
+      ],
+      "display_change": "source labels retained"
+    },
+    {
+      "stem": "Hydroxybenzoate-neighborhood",
+      "original_figure": "Figure5_Aromatic-neighborhoods",
+      "panel": "C",
+      "locus_tags": [
+        "NNLMDO_011760",
+        "NNLMDO_011765",
+        "NNLMDO_011770",
+        "NNLMDO_011775"
+      ],
+      "display_change": "NNLMDO_011765 label abbreviates source product, not a renamed gene"
+    }
+  ]
+}

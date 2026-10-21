@@ -1,0 +1,35 @@
+{
+  "access_date": "2026-10-21",
+  "assets": [
+    {
+      "file": "EBI-FASTQ-example.png",
+      "source_page": "https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/rna-sequencing/performing-a-rna-seq-experiment/laboratory-performance/",
+      "source_url": "https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/wp-content/uploads/sites/70/2020/05/Box1.png",
+      "credit": "EMBL-EBI Training",
+      "license": "CC BY 4.0, as stated on the course page",
+      "use": "Cropped FASTQ-format teaching example; external data, not NMZ reads",
+      "sha256": "76f46c03ae7ae47c25a8fef81e2f1bb4f7a65cb8d7fe01ddb32e030a52c2e3ff",
+      "bytes": 292870
+    },
+    {
+      "file": "EBI-assembly-types.png",
+      "source_page": "https://www.ebi.ac.uk/training/online/courses/investigating-antimicrobial-resistance/analysing-genomic-data-from-pathogens/assembly/",
+      "source_url": "https://www.ebi.ac.uk/training/online/courses/antimicrobial-resistance-insights/wp-content/uploads/sites/281/2024/10/Assembly_types-1024x478.png",
+      "credit": "EMBL-EBI Training",
+      "license": "CC BY 4.0, as stated on the course page",
+      "use": "De novo half of the assembly teaching illustration",
+      "sha256": "ec8994262fab07a4d5d37ceb8175c6dad671449f1346b63469aef3c44293765e",
+      "bytes": 38001
+    },
+    {
+      "file": "TYGS-submission-page.png",
+      "source_page": "https://tygs.dsmz.de/user_requests/new",
+      "credit": "DSMZ, Type (Strain) Genome Server",
+      "license": "Public website screenshot for attributed educational commentary; no license grant asserted",
+      "captured_date": "2026-10-21",
+      "use": "Read-only input-form screenshot; no files selected or uploaded",
+      "sha256": "f7f008da92bdbea9cd23127919803a269dd2029f339728c70ca886e20e87f7c0",
+      "bytes": 148841
+    }
+  ]
+}
