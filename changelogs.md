@@ -14,6 +14,35 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Chronological Progress & Milestones
 
+### Explainer revision with antiSMASH teaching block and evidence scoreboard
+
+* **Date**: 5–6 November 2026
+* **Git Commit**: `d8f8170` (*Revise genomics explainer with antiSMASH and evidence scoreboard*)
+* **Key Achievements**:
+  - Expanded and restructured the explainer presentation (`manuscript/explainer/`) to **34 slides** (**25 main slides** and **9 optional technical backups `B1`–`B9`**), validated with zero geometry or layout defects across 16 native PowerPoint tables (`explicitTotalSlideCount: 34`, `finding_count: 0`, Arial policy enforced).
+  - Synchronized all companion files ([speaker-notes.md](file:///d:/W/serratia-research/manuscript/explainer/speaker-notes.md), [outline-and-glossary.md](file:///d:/W/serratia-research/manuscript/explainer/outline-and-glossary.md), [glossary.md](file:///d:/W/serratia-research/manuscript/explainer/glossary.md), [README.md](file:///d:/W/serratia-research/manuscript/explainer/README.md)) and rebuilt the 34-page preview ([NMZ-Serratia-genomics-explainer-2026-10-20.pdf](file:///d:/W/serratia-research/manuscript/explainer/NMZ-Serratia-genomics-explainer-2026-10-20.pdf)) and standalone glossary PDF ([NMZ-Serratia-genomics-glossary-2026-10-20.pdf](file:///d:/W/serratia-research/manuscript/explainer/NMZ-Serratia-genomics-glossary-2026-10-20.pdf)).
+  - Re-paced narrative flow: moved **Genome resources and identity** and taxonomic comparisons (**Slides 5–7**) immediately after **What each kind of evidence answers** (**Slide 4**), establishing isolate provenance and closed circular assembly properties (4.971 Mb SM-NMZ + 3.581 kb plasmid; 5.051 Mb C14-NMZ) before biosynthetic mining. Added callouts explaining that Bakta/clinker images show GTDB's *S. nematodiphila* label for C14-NMZ whereas TYGS places both in *S. marcescens* species cluster 6.
+  - Authored a dedicated **antiSMASH v8.0.4 BGC teaching block** (**Slides 8–10**):
+    - **Slide 9 (*Genome-wide BGC mining with antiSMASH*)**: side-by-side presentation of the 11-region chromosome overviews (`Figure3_SM-NMZ-antismash-overview.jpeg` and `Figure3_C14-NMZ-antismash-overview.jpeg`), explaining ordinal cluster coordinates and shared vs. isolate-specific regions.
+    - **Slide 10 (*Reading antiSMASH: specific vs. partial BGC hits*)**: structured comparative table contrasting specific multi-gene matches (Region 5 *pig*, 16 proteins at 87–100% identity), rule calls with weak hits requiring curation (Region 11 *swrW* vs. single-protein 47% identity "ririwpeptide"), partial siderophore/metallophore families (Regions 1 & 9), and focal Region 10 NRPS divergence (SM-NMZ 3-module Gap1-like cassette vs. C14-NMZ 1-module D-Val NRPS).
+  - Explicitly aligned surfactant nomenclature on slide faces (**Slides 11, 12, and 31 [B6]**): displayed **`Serrawettin W1 (= serratamolide A) and serratamolide C`** so non-specialist readers recognize synonymy.
+  - Refined LadA phylogenetic subtree visualization (**Slide 22**): updated `build_lada_subtree.py` with full biological organism/protein labels (`Ca. M. alkanivorans NtaA/DmoA FMN monooxygenase (A0ABS9YXJ5)`, `G. thermoleovorans B23 LadA-alpha (BAM76377.1)`, `G. thermodenitrificans NG80-2 LadA (A4IU28)`), tightened axis limits (`xlim(-0.02, 1.48)`), and suppressed redundant root branch-support labels.
+  - Upgraded the closing summary to a **4-column Evidence Scoreboard** (**Slide 25**): organized across all five functional themes (`System / locus` | `Genomic candidate` | `Chemistry / phenotype in hand` | `Wet-lab assay slot`) with a collaborative prompt to integrate co-author endpoints.
+  - Added **Backup B9 (*Conserved metabolic background (DRAM)*)** (**Slide 34**): paired DRAM panels (`Figure3_DRAM.jpeg` & `Figure3_DRAM2.jpeg`) demonstrating 90/98 (91.8%) all-genome and 95/98 (96.9%) *Serratia*-wide trait invariance.
+  - Reframed slide bottom callouts as constructive, action-oriented bridges to wet-lab assays, and stripped leftover `"About N minutes."` timing prefixes from all speaker notes.
+
+---
+
+### Explainer expansion with visual concepts and evidence examples
+
+* **Date**: 21–22 October 2026
+* **Git Commit**: `7d245d3` (*Expand genomics explainer with visual concepts and evidence examples*)
+* **Key Achievements**:
+  - Expanded the teaching sequence from 20 slides (`12 main + 8 backups`) to **31 slides** (**23 main + 8 backups**).
+  - Added dedicated visual concepts and evidence examples to explain sequencing reads, assembly mechanics, gene prediction fundamentals, and genomic evidence boundaries to non-specialist collaborators.
+
+---
+
 ### Phylogram export and publication wording revision
 
 * **Date**: 21 October 2026
@@ -179,6 +208,22 @@ This document maintains a chronological record of all project milestones, manusc
 
 ## Commit History Summary (`git log --oneline`)
 ```text
+d8f8170 Revise genomics explainer with antiSMASH and evidence scoreboard
+7d245d3 Expand genomics explainer with visual concepts and evidence examples
+26bab8b Replace phylogram export and remove editorial presentation wording
+1afd415 Integrate unified TYGS results and add genomics explainer
+b191290 Rename master manuscript and integrate neighborhood maps
+921146f Add focal-pair genomic neighborhood figures
+679dade Restore manuscript structure in paired genomics drafts
+c3cabc2 Add paired concise genomics manuscript drafts
+f1de07b Expand manuscript discussions and citations
+8f07c3e Add comparative BGC architecture discussion
+259ee93 Draft hydrocarbonoclastic potential discussion
+200fa55 Consolidate genomic validation acknowledgement
+6d6a4e3 Refine VF_classifier discussion
+df10fa8 Expand DRAM discussion context
+63ae791 Polish Section 3 evidence wording
+3577f1d Finalize antiSMASH audit changelog entry
 e3b55b2 Audit antiSMASH clusters and refine Section 3
 a56a6fc Refine Sections 1-3 evidence interpretation and figure planning
 435f4ae Author Section 3 with antiSMASH BGC overview (Figure 3), DRAM (Figure 4), and VFDB (Figure S1)
@@ -202,9 +247,10 @@ a5eceb7 Initial draft of Materials and Methods (Genomics)
 - [x] Results & Discussion framework inserted with Table 1 (14 metrics).
 - [x] Table 1 populated from the paired Bakta outputs.
 - [x] Results & Discussion and Sections 1–5 converted to Markdown headings.
-- [x] Figures 1–9 and Supplementary Figure S1 embedded with publication-ready captions.
-- [x] Sections 1–3 narrative prose authored and subsequently evidence-calibrated.
+- [x] Figures 1–12 and Supplementary Figure S1 embedded with publication-ready captions.
+- [x] Sections 1–5 narrative prose fully authored and evidence-calibrated in `master-manuscript.md` and concise drafts.
 - [x] All 22 chromosome-localized antiSMASH regions audited and Section 3 interpretations refined with evidence-calibrated named-product limits.
 - [x] Evidence-calibrated wording added to captions and planning artifacts; branch-support reporting and sequence-versus-biochemistry limits documented.
-- [x] Full changelog recorded in `changelogs.md`.
-- [ ] **Next Step**: Draft Section 4 and Section 5 prose, including the relevant LadA branch-support values.
+- [x] Full explainer deck expanded and revised to 34 slides (`25 main + 9 backups`) with companion notes, glossary, and evidence scoreboard.
+- [x] Supporting verification data and notes consolidated in repository (`data/TYGS/`, `data/GTDB-Tk/`, `data/LadA/`, `notes/`).
+- [ ] **Next Step**: Peer review audit and wet-lab co-author assay endpoint integration.

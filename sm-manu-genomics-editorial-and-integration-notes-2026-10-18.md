@@ -1,6 +1,6 @@
 # Editorial and integration notes for the paired genomics drafts
 
-18 October 2026; updated 20 October 2026 with the TYGS results. This document contains author-facing guidance and revision provenance. It is separate from both manuscript drafts.
+18 October 2026; updated 20–21 October 2026 with TYGS results and 6 November 2026 with the 34-slide explainer revision and verification data archive. This document contains author-facing guidance and revision provenance. It is separate from both manuscript drafts.
 
 ## Version purpose and source
 
@@ -117,3 +117,27 @@ The [archived results](data/TYGS/README.md) include the raw report/workbooks/tre
 ## Phylogram presentation revision, 21 October 2026
 
 The wider genome-tree export (1,112 × 950 px) replaces the previous 656 × 950 px version in the master, both concise drafts and the presentation. Taxon labels, displayed branch lengths and support labels are unchanged. Publication-facing wording now uses “whole-genome distance phylogram” or “TYGS analysis.” Sequence-size reconciliation remarks remain in the provenance notes and have been removed from manuscript narrative, slides and speaker notes. The taxonomy backup instead presents the GTDB ANI/AF values beside the dDDH comparisons.
+
+## Explainer expansion and antiSMASH teaching revision, 5–6 November 2026
+
+The explainer sequence in `explainer/` has been expanded to **34 slides** (**25 main slides** and **9 optional technical backups `B1`–`B9`**), validated with zero geometry or layout defects across 16 native PowerPoint tables (`explicitTotalSlideCount: 34`, `finding_count: 0`, Arial policy enforced).
+
+Key revisions implemented in commit `d8f8170`:
+- **Sequence restructuring**: Moved **Genome resources and identity** and taxonomic comparisons (**Slides 5–7**) directly after **What each kind of evidence answers** (**Slide 4**), establishing isolate provenance and closed circular assembly properties (4.971 Mb SM-NMZ + 3.581 kb plasmid; 5.051 Mb C14-NMZ) before biosynthetic mining.
+- **Dedicated antiSMASH v8.0.4 teaching block** (**Slides 8–10**):
+  - **Slide 9 (*Genome-wide BGC mining with antiSMASH*)**: side-by-side presentation of the 11-region chromosome overviews (`Figure3_SM-NMZ-antismash-overview.jpeg` and `Figure3_C14-NMZ-antismash-overview.jpeg`), explaining ordinal cluster coordinates and shared vs. isolate-specific regions.
+  - **Slide 10 (*Reading antiSMASH: specific vs. partial BGC hits*)**: structured comparative table contrasting specific multi-gene matches (Region 5 *pig*, 16 proteins at 87–100% identity), rule calls with weak hits requiring curation (Region 11 *swrW* vs. single-protein 47% identity "ririwpeptide"), partial siderophore/metallophore families (Regions 1 & 9), and focal Region 10 NRPS divergence (SM-NMZ 3-module Gap1-like cassette vs. C14-NMZ 1-module D-Val NRPS).
+- **Surfactant nomenclature alignment**: explicitly displayed **`Serrawettin W1 (= serratamolide A) and serratamolide C`** across Slides 11, 12, and 31 (B6).
+- **LadA phylogenetic subtree polish** (**Slide 22**): full biological taxon/protein labels (`Ca. M. alkanivorans NtaA/DmoA FMN monooxygenase (A0ABS9YXJ5)`, `G. thermoleovorans B23 LadA-alpha (BAM76377.1)`, `G. thermodenitrificans NG80-2 LadA (A4IU28)`), tightened x-axis (`xlim(-0.02, 1.48)`), and suppressed redundant root support.
+- **Evidence Scoreboard** (**Slide 25**): 4-column integration matrix (`System / locus` | `Genomic candidate` | `Chemistry / phenotype in hand` | `Wet-lab assay slot`) across all five functional themes.
+- **Conserved metabolic background (DRAM)** (**Slide 34 / B9**): paired DRAM panels demonstrating 90/98 (91.8%) all-genome and 95/98 (96.9%) *Serratia*-wide trait invariance.
+- **Constructive callouts**: bottom takeaways reframed as collaborative action bridges to wet-lab assays, and legacy `"About N minutes."` timing prefixes removed from speaker notes.
+
+## Repository data and audit consolidation, 6 November 2026
+
+To provide complete provenance for remote reviewers without requiring external path access:
+- **`data/GTDB-Tk/`**: archived `NMZ.bac120.summary.tsv` and `NMZ.bac120.ani_summary.tsv` with explanatory `README.md`.
+- **`data/LadA/`**: archived `LadA_smartgap.treefile` and `LadA_smartgap.iqtree` (IQ-TREE 3 Q.PFAM+R3, 1,000 UFBoot, 34 sequences) with explanatory `README.md`.
+- **`notes/`**: archived primary literature/nomenclature audit (`sm-manu-primary-source-validation-2026-10-18.md`) and the 34-slide explainer revision plan (`sm-manu-explainer-revision-plan-2026-11-05.md`).
+- **`.gitignore`**: added to exclude temporary MIBiG scratch files (`BGC0000760.gbk`, `BGC0000760.svg`) and draft Word files (`SM-C14-NMZ-WGS-manuscript.docx`).
+

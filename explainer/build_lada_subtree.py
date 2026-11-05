@@ -6,7 +6,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 ASSETS=Path(__file__).resolve().parent/'assets'
-tree=Phylo.read(ASSETS/'LadA_smartgap.treefile','newick')
+DATA_TREE=Path(__file__).resolve().parent.parent/'data'/'LadA'/'LadA_smartgap.treefile'
+tree_file=ASSETS/'LadA_smartgap.treefile' if (ASSETS/'LadA_smartgap.treefile').exists() else DATA_TREE
+tree=Phylo.read(tree_file,'newick')
 names=['SM-NMZ|NNLMDO_015255','C14-NMZ|OJMJKD_015520','BAM76377.1',
        'sp|A4IU28|LADA_GEOTN','tr|A0ABS9YXJ5|A0ABS9YXJ5_9MYCO']
 clade=tree.common_ancestor(names)
