@@ -1,34 +1,36 @@
-# Presentation outline and glossary: NMZ Serratia genomics
+# Presentation outline and glossary: NMZ *Serratia* genomics
 
-Revised 21 October 2026 for biology and wet-lab colleagues with limited genomics experience. The teaching session has no fixed time limit. The main sequence has **23 slides**, followed by **eight optional technical backups**. The deck retains the existing style and places definitions beside the findings they explain.
+Revised 6 November 2026 for biology and wet-lab colleagues with limited genomics experience. The teaching sequence contains **25 main slides** followed by **9 optional technical backups**. The outline follows the current slide order; the glossary is also available as a separate handout.
 
 ## Main teaching sequence
 
 | Slide | Subject | Teaching point and visual |
 |---|---|---|
-| 1 | NMZ Serratia genomics | Introduce the focal pair and their study contexts; actual Bakta map. |
-| 2 | DNA, gene predictions and activity | Distinguish sequencing, assembly, annotation and experiment. |
-| 3 | Reads, assembly and genome annotation | Attributed EMBL-EBI FASTQ and de novo assembly examples, followed by the actual C14-NMZ Bakta map. |
-| 4 | What each kind of evidence answers | A related gene, gene context, chemistry, activity and causality address different questions. |
-| 5 | Genes, neighborhoods, clusters and operons | Define the terms; contrast the multi-gene pig region with the single large swrW gene. |
-| 6 | SwrW evidence in the NMZ study | Develop the concrete evidence example, keeping reported chemical assignments separate from a causal activity mechanism. |
-| 7 | Genome resources and identity | Genome properties and the actual GTDB/TYGS label difference for C14. |
-| 8 | ANI and digital DNA-DNA hybridization | Explain ANI, aligned fraction and dDDH; present broad species guides with their limits. |
-| 9 | GTDB-Tk and TYGS workflows | The public TYGS input form and the local GTDB-Tk ANI-screen workflow; no command tutorial. |
-| 10 | SwrW and reported serratamolides | Focal clinker comparison and reported LC-HRMS chemical evidence. |
-| 11 | Extracellular matrices and surface activity | SM pgaDCBA and the corresponding C14 interval; a separate C14 pgaB homolog is not a complete local pga locus. |
-| 12 | EPS, CPS and matrix polysaccharides | Define matrix and capsule terms; distinguish PNAG chemistry from cellulose. |
-| 13 | Capsule loci and the HADEG markers | Focal DNA Features Viewer capsule maps; shared wzb/wzc machinery does not identify the polymer product. |
-| 14 | Cellulose-associated loci in both isolates | DNA Features Viewer bcs comparison; synthesis/export candidates and conserved organization. |
-| 15 | Aromatic metabolism depends on the substrate | Shared hpa/paa loci support specific oxygenated-aromatic hypotheses. |
-| 16 | The HADEG Toluene_degradation hit | Exact SM hydroxylase/pcaK neighborhood alongside a characterized reference route; a downstream hit does not establish upstream toluene conversion. |
-| 17 | LadA and the alkane-oxidation hypothesis | Explain the historically proposed enzyme role and why a homolog search was motivated. |
-| 18 | LadA evidence across the literature | Feng 2007, Boonmak 2014 and Mireles 2025: distinguish biochemical reports, heterologous-host evidence and later unsuccessful hydroxylation assays. |
-| 19 | Initial alkane oxidation | Separate initiating machinery from downstream assimilation and distinguish the two unrelated uses of AlkB. |
-| 20 | The LadA-like comparison | Source-derived subtree, actual support values and sulfur/methionine-associated context. |
-| 21 | Matching assays to genomic candidates | Keep tension, E24, substrate conversion and pour point as distinct endpoints. |
-| 22 | Host-interaction genes | Reference-associated homologs inform context without quantifying pathogenicity or safety. |
-| 23 | The genomics contribution to the paper | The leading evidence and the experimental material/endpoint needed for integration. |
+| 1 | NMZ *Serratia* genomics | Introduce the two focal isolates, their collection contexts and the genomics contribution. |
+| 2 | DNA, gene predictions and activity | Separate DNA sequence, predicted genes, chemical evidence, measured activity and causality. |
+| 3 | Reads, assembly and genome annotation | Attributed teaching examples show reads becoming an assembly; the C14-NMZ Bakta circular plot illustrates annotation. These images are workflow examples, not NMZ raw reads. |
+| 4 | What each kind of evidence answers | Use the SwrW example to distinguish sequence similarity, gene context, chemical assignment, phenotype and causal tests. |
+| 5 | Genome resources and identity | Compare genome properties and the actual GTDB-Tk/TYGS naming difference for C14-NMZ. State that both chromosomes are closed and circular. Selected 35–44 kb comparison windows lie within assembled replicons without contig breaks; closure does not demonstrate product formation or sequence accuracy. |
+| 6 | ANI and digital DNA–DNA hybridization | Explain ANI, aligned fraction and dDDH as relatedness measures, with broad species guides and their limits. |
+| 7 | GTDB-Tk and TYGS workflows | Contrast the reference-based classification workflows and what each reports; no command-line tutorial. |
+| 8 | Genes, neighborhoods, clusters and operons | Define each scale. Contrast the multi-gene *pig* region with the single large *swrW* gene; a neighborhood is not proof of an operon. |
+| 9 | Genome-wide BGC mining with antiSMASH | Compare the 11 predicted chromosome regions per isolate. Region numbers are positional labels within each chromosome, not proof that same-numbered regions are equivalent. |
+| 10 | Reading antiSMASH reference matches | Contrast the multi-feature prodigiosin match with the weak single-protein *swrW* “ririwpeptide” hit, and compare the different Region 10 NRPS architectures. Database names are hypotheses to inspect, not product identifications. |
+| 11 | SwrW evidence in the NMZ study | Bring together the conserved focal *swrW* sequence/domain architecture and putative LC-HRMS assignments, keeping the strands of evidence distinct. |
+| 12 | SwrW and reported serratamolides | Explain that the LC-HRMS source's workflows labelled glycopeptide and DCM list putative serratamolide assignments for rows/samples 1 and 2. The author’s current drafting assumption is that the source covers both focal isolates; the row/sample numbers are not isolate identifiers. |
+| 13 | Extracellular matrices and surface activity | Show SM-NMZ *pgaDCBA* and the corresponding C14-NMZ interval; a separate C14 *pgaB* homolog is not a complete local *pga* locus. |
+| 14 | EPS, CPS and matrix polysaccharides | Distinguish extracellular matrices, capsules, PNAG and cellulose from small amphiphilic molecules. |
+| 15 | Capsule loci and the HADEG markers | Use the focal neighborhood maps to show why shared *wzb/wzc* markers do not identify a polymer’s chemical structure. |
+| 16 | Cellulose-associated loci in both isolates | Compare the DNA Features Viewer *bcs* neighborhoods as genomic candidates, not cellulose production measurements. |
+| 17 | Aromatic metabolism depends on the substrate | Relate shared *hpa/paa* and isolate-specific oxygenated-aromatic loci to the compounds their pathways could plausibly use. |
+| 18 | The HADEG Toluene_degradation hit | Compare the SM hydroxylase/*pcaK* neighborhood with a characterized route; a downstream aromatic-acid step does not establish upper toluene oxidation. |
+| 19 | LadA and the alkane-oxidation hypothesis | Introduce LadA and why related sequences motivated a homolog search; distinguish a candidate from a demonstrated alkane-initiating enzyme. |
+| 20 | LadA evidence across the literature | Compare Feng (2007), Boonmak (2014) and Mireles (2025), separating reported biochemical, host-based and later assay evidence. |
+| 21 | Initial alkane oxidation | Distinguish candidate initiating reactions from downstream assimilation, and the two unrelated meanings of AlkB. |
+| 22 | The LadA-like comparison | Show the focal sequences within a source-derived subtree, with the full *Candidatus Mycolicibacterium alkanivorans* outgroup label and actual support values. A supported grouping does not establish substrate activity. |
+| 23 | Matching assays to genomic candidates | Keep surface tension, E24, aromatic-substrate conversion and pour point as separate endpoints and connect each only to relevant candidate classes. |
+| 24 | Host-interaction genes | Use reference-associated homologs as comparative context, not as a pathogenicity or safety score. |
+| 25 | Evidence scoreboard | Pair the leading genomic candidates with reported chemistry/phenotype already in hand and identify the wet-lab assay slot that could test each connection. |
 
 ## Optional technical backups
 
@@ -42,24 +44,29 @@ Revised 21 October 2026 for biology and wet-lab colleagues with limited genomics
 | B6 | Chemical assignments and peak areas |
 | B7 | Additional SM aromatic candidates |
 | B8 | LadA-like genomic neighborhoods |
+| B9 | Conserved metabolic background (DRAM) |
 
 ## Evidence and teaching boundaries
 
-The external read and assembly images illustrate formats and reconstruction; they are not NMZ raw data. The circular Bakta plots and focal gene maps are project outputs. Gene-map arrows retain physical coordinates and source annotation context; proximity alone does not establish an operon or expression.
+The read and assembly images are attributed teaching examples, not NMZ sequence data. Bakta and gene-neighborhood images are project outputs. Gene-map arrows and synteny links show annotated features and sequence similarities; proximity alone does not demonstrate co-transcription or expression.
 
-ANI and dDDH are measures; GTDB-Tk and TYGS are analysis systems with different references and operational rules. Both TYGS queries are identified as S. marcescens in one species cluster, with separate subspecies clusters. GTDB r232 assigns C14 to S. nematodiphila. The presentation retains that difference.
+The selected 35–44 kb comparison windows are contained within assembled replicons and do not cross contig breaks. Circular closure makes those end-to-end neighborhood comparisons possible, but does not independently verify every base, establish an operon, or show that a predicted product is synthesized.
 
-Reported serratamolide assignments follow the author's working assumption that the supplied chemistry deck covers both focal isolates. No authentic-standard evidence, per-isolate quantity or missing endpoint result is inferred. Polymer identity and enzyme substrate remain separate from a marker label or phylogenetic grouping.
+antiSMASH detects candidate biosynthetic regions. Region numbers are assigned along each chromosome, so equal numbers across isolates do not imply homologous loci. Multi-protein, high-identity matches can support a more specific pathway hypothesis than a partial or single-protein match. The raw *swrW* match to “ririwpeptide” is weak; interpretation of *swrW* draws on the focal gene annotation, sequence/domain evidence and the separate chemical report. No antiSMASH label alone proves a compound.
 
-The HADEG toluene category is a useful example of a downstream enzyme shared with a characterized pathway. It need not be a wrong database label, but its presence does not establish the upstream pathway. The LadA history likewise distinguishes a motivated candidate search from direct biochemical assignment.
+The LC-HRMS source workflows labelled glycopeptide and DCM report putative assignments for rows/samples 1 and 2, including serrawettin W1 (= serratamolide A) and serratamolide C. “Glycopeptide” is the source workflow label, not a chemical-class assignment for these compounds. For this draft, those entries are treated as covering both focal isolates only under the author’s stated working assumption. The row/sample numbers are chemical-analysis entries, not isolate identifiers; the chemistry source provides no isolate key. Identification confidence should be checked against the chemistry source before final manuscript claims. No authentic-standard confirmation or per-isolate peak-area interpretation is added here.
 
-The presentation uses focal capsule data for the marker explanation. The external emulsan reference comparison is excluded from this revision at the author's request.
+ANI and dDDH are relatedness measures; GTDB-Tk and TYGS are analysis systems with different references and operational rules. The focal TYGS output places both queries in *S. marcescens* species cluster 6, while GTDB r232 assigns C14-NMZ to *S. nematodiphila*. Retain both results as method-specific classifications.
+
+The HADEG toluene category is a useful example of a shared downstream enzyme annotation in a characterized pathway. It does not establish the upstream reactions needed for toluene degradation. Likewise, a LadA-like sequence motivates a comparative hypothesis but does not identify its substrate or prove alkane oxidation.
+
+The capsule, *pga* and *bcs* panels show candidate matrix-associated loci, not chemical characterization or production measurements. The external emulsan-reference comparison is excluded from this revision. Surface-tension reduction, E24, substrate conversion and pour point remain distinct assay outcomes; no numerical wet-lab results were supplied for this genomics explainer.
 
 ## Companion material and sources
 
-- [Speaker notes](speaker-notes.md) provide explanations and primary references for each slide.
+- [Speaker notes](speaker-notes.md) provide slide-specific explanations and references.
 - [Glossary](glossary.md) defines core and optional technical terms.
-- `assets/source-assets.json` records the source URLs, licenses and checksums for new web visuals.
-- `assets/teaching-neighborhood-provenance.json` identifies the canonical manuscript data underlying the three teaching panels.
+- `assets/source-assets.json` records source URLs, licenses and checksums for new web visuals.
+- `assets/teaching-neighborhood-provenance.json` identifies the manuscript data underlying the three teaching panels.
 
-For interpretation, read the question a method answers before its software name. Keep scientific qualifications visible when they change the conclusion; use the notes for supporting detail. Scientific terminology remains explicit and accurate throughout.
+Use the notes for supporting detail and keep qualifications visible where they change the interpretation. The slide sequence favors explicit scientific terminology while defining unfamiliar terms beside the findings they explain.

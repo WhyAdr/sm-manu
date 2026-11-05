@@ -10,23 +10,27 @@ tree=Phylo.read(ASSETS/'LadA_smartgap.treefile','newick')
 names=['SM-NMZ|NNLMDO_015255','C14-NMZ|OJMJKD_015520','BAM76377.1',
        'sp|A4IU28|LADA_GEOTN','tr|A0ABS9YXJ5|A0ABS9YXJ5_9MYCO']
 clade=tree.common_ancestor(names)
-labels=dict(zip(names,['SM-NMZ  NNLMDO_015255','C14-NMZ  OJMJKD_015520',
-                      'LadA-alpha  BAM76377.1','Canonical LadA  A4IU28','Comparison  A0ABS9YXJ5']))
+labels=dict(zip(names,['SM-NMZ  NNLMDO_015255 (focal candidate)',
+                      'C14-NMZ  OJMJKD_015520 (focal candidate)',
+                      'G. thermoleovorans B23  LadA-alpha (BAM76377.1)',
+                      'G. thermodenitrificans NG80-2  LadA (A4IU28)',
+                      'Candidatus Mycolicibacterium alkanivorans\n'
+                      'NtaA/DmoA FMN monooxygenase (A0ABS9YXJ5)']))
 for node in clade.find_clades():
     if node.name and '/' in node.name and not node.is_terminal():
         node.confidence=float(node.name.split('/')[1])
         node.name=None
 clade.branch_length=0
-fig,ax=plt.subplots(figsize=(12,3.8))
+fig,ax=plt.subplots(figsize=(12,3.9))
 Phylo.draw(Phylo.BaseTree.Tree(root=clade,rooted=False),axes=ax,do_show=False,
     label_func=lambda n:labels.get(n.name,''),show_confidence=False,
-    branch_labels=lambda n:str(int(n.confidence)) if n.confidence is not None and not n.is_terminal() else None,
+    branch_labels=lambda n:str(int(n.confidence)) if n is not clade and n.confidence is not None and not n.is_terminal() else None,
     label_colors={labels[k]:'#136C74' for k in names if k.startswith(('SM','C14'))})
 ax.set_ylabel('');ax.set_yticks([])
 ax.set_xlabel('Substitutions per site (extracted subtree)',fontsize=11)
-ax.set_xlim(-0.03,1.7)
+ax.set_xlim(-0.02,1.48)
 ax.spines[['top','right','left']].set_visible(False)
-for label in ax.texts:label.set_fontsize(12)
+for label in ax.texts:label.set_fontsize(11.5)
 fig.tight_layout()
 fig.savefig(ASSETS/'LadA-subtree.png',dpi=200)
 svg=ASSETS/'LadA-subtree.svg'

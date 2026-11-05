@@ -9,19 +9,22 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, LongTable, TableStyle, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, LongTable, TableStyle
 
 OUT=Path(__file__).resolve().parent
-BUILD=OUT.parent.parent/'tmp/explainer-expansion-2026-10-21'
+BUILD=OUT.parent.parent/'tmp/explainer-revision-2026-11-05'
 pdfmetrics.registerFont(TTFont('Arial', 'C:/Windows/Fonts/arial.ttf'))
 pdfmetrics.registerFont(TTFont('ArialBold', 'C:/Windows/Fonts/arialbd.ttf'))
 pdfmetrics.registerFont(TTFont('ArialItalic', 'C:/Windows/Fonts/ariali.ttf'))
 pdfmetrics.registerFontFamily('Arial', normal='Arial',bold='ArialBold',italic='ArialItalic',boldItalic='ArialBold')
 
-preview=Canvas(str(OUT/'NMZ-Serratia-genomics-explainer-2026-10-20.pdf'),pagesize=(960,540))
+slides = [BUILD / f'slide-{i:02}.png' for i in range(1, 35)]
+if not all(slide.is_file() for slide in slides):
+    raise FileNotFoundError('Render all 34 slides before building the PDF preview.')
+preview=Canvas(str(BUILD/'NMZ-Serratia-genomics-explainer-2026-10-20.pdf'),pagesize=(960,540))
 preview.setTitle('NMZ Serratia genomics explainer')
 preview.setAuthor('NMZ Serratia research project')
-for slide in sorted(BUILD.glob('slide-??.png')):
+for slide in slides:
     preview.drawImage(str(slide),0,0,width=960,height=540)
     preview.showPage()
 preview.save()
@@ -32,6 +35,7 @@ if '--preview-only' in sys.argv:
 def clean(text):
     text=text.replace('–','-').replace('—','-').replace('\u2011','-').replace('\u2013','-')
     text=escape(text)
+    text=text.replace('⁺', '<super>+</super>')
     return re.sub(r'\*([^*]+)\*',r'<i>\1</i>',text)
 
 body=ParagraphStyle('body',fontName='Arial',fontSize=10,leading=12.5,textColor=colors.HexColor('#183642'))
@@ -41,7 +45,7 @@ title=ParagraphStyle('title',parent=term,fontSize=23,leading=27,spaceAfter=12)
 header=ParagraphStyle('header',parent=term,textColor=colors.white)
 parts=[]
 text=(OUT/'glossary.md').read_text(encoding='utf-8')
-parts.extend([Paragraph('NMZ Serratia genomics',title),Paragraph('Glossary for the research group. Companion to the 21 October 2026 explainer.',body),Spacer(1,12)])
+parts.extend([Paragraph('NMZ Serratia genomics',title),Paragraph('Glossary for the research group. Companion to the revised November 2026 explainer.',body),Spacer(1,12)])
 section_rows=[]
 def flush():
     global section_rows
@@ -59,7 +63,8 @@ def flush():
 parts.append(Paragraph('Core terms',heading))
 for line in text.splitlines():
     if line.startswith('## Technical glossary'):
-        flush(); parts.append(PageBreak()); parts.append(Paragraph('Technical terms - optional reading',heading))
+        flush()
+        parts.append(Paragraph('Technical terms - optional reading',heading))
     if line.startswith('|') and not line.startswith('|---'):
         cells=[c.strip() for c in line.strip('|').split('|')]
         if len(cells)==2 and cells[0]!='Term': section_rows.append(cells)
@@ -68,7 +73,7 @@ def footer(canvas,doc):
     canvas.saveState();canvas.setFont('Arial',9);canvas.setFillColor(colors.HexColor('#526770'))
     canvas.drawString(42,24,'NMZ Serratia research group')
     canvas.drawRightString(A4[0]-42,24,str(doc.page));canvas.restoreState()
-doc=SimpleDocTemplate(str(OUT/'NMZ-Serratia-genomics-glossary-2026-10-20.pdf'),pagesize=A4,
+doc=SimpleDocTemplate(str(BUILD/'NMZ-Serratia-genomics-glossary-2026-10-20.pdf'),pagesize=A4,
     rightMargin=42,leftMargin=42,topMargin=36,bottomMargin=43,
     title='NMZ Serratia genomics glossary',author='NMZ Serratia research project')
 doc.build(parts,onFirstPage=footer,onLaterPages=footer)

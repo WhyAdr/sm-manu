@@ -8,13 +8,13 @@ if (!runtime) throw new Error('Set RUNTIME_NODE_MODULES to the bundled node_modu
 const { Presentation, PresentationFile } = await import(pathToFileURL(path.join(runtime,'@oai/artifact-tool/dist/artifact_tool.mjs')).href);
 const root=path.resolve(import.meta.dirname,'..');
 const output=path.resolve(import.meta.dirname);
-const build=path.resolve(root,'../tmp/explainer-expansion-2026-10-21');
+const build=path.resolve(root,'../tmp/explainer-revision-2026-11-05');
 await fs.mkdir(build,{recursive:true});
 const P=Presentation.create({slideSize:{width:1280,height:720}});
 const C={ink:'#183642',teal:'#136C74',muted:'#526770',line:'#D5DFE1',pale:'#EFF5F4',white:'#FFFFFF',amber:'#A76022'};
 const font='Arial';
 const audit=[];
-const MAIN_COUNT=23;
+const MAIN_COUNT=25;
 let backupNumber=0;
 function text(s,copy,x,y,w,h,size=28,color=C.ink,bold=false){
  const q=s.shapes.add({geometry:'textbox',name:copy.slice(0,65),position:{left:x,top:y,width:w,height:h},fill:'none',line:{fill:'none',width:0}});
@@ -62,32 +62,32 @@ const src={
  genome:'Source: final Bakta v1.12.0/database v6.0 summary, JSON and FASTA for SM-NMZ and C14-NMZ. Genome properties are reported in manuscript Table 1.',
  swrw:'Sources: focal antiSMASH Region 11, original SwrW clinker figure, and manuscript biosynthesis results. Shanks et al. (2012), https://doi.org/10.1371/journal.pone.0036398, provides reference-strain genetic/chemical evidence, not an NMZ perturbation experiment.',
  loci:'Source: figures/neighborhoods/neighborhoods.json and plotted-features.tsv, generated from the final-size Bakta annotations. DNA Features Viewer: https://doi.org/10.1093/bioinformatics/btaa213.',
- chem:'Source: author-supplied LC-HRMS-SM/hasil.pdf and hasil.pptx, especially screening/filter settings and serratamolide tables. Following the author\'s instruction, the presentation covers both focal isolates. No authentic-standard comparison, per-isolate peak-area mapping or endpoint values are added by inference.',
+ chem:'Source: LC-HRMS-SM/hasil.pdf and hasil.pptx. The analysis is treated as covering both focal isolates. The tables give putative library-based assignments and do not map rows to isolates. For W1 nomenclature see https://doi.org/10.3389/fchem.2021.633870.',
  lad:'Source: LadA-analysis/07_phylogeny/LadA_smartgap.treefile and .iqtree. Internal labels are SH-aLRT/UFBoot pairs, with UFBoot as the second value. Dataset: 34 sequences, 448 retained positions, Q.PFAM+R3, 1,000 UFBoot replicates. Feng et al. (2007): https://doi.org/10.1073/pnas.0609650104. Boonmak et al. (2014): https://doi.org/10.1007/s00792-014-0636-y. Mireles et al. (2025): https://doi.org/10.1371/journal.pone.0332702.'
 };
 
 // Expanded teaching sequence, including the cover.
 {
  const s=slide('NMZ Serratia genomics',
-  'About 1 minute. SM-NMZ came from slaughterhouse effluent. C14-NMZ came from the Calotropis gigantea rhizosphere in Baluran National Park, East Java. This talk explains what the genomic analyses add to the collaborative study. The leading findings concern SwrW-associated serratamolides, pigment-associated genes and extracellular-matrix loci. Aromatic metabolism and a putative LadA-like protein add comparative context. Keep any final oil-performance claim tied to the experimental team\'s actual material and results. '+src.genome);
+  'SM-NMZ came from slaughterhouse effluent. C14-NMZ came from the Calotropis gigantea rhizosphere in Baluran National Park, East Java. This talk explains what the genomic analyses add to the collaborative study. The leading findings concern SwrW-associated serratamolides, pigment-associated genes and extracellular-matrix loci. Aromatic metabolism and a putative LadA-like protein add comparative context. Keep any final oil-performance claim tied to the experimental team\'s actual material and results. '+src.genome);
  // A quiet cover with a genuine source genome map, rather than an invented culture image.
  s.shapes.items[0].text='';
  text(s,'NMZ Serratia\ngenomics',64,135,650,170,62,C.ink,true);
  text(s,'An explainer for the research group',68,330,620,45,30,C.teal);
  text(s,'SM-NMZ   Slaughterhouse effluent\nC14-NMZ   Calotropis rhizosphere',68,421,655,98,27);
- text(s,'21 October 2026',68,595,600,32,22,C.muted);
+ text(s,'6 November 2026',68,595,600,32,22,C.muted);
  await img(s,'Figure1_SM-NMZ.png',738,154,475,475,'Actual Bakta chromosome feature map for SM-NMZ');
 }
 {
  const s=slide('DNA, gene predictions and activity',
-  'About 1½ minutes. A read is a recorded DNA fragment. Assembly combines overlapping evidence into reconstructed sequences. Annotation predicts where genes occur and what their products may do. The genome is a parts list. It does not say which parts are active in a particular experiment. A related protein can use a different substrate, and a present gene can remain unexpressed. The experimental sample might contain cells, a supernatant or an extracted fraction, each with different biological content. An activity assay measures the effect of the material actually tested. The project has no expression measurement reported in these genomic analyses. '+src.genome);
+  'A read is a recorded DNA fragment. Assembly combines overlapping evidence into reconstructed sequences. Annotation predicts where genes occur and what their products may do. The genome is a parts list. It does not say which parts are active in a particular experiment. A related protein can use a different substrate, and a present gene can remain unexpressed. The experimental sample might contain cells, a supernatant or an extracted fraction, each with different biological content. An activity assay measures the effect of the material actually tested. The project has no expression measurement reported in these genomic analyses. '+src.genome);
  table(s,[['Stage','What it supplies'],['Sequencing','DNA fragments called reads'],['Assembly','Reconstructed chromosome and other replicons'],['Annotation','Predicted genes and possible functions'],['Experiment','An observed effect under stated conditions']],{h:365,widths:[290,862],size:28});
- text(s,'A predicted function is a candidate for explanation.',64,565,1120,55,31,C.teal,true);
+ text(s,'Gene predictions give us candidates to compare with lab assays.',64,565,1120,55,31,C.teal,true);
 }
 
 {
  const s=slide('Reads, assembly and genome annotation',
-  'The left image is an external FASTQ-format example, not NMZ read data and not an ONT signal trace. The nucleotide lines give base calls; the quality string expresses confidence in those calls. In ONT sequencing, basecalling converts electrical signal to read sequences. The middle image is the de novo half of an EMBL-EBI assembly teaching diagram: overlapping read evidence is reconstructed into longer contigs. It is an illustration of an intermediate draft, not a claim that our final chromosomes remain fragmented. Quality filtering and polishing lie between these simplified stages. The right panel is the actual C14-NMZ Bakta circular chromosome plot. Annotation locates features and predicts products on the assembled sequence; a circular drawing alone does not validate closure or accuracy. Image credits: EMBL-EBI Training, FASTQ format, https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/rna-sequencing/performing-a-rna-seq-experiment/laboratory-performance/ ; assembly diagram, https://www.ebi.ac.uk/training/online/courses/investigating-antimicrobial-resistance/analysing-genomic-data-from-pathogens/assembly/ . Both course pages specify CC BY 4.0; crops selected for teaching. '+src.genome);
+  'The left image is an external FASTQ-format example, not NMZ read data and not an ONT signal trace. The nucleotide lines give base calls; the quality string expresses confidence in those calls. In ONT sequencing, basecalling converts electrical signal to read sequences. The middle image is the de novo half of an EMBL-EBI assembly teaching diagram: overlapping read evidence is reconstructed into longer contigs. It is an illustration of an intermediate draft, not a claim that our final chromosomes remain fragmented. Quality filtering and polishing lie between these simplified stages. The right panel is the actual C14-NMZ Bakta circular chromosome plot. Its centre label is Serratia nematodiphila, the GTDB-Tk assignment supplied during annotation. Slide 5 compares it with the TYGS result. Annotation locates features and predicts products on the assembled sequence; a circular drawing alone does not validate closure or accuracy. Image credits: EMBL-EBI Training, FASTQ format, https://www.ebi.ac.uk/training/online/courses/functional-genomics-ii-common-technologies-and-data-analysis-methods/rna-sequencing/performing-a-rna-seq-experiment/laboratory-performance/ ; assembly diagram, https://www.ebi.ac.uk/training/online/courses/investigating-antimicrobial-resistance/analysing-genomic-data-from-pathogens/assembly/ . Both course pages specify CC BY 4.0; crops selected for teaching. '+src.genome);
  text(s,'Basecalled reads',64,151,330,40,29,C.teal,true);
  text(s,'→',414,151,40,45,35);
  text(s,'Draft assembly',460,151,330,40,29,C.teal,true);
@@ -99,37 +99,22 @@ const src={
  text(s,'DNA bases + quality',64,494,330,62,26);
  text(s,'Overlaps → contigs',460,544,360,42,26);
  text(s,'Features + predictions',856,564,350,42,26);
- text(s,'External teaching examples (left/centre); project Bakta output (right)',64,624,1152,32,23,C.muted);
+ text(s,'EMBL-EBI examples (left, centre) · C14 Bakta map (right): GTDB S. nematodiphila (slide 5)',64,624,1152,32,23,C.muted);
 }
 
 {
  const s=slide('What each kind of evidence answers',
-  'About 1½ minutes. Use swrW as the example. Protein similarity locates a plausible biosynthetic candidate. Gene context can show whether associated machinery is organized coherently. LC-HRMS supplies chemical evidence at its actual identification confidence. A tension measurement would show an interfacial effect for a specified material. A controlled genetic disruption or purified-compound experiment can test a particular contribution. These sources answer different questions. Several annotation programs can reuse the same reference information, so apparent agreement is not automatically independent confirmation. Reference-strain causality should remain separate from what was measured in NMZ. '+src.swrw);
+  'Use swrW as the example. Protein similarity locates a plausible biosynthetic candidate. Gene context can show whether associated machinery is organized coherently. LC-HRMS supplies chemical evidence at its actual identification confidence. A tension measurement would show an interfacial effect for a specified material. A controlled genetic disruption or purified-compound experiment can test a particular contribution. These sources answer different questions. Several annotation programs can reuse the same reference information, so apparent agreement is not automatically independent confirmation. Reference-strain causality should remain separate from what was measured in NMZ. '+src.swrw);
  table(s,[['Evidence','Question it addresses'],['Related gene or protein','Is there a plausible candidate?'],['Several linked genes','Does the proposed machinery fit together?'],['Chemical analysis','Which molecular assignment has support?'],['Activity assay','What effect occurred in this experiment?'],['Controlled perturbation','Does this factor contribute to that effect?']],{h:435,widths:[398,754],size:27});
 }
 
 {
- const s=slide('Genes, neighborhoods, clusters and operons',
-  'Read a gene arrow as an annotated DNA feature: its position and direction are information, rather than a measurement of expression. A neighborhood means nearby genes. A biosynthetic cluster is a set of nearby genes implicated in making a molecule, with stronger evidence when machinery and known biology fit together. An operon is a transcriptional unit; mere proximity is insufficient to establish one. The pig comparison shows an organized multi-gene pigment-associated region. Its flanking genes are not all automatically part of the pigment pathway. swrW provides a useful contrast: one approximately 3.94-kb gene encodes a single Ser-selective C–A–PCP–TE NRPS module. A single module can be used iteratively, and a large predicted region is not necessarily a large experimentally delimited operon. The red/pink culture phenotype supports a pigment-associated finding without adding a chemical confirmation of prodigiosin. Sources: original Figure7_prodigiosin.jpeg; focal antiSMASH annotations; https://docs.antismash.secondarymetabolites.org/understanding_output/regions/ ; '+src.swrw);
- table(s,[['Term','Meaning'],['Gene','DNA sequence encoding a product'],['Neighborhood','Nearby genes: physical context'],['Biosynthetic cluster','Nearby genes implicated in making a molecule'],['Operon','Genes transcribed together as a unit']],{y:139,h:270,widths:[340,812],size:26});
- await fitimg(s,'Figure7_prodigiosin.jpeg',64,427,1152,165,'Top two focal-isolate rows of the original pig-associated clinker comparison',{left:0,top:0,right:0,bottom:.79});
- text(s,'pig: a multi-gene example. SwrW: a multifunctional enzyme encoded by one gene.',64,608,1152,58,27,C.teal,true);
-}
-{
- const s=slide('SwrW evidence in the NMZ study',
-  'Walk through the original evidence table with one concrete example. The related SwrW proteins and their C–A–PCP–TE domains support a family-level biosynthetic candidate. Conserved local organization gives context and does not prove co-transcription or which neighboring genes are required. The reported LC-HRMS assignments add chemical evidence at the actual analytical confidence documented by the chemistry team. The author has asked that the chemistry presentation cover both isolates. Tension and E24 measurements would answer what the tested material does, while controlled interventions or purified-compound comparisons could test a contribution to that effect. No such NMZ causal experiment is reported here, and no missing endpoint value is inferred. Shanks et al. performed relevant genetic and purified-compound experiments in their reference strains; that evidence establishes precedent, not a result in NMZ. '+src.swrw+' '+src.chem);
- table(s,[['Observation or test','What it would establish'],['SwrW sequence, domains and context','A plausible biosynthetic candidate'],['Reported LC-HRMS assignments','Chemical support for serratamolides'],['Tension or E24 assay','Effect of the particular material tested'],['Controlled intervention / purified compound','A test of contribution to that effect']],{y:158,h:385,widths:[550,602],size:27});
- text(s,'NMZ genomic and reported chemical evidence are available.',64,568,1152,43,28,C.teal,true);
- text(s,'An activity result and a causal mechanism need their own evidence.',64,621,1152,35,25,C.muted);
-}
-
-{
  const s=slide('Genome resources and identity',
-  'About 2 minutes. A megabase is one million base pairs. The chromosome sizes are rounded here, while the plasmid is 3,581 bp. Bakta CDS counts are 4,566 and 4,626. TYGS identifies both as S. marcescens in one species cluster, with different subspecies clusters. GTDB r232 assigns separate species names through ANI screening. C14 has 98.22% ANI to the nematodiphila representative. Its 96.82% match to the marcescens representative falls below that representative\'s 96.86% radius. Use isolate names so this operational taxonomy difference does not obscure the focal comparison. '+src.genome+' '+src.tygs+' GTDB-Tk: https://ecogenomics.github.io/GTDBTk/faq.html. LPSN: https://lpsn.dsmz.de/species/serratia-nematodiphila and https://lpsn.dsmz.de/species/serratia-marcescens, checked 20 October 2026.');
- table(s,[['Feature','SM-NMZ','C14-NMZ'],['Chromosome','4.971 Mb','5.051 Mb'],['Additional replicon','3.581-kb plasmid','None recovered'],['Bakta CDSs','4,566','4,626'],['GTDB r232 label','S. marcescens','S. nematodiphila']],{h:350,widths:[368,392,392],size:27});
- text(s,'TYGS: one species cluster, separate subspecies clusters',64,555,1130,42,28,C.teal,true);
+  'A megabase is one million base pairs. Autocycler consensus assembly, dnaapler reorientation and Dorado polishing yielded two closed circular chromosomes. The displayed 35–44 kb biosynthetic neighborhoods can therefore be compared end to end without contig breaks. Closure does not validate predicted cluster boundaries or biochemical function. GTDB r232 assigns C14-NMZ to S. nematodiphila, the name shown in the Bakta plot and the pig clinker comparison. TYGS places both isolates in S. marcescens species cluster 6, with separate subspecies clusters. C14 has 98.22% ANI to the nematodiphila representative. Its 96.82% match to the marcescens representative falls below that representative\'s 96.86% radius. '+src.genome+' '+src.tygs);
+ table(s,[['Feature','SM-NMZ','C14-NMZ'],['Chromosome (closed circular)','4.971 Mb','5.051 Mb'],['Additional replicon','3.581-kb circular plasmid','None recovered'],['Bakta CDSs','4,566','4,626'],['GTDB r232 label','S. marcescens','S. nematodiphila'],['TYGS species / subspecies cluster','6 / 11','6 / 10']],{y:145,h:370,widths:[440,340,372],size:25});
+ text(s,'Closed assemblies let us compare 35–44 kb neighborhoods without contig breaks.',64,542,1152,42,27,C.teal,true);
+ text(s,'TYGS groups both as S. marcescens. The Bakta and pig plots retain C14’s GTDB label.',64,601,1152,42,25,C.muted);
 }
-
 {
  const s=slide('ANI and digital DNA–DNA hybridization',
   'ANI is average nucleotide identity in the genome regions that a method aligns. It is not the percentage of the whole genome that is identical, nor a confidence score for a species name. Alignment fraction describes how much sequence aligns under the particular method. dDDH is a computational estimate of DNA–DNA hybridization relatedness, calibrated to the historical experimental measure. The conventional roughly 95–96 percent ANI and 70 percent dDDH boundaries are broad species guides; they are not universally interchangeable. GTDB uses a species-specific representative radius and an AF rule. TYGS uses type-strain comparisons and dDDH clustering. The NMZ direct dDDH result uses d4; d5 distances are separately used for the tree. Sources: Goris et al. 2007, https://doi.org/10.1099/ijs.0.64483-0 ; Meier-Kolthoff and Göker 2019, https://doi.org/10.1038/s41467-019-10210-3 ; https://ecogenomics.github.io/GTDBTk/commands/classify_wf.html ; '+src.tygs);
@@ -153,24 +138,57 @@ const src={
 }
 
 {
+ const s=slide('Genes, neighborhoods, clusters and operons',
+  'Read a gene arrow as an annotated DNA feature: its position and direction are information, rather than a measurement of expression. A neighborhood means nearby genes. A biosynthetic cluster is a set of nearby genes implicated in making a molecule, with stronger evidence when machinery and known biology fit together. An operon is a transcriptional unit; mere proximity is insufficient to establish one. The pig comparison shows an organized multi-gene pigment-associated region. Its C14-NMZ label follows GTDB, as explained on slide 5. Its flanking genes are not all automatically part of the pigment pathway. swrW provides a useful contrast: one approximately 3.94-kb gene encodes a single Ser-selective C–A–PCP–TE NRPS module. A single module can be used iteratively, and a large predicted region is not necessarily a large experimentally delimited operon. The red/pink culture phenotype supports a pigment-associated finding without adding a chemical confirmation of prodigiosin. Sources: original Figure7_prodigiosin.jpeg; focal antiSMASH annotations; https://docs.antismash.secondarymetabolites.org/understanding_output/regions/ ; '+src.swrw);
+ table(s,[['Term','Meaning'],['Gene','DNA sequence encoding a product'],['Neighborhood','Nearby genes: physical context'],['Biosynthetic cluster','Nearby genes implicated in making a molecule'],['Operon','Genes transcribed together as a unit']],{y:139,h:270,widths:[340,812],size:26});
+ await fitimg(s,'Figure7_prodigiosin.jpeg',64,427,1152,165,'Top two focal-isolate rows of the original pig-associated clinker comparison',{left:0,top:0,right:0,bottom:.79});
+ text(s,'pig: a multi-gene example. SwrW: a multifunctional enzyme encoded by one gene.',64,608,1152,58,27,C.teal,true);
+}
+
+{
+ const s=slide('Genome-wide BGC mining with antiSMASH',
+  'antiSMASH v8.0.4 uses rules based on protein domains and gene context to flag candidate biosynthetic gene clusters (BGCs). Each focal chromosome has 11 predicted regions, all recorded as internal (contig_edge=False). Numbers follow the order along each chromosome. Shared numbering does not establish homology. The isolates share the Region 5 pig locus, Region 8 PQQ cofactor cassette and Region 11 SwrW locus. C14 Region 3 is called ranthipeptide and Region 7 opine-like metallophore. The Region 10 NRPS architectures differ. The overview is a map of predictions. Read the gene and domain evidence before assigning products. Sources: master manuscript section 3, original focal antiSMASH v8.0.4 overviews and Blin et al. (2025), https://doi.org/10.1093/nar/gkaf334.');
+ text(s,'SM-NMZ · 11 predicted regions',64,143,550,39,28,C.teal,true);
+ text(s,'C14-NMZ · 11 predicted regions',656,143,560,39,28,C.teal,true);
+ await fitimg(s,'Figure3_SM-NMZ-antismash-overview.jpeg',64,192,560,310,'antiSMASH v8.0.4 overview showing 11 SM-NMZ chromosome regions');
+ await fitimg(s,'Figure3_C14-NMZ-antismash-overview.jpeg',656,192,560,204,'antiSMASH v8.0.4 overview showing 11 C14-NMZ chromosome regions');
+ text(s,'antiSMASH v8.0.4 lists regions in chromosome order. Check the underlying matches before using the displayed product name.',656,421,560,100,24,C.muted);
+ text(s,'Shared regions include pig (5), the PQQ cofactor cassette (8) and swrW (11).',64,553,1152,43,27,C.teal,true);
+ text(s,'C14 adds ranthipeptide (3) and opine-like (7) calls. Region 10 differs between isolates.',64,612,1152,40,25,C.muted);
+}
+{
+ const s=slide('Reading antiSMASH reference matches',
+  'KnownClusterBlast compares the region with MIBiG entries. Inspect the number and coverage of matched proteins, core genes and domain organization. Region 5 matches 16 reference proteins at 87–100% amino-acid identity with near-full-length coverage. The conserved pigA–pigN core contains 14 genes. The red/pink cultures are consistent with the pathway prediction. The SM Region 11 ririwpeptide A/B/C hit is one protein at 47% identity and 45.9% coverage. The conserved focal SwrW homologs and the Ser-selective C–A–PCP–TE module support a W1 synthetase assignment alongside the reported chemistry. The partial metallophore matches support class-level interpretation. C14 Region 7 is yersinopine-like, based on CntM/CntL and a partial six-protein match. Region 10 in SM is a Gap1-like NRPS/acyl-loading cassette with three amino-acid modules across two proteins with about 30 mostly near-full-length protein matches to the UENF-22GI locus, typically at 97–100% identity. C14 has a distinct single-module NRPS with a predicted D-Val feature. The focal architectures do not support assigning library-only stephensiolide G/K hits to these regions. Sources: master manuscript section 3, focal antiSMASH files and https://docs.antismash.secondarymetabolites.org/modules/clusterblast/. '+src.swrw+' '+src.chem);
+ table(s,[['Region','Match or architecture','Interpretation'],['5 · pig','16 proteins, 87–100% identity; near-full-length matches','Conserved 14-gene prodigiosin pathway'],['11 · swrW','SM “ririwpeptide” hit: 1 protein, 47% identity, 45.9% coverage','Curated SwrW call fits the Ser-selective module and reported chemistry'],['1, 9 and C14 7 · metal binding','Partial MIBiG matches, 5–6 proteins','Supports metallophore class potential'],['10 · focal NRPSs','SM: Gap1-like, 3 modules\nC14: 1 module, predicted D-Val','Neither architecture supports a stephensiolide G/K assignment.']],{y:141,h:405,widths:[238,424,490],size:24});
+ text(s,'Compare how much matches, which genes match and how their domains are arranged.',64,582,1152,70,27,C.teal,true);
+}
+{
+ const s=slide('SwrW evidence in the NMZ study',
+  'Walk through the original evidence table with one concrete example. The related SwrW proteins and their C–A–PCP–TE domains support a family-level biosynthetic candidate. Conserved local organization gives context and does not prove co-transcription or which neighboring genes are required. The reported LC-HRMS assignments add chemical evidence at the actual analytical confidence documented by the chemistry team. Tension and E24 measurements would answer what the tested material does, while controlled interventions or purified-compound comparisons could test a contribution to that effect. No such NMZ causal experiment is reported here, and no missing endpoint value is inferred. Shanks et al. performed relevant genetic and purified-compound experiments in their reference strains; that evidence establishes precedent, not a result in NMZ. '+src.swrw+' '+src.chem);
+ table(s,[['Observation or test','What it supports'],['SwrW sequence, domains and context','A plausible biosynthetic candidate'],['Putative LC-HRMS assignments','Serrawettin W1 (= serratamolide A) and serratamolide C'],['Tension or E24 assay','Effect of the particular material tested'],['Controlled intervention / purified compound','A test of contribution to that effect']],{y:158,h:385,widths:[550,602],size:27});
+ text(s,'The conserved SwrW candidate and reported LC-HRMS assignments agree.',64,568,1152,43,28,C.teal,true);
+ text(s,'Pair the chemistry with activity measured on the same test material.',64,621,1152,35,25,C.muted);
+}
+
+{
  const s=slide('SwrW and reported serratamolides',
-  'About 2 minutes. The image is a crop of the original clinker figure showing only the focal pair. The orange arrows mark swrW. Arrow direction follows gene orientation; ribbons connect protein matches. Their presence does not demonstrate transcription. The focal SwrW proteins share 98.9% amino-acid identity and carry a Ser-selective C–A–PCP–TE architecture. Characterized SwrW uses one module to make a cyclic dimeric depsipeptide, so one module does not imply a one-amino-acid product. The architecture supports family-level biosynthetic potential and does not select an exact congener. The manuscript reports LC-HRMS serrawettin W1 and serratamolide C for both isolates under the author\'s working assumption. W1 is also called serratamolide, so aliases are not independent discoveries. A chemical assignment and a contribution to measured activity remain separate claims. '+src.swrw+' '+src.chem);
+  'The image is a crop of the original clinker figure showing only the focal pair. The orange arrows mark swrW. Arrow direction follows gene orientation; ribbons connect protein matches. Their presence does not demonstrate transcription. The focal SwrW proteins share 98.9% amino-acid identity and carry a Ser-selective C–A–PCP–TE architecture. Characterized SwrW uses one module to make a cyclic dimeric depsipeptide, so one module does not imply a one-amino-acid product. The architecture supports family-level biosynthetic potential and does not select an exact congener. Both compounds were assigned in samples 1 and 2 in the glycopeptide and DCM columns. The chemistry source provides no sample-to-isolate key. Serrawettin W1 is the alias for serratamolide A. Serratamolide C is a distinct congener. A chemical assignment and a contribution to measured activity remain separate claims. '+src.swrw+' '+src.chem);
  text(s,'Genomic evidence',64,145,550,35,26,C.teal,true);
  text(s,'Both isolates carry a conserved swrW candidate.',64,191,1130,45,31);
  await img(s,'Figure6_serrawettin.jpeg',64,255,1152,200,'Focal SM-NMZ and C14-NMZ rows from the original SwrW clinker comparison',{left:0,top:0,right:0.21,bottom:0.778});
- text(s,'Reported chemical evidence',64,487,780,35,26,C.teal,true);
- text(s,'LC-HRMS: serrawettin W1 and serratamolide C',64,535,1130,45,31);
- text(s,'The pig locus also matches the red/pink culture phenotype.',64,606,1110,37,25,C.muted);
+ text(s,'Putative LC-HRMS assignments · samples 1 and 2',64,484,1140,38,26,C.teal,true);
+ text(s,'Serrawettin W1 (= serratamolide A) and serratamolide C',64,535,1130,45,31);
+ text(s,'The report does not map rows to isolates. Separately, pig fits the red/pink cultures.',64,606,1152,37,25,C.muted);
  s.speakerNotes.append(' The conserved 14-gene pig architecture and reported red/pink cultures add a separate pigment-associated finding. They do not establish an emulsification or pour-point mechanism. Source: manuscript pig comparison and Figure7_prodigiosin.jpeg.');
 }
 {
  const s=slide('Extracellular matrices and surface activity',
-  'About 2 minutes. EPS means extracellular polymeric substances, which can include polysaccharides and other material. A capsule remains associated with the cell, while the composition of released material depends on growth and extraction. Both isolates have capsule, EPS2 and cellulose-associated loci. The displayed DNA Features Viewer panel shows the important focal difference: a contiguous pgaDCBA locus in SM, compared with corresponding C14 flanks lacking that intervening locus. C14 still has a separate pgaB homolog elsewhere. The pga system is associated with PNAG, a matrix polysaccharide, but no polymer chemistry or amount is measured here. Large polymers can influence emulsion stability, while small amphiphiles can affect interfaces. Their relative roles depend on which material the assay uses. The HADEG Emulsan category contains generic capsule markers. '+src.loci+' PNAG reference: https://doi.org/10.1128/JB.186.9.2724-2734.2004.');
+  'EPS means extracellular polymeric substances, which can include polysaccharides and other material. A capsule remains associated with the cell, while the composition of released material depends on growth and extraction. Both isolates have capsule, EPS2 and cellulose-associated loci. The displayed DNA Features Viewer panel shows the important focal difference: a contiguous pgaDCBA locus in SM, compared with corresponding C14 flanks lacking that intervening locus. C14 still has a separate pgaB homolog elsewhere. The pga system is associated with PNAG, a matrix polysaccharide, but no polymer chemistry or amount is measured here. Large polymers can influence emulsion stability, while small amphiphiles can affect interfaces. Their relative roles depend on which material the assay uses. The HADEG Emulsan category contains generic capsule markers. '+src.loci+' PNAG reference: https://doi.org/10.1128/JB.186.9.2724-2734.2004.');
  text(s,'Both isolates: capsule/EPS and cellulose candidates',64,145,1150,44,30);
  await img(s,'figures/Figure3_EPS-CPS-neighborhoods.png',64,213,1152,335,'Panel D: SM pgaDCBA and the corresponding C14 flanks, equal kb scale',{left:0,top:0.699,right:0,bottom:0.086});
  text(s,'Gene arrows. Scale in kb from the first displayed CDS.',64,548,1140,26,21,C.muted);
- text(s,'SM has the contiguous pga locus associated with PNAG.',64,577,1150,40,29,C.teal,true);
- text(s,'Matrix contribution depends on the material actually assayed.',64,627,1140,32,24,C.muted);
+ text(s,'SM-NMZ adds a contiguous pgaDCBA locus associated with PNAG.',64,577,1150,40,29,C.teal,true);
+ text(s,'Compare biofilm or emulsion stability if the isolates differ in those assays.',64,627,1140,32,24,C.muted);
 }
 
 {
@@ -178,15 +196,15 @@ const src={
   'EPS is used here for extracellular polymeric substances: a broad matrix that may contain polysaccharides, proteins, extracellular DNA and other components. Some papers use EPS more narrowly for exopolysaccharides; define the usage rather than treating every EPS label as a chemical identity. CPS means capsular polysaccharide, emphasizing a cell-associated layer. PNAG is a specific beta-1,6-linked N-acetylglucosamine polymer, often partly deacetylated, associated with pga machinery in characterized systems. Cellulose is a distinct beta-1,4-linked glucose polymer. The NMZ pga and bcs annotations support candidates; they do not determine polymer amount, exact modification or the chemistry of the assayed preparation. HADEG uses wzb/wzc capsule-associated markers under the Emulsan category, but these regulatory/export-associated homologs do not identify a particular polymer product. Sources: Wang et al. 2004, https://doi.org/10.1128/JB.186.9.2724-2734.2004 ; Flemming and Wingender 2010, https://doi.org/10.1038/nrmicro2415 ; Omadjela et al. 2013, https://doi.org/10.1073/pnas.1314063110 ; '+src.loci);
  text(s,'Polysaccharides are long chains of sugar units.',64,139,1152,37,27);
  table(s,[['Term','What it means'],['EPS','Extracellular polymeric substances: the matrix'],['CPS','Capsular polysaccharide: associated with the cell'],['PNAG','β-(1→6)-linked N-acetylglucosamine polymer'],['Cellulose','β-(1→4)-linked glucose polymer']],{y:201,h:300,widths:[260,892],size:27});
- text(s,'PNAG and cellulose have different sugar units and linkages.',64,537,1152,70,28,C.teal,true);
- text(s,'A marker category does not identify the polymer in an NMZ sample.',64,621,1152,37,25,C.muted);
+ text(s,'Small lipopeptides and matrix polymers can affect emulsions differently.',64,537,1152,70,28,C.teal,true);
+ text(s,'Record whether each assay used whole broth, supernatant or an extract.',64,621,1152,37,25,C.muted);
 }
 {
  const s=slide('Capsule loci and the HADEG markers',
   'Both focal capsule-associated regions contain export, protein-tyrosine-phosphatase and Wzc kinase annotations within a larger polysaccharide-associated neighborhood. The short PTP label abbreviates the phosphatase source product; the source CDSs are NNLMDO_007300 and OJMJKD_007450. Wzc annotations are NNLMDO_007305 and OJMJKD_007455. These correspond to the generic wzb/wzc marker interpretation used for the HADEG Emulsan category. The figure labels selected source gene qualifiers and marker products, while retaining every CDS arrow and the same physical scale across the two tracks. Shared regulatory/export machinery is used across polysaccharide systems; the two-marker call does not determine a polymer repeat structure or establish a particular emulsifying product in NMZ. No polymer-chemistry measurement is added. Sources: focal HADEG marker tables, Bakta products, and the canonical gbparse neighborhood sidecar. '+src.loci);
  await fitimg(s,'explainer/assets/Capsule-loci.png',64,168,1152,355,'Focal capsule-associated neighborhoods; all CDS shown, selected annotations labeled, equal kb scale');
- text(s,'PTP: tyrosine phosphatase · Wzc: tyrosine kinase',64,549,1152,43,28,C.teal,true);
- text(s,'The HADEG “Emulsan” label does not identify the polymer product.',64,613,1152,50,26,C.muted);
+ text(s,'Wzb-like PTP and Wzc are capsule-associated phosphatase and kinase candidates.',64,549,1152,43,28,C.teal,true);
+ text(s,'The HADEG “Emulsan” hits sit in capsule-associated neighborhoods.',64,613,1152,50,26,C.muted);
 }
 {
  const s=slide('Cellulose-associated loci in both isolates',
@@ -198,12 +216,12 @@ const src={
 
 {
  const s=slide('Aromatic metabolism depends on the substrate',
-  'About 2 minutes. Aromatic refers to ring chemistry. A hydrocarbon contains only carbon and hydrogen. Phenylacetate and hydroxyphenylacetate contain oxygen, so these aromatic substrates are not hydrocarbons. The shared hpa locus shown here and the paa locus support organized candidate routes for those particular compounds. SM additionally has hydroxybenzoate/protocatechuate and gentisate-associated candidates, with some downstream assignments still unresolved. These differences suggest experiments with specified substrates. They do not establish a faster rate or petroleum-wide degradation. The HADEG Toluene_degradation hit corresponds to a hydroxybenzoate-hydroxylase candidate in a pcaK neighborhood, rather than a complete toluene pathway. '+src.loci+' Prieto et al. (1996): https://doi.org/10.1128/jb.178.1.111-120.1996. Teufel et al. (2010): https://doi.org/10.1073/pnas.1005399107. Romero-Silva et al. (2013): https://doi.org/10.1371/journal.pone.0056038.');
+  'Aromatic refers to ring chemistry. A hydrocarbon contains only carbon and hydrogen. Phenylacetate and hydroxyphenylacetate contain oxygen, so these aromatic substrates are not hydrocarbons. The shared hpa locus shown here and the paa locus support organized candidate routes for those particular compounds. SM additionally has hydroxybenzoate/protocatechuate and gentisate-associated candidates, with some downstream assignments still unresolved. These differences suggest experiments with specified substrates. They do not establish a faster rate or petroleum-wide degradation. The HADEG Toluene_degradation hit corresponds to a hydroxybenzoate-hydroxylase candidate in a pcaK neighborhood, rather than a complete toluene pathway. '+src.loci+' Prieto et al. (1996): https://doi.org/10.1128/jb.178.1.111-120.1996. Teufel et al. (2010): https://doi.org/10.1073/pnas.1005399107. Romero-Silva et al. (2013): https://doi.org/10.1371/journal.pone.0056038.');
  text(s,'Both isolates: organized hpa and paa loci',64,145,1140,43,31);
  await img(s,'figures/Figure5_Aromatic-neighborhoods.png',64,206,1152,330,'Panel A: shared hydroxyphenylacetate-associated hpa neighborhoods',{left:0,top:0.061,right:0,bottom:0.702});
  text(s,'Gene arrows. Scale in kb from the first displayed CDS.',64,536,1140,26,21,C.muted);
  text(s,'SM adds hydroxybenzoate/pca and gentisate candidates.',64,563,1140,42,29,C.teal,true);
- text(s,'These findings concern specific oxygenated aromatics.',64,620,1140,38,25,C.muted);
+ text(s,'Match conversion assays to the oxygenated aromatic substrate and its route.',64,620,1140,38,25,C.muted);
 }
 
 {
@@ -213,7 +231,7 @@ const src={
  text(s,'toluene → p-cresol → 4-HBA → protocatechuate',64,211,1152,62,34);
  text(s,'Initial activation and processing precede the PobA step.',64,291,1152,45,28);
  await fitimg(s,'explainer/assets/Hydroxybenzoate-neighborhood.png',64,360,1152,208,'Exact SM bglB–4-hydroxybenzoate-hydroxylase–pcaK–dsdA neighborhood for the HADEG hit');
- text(s,'SM NNLMDO_011765: a downstream hydroxylase candidate',64,573,1152,40,28,C.teal,true);
+ text(s,'SM NNLMDO_011765 and pcaK point to a downstream aromatic-acid step.',64,573,1152,40,28,C.teal,true);
  text(s,'4-HBA = 4-hydroxybenzoate. *Label abbreviates the source product.',64,628,1152,28,23,C.muted);
 }
 {
@@ -229,42 +247,41 @@ const src={
  const s=slide('LadA evidence across the literature',
   'Feng et al. 2007 reported in-vivo and in-vitro evidence for canonical NG80-2 LadA. Boonmak et al. 2014 examined B23 homologs and reported alkane depletion in a heterologous bacterial host; distinguish that evidence from a purified-enzyme assay, and do not present its non-significant 30-degree growth comparison as successful complementation. Mireles et al. 2025 tested canonical LadA, an optimized variant and four homologs and could not detect direct long-chain n-alkane hydroxylation under their in-vitro conditions despite extensive troubleshooting. They leave a possible role in the broader pathway open while questioning the first hydroxylation step. This history explains both why a homolog search was motivated and why the NMZ proteins remain candidates. It does not establish a substrate for every member of the family. Sources: https://doi.org/10.1073/pnas.0609650104 ; https://doi.org/10.1007/s00792-014-0636-y ; https://doi.org/10.1371/journal.pone.0332702 .');
  table(s,[['Study','Evidence reported','Interpretation'],['Feng et al. 2007','Canonical LadA: in-vivo and in-vitro support','Initial long-chain oxidation proposed'],['Boonmak et al. 2014','B23 homologs: alkane depletion in a heterologous host','Cell-based evidence; not purified enzyme'],['Mireles et al. 2025','No direct hydroxylation detected for tested proteins','First-step assignment questioned']],{y:165,h:370,widths:[235,478,439],size:26});
- text(s,'The NMZ homologs still need a direct functional assignment.',64,580,1152,67,30,C.teal,true);
+ text(s,'The literature gives us a candidate family and a substrate question to test.',64,580,1152,67,30,C.teal,true);
 }
 
 {
  const s=slide('Initial alkane oxidation',
-  'About 1½ minutes. This is a simplified aerobic terminal-oxidation route. It does not describe all possible alkane pathways. Initial oxidation converts an alkane to an alcohol and requires appropriate initiation machinery. Downstream alcohol/aldehyde processing and fatty-acid metabolism cannot establish that initial reaction. The annotations named alkB in these genomes are DNA-repair demethylases, a different protein from membrane alkane hydroxylase AlkB. The reported searches did not resolve a convincing initiation system. This negative result is bounded by the methods, reference coverage and thresholds used. If controlled experiments show a chemical transformation, report that observation while keeping the initiating enzyme unresolved. An emulsion or lower pour point alone does not show alkane oxidation. Source: focal annotation products, HADEG tables and manuscript search results. '+src.lad);
+  'This is a simplified aerobic terminal-oxidation route. It does not describe all possible alkane pathways. Initial oxidation converts an alkane to an alcohol and requires appropriate initiation machinery. Downstream alcohol/aldehyde processing and fatty-acid metabolism cannot establish that initial reaction. The annotations named alkB in these genomes are DNA-repair demethylases, a different protein from membrane alkane hydroxylase AlkB. The reported searches did not resolve a convincing initiation system. This negative result is bounded by the methods, reference coverage and thresholds used. If controlled experiments show a chemical transformation, report that observation while keeping the initiating enzyme unresolved. An emulsion or lower pour point alone does not show alkane oxidation. Source: focal annotation products, HADEG tables and manuscript search results. '+src.lad);
  table(s,[['Simplified step','Genomic interpretation'],['Alkane to alcohol','Initiating system unresolved'],['Alcohol to aldehyde','Downstream processing candidates'],['Aldehyde to fatty acid','Downstream processing candidates'],['Fatty acid to cellular metabolism','Beta-oxidation and assimilation context']],{y:162,h:360,widths:[512,640],size:28});
- text(s,'DNA-repair AlkB and alkane hydroxylase AlkB are different proteins.',64,572,1150,70,29,C.teal,true);
+ text(s,'Both genomes encode β-oxidation. Alkane initiation remains unresolved.',64,572,1150,70,29,C.teal,true);
 }
 {
  const s=slide('The LadA-like comparison',
-  'About 2 minutes. This is an extracted subtree from the actual 34-sequence analysis, with original branch lengths. It includes the focal pair, canonical LadA A4IU28, LadA-alpha BAM76377.1 and an additional comparison sequence. We display the second component of each source internal label, the UFBoot value. The focal pair has 100% support and the larger grouping containing the canonical references has 99%. The reference pair itself has 68%, showing why a broad supported grouping should not be overread. Support describes grouping stability under the analysis, not the chance that a protein oxidizes an alkane. The source annotations call both candidates ssuD, and their neighborhood has sulfur/methionine-associated context. Earlier work reported activity and heterologous complementation. Mireles et al. did not detect direct long-chain alkane hydroxylation for tested LadA proteins under their conditions. That result does not determine every untested homolog\'s substrate. Our focal candidates remain functionally unresolved. '+src.lad+' '+src.loci);
- await img(s,'explainer/assets/LadA-subtree.png',64,145,1152,355,'Source-derived LadA comparison subtree with branch lengths, UFBoot labels 100, 99 and 68, and comparison sequence');
+  'This is an extracted subtree from the actual 34-sequence analysis, with original branch lengths. It includes the focal pair, canonical LadA A4IU28, LadA-alpha BAM76377.1 and the NtaA/DmoA family FMN-dependent monooxygenase from Candidatus Mycolicibacterium alkanivorans (A0ABS9YXJ5), the comparison tip outside the focal LadA-associated group. The subtree preserves the source topology and does not establish the root of the full tree. We display the second component of each source internal label, the UFBoot value. The focal pair has 100% support and the larger grouping containing the canonical references has 99%. The reference pair itself has 68%, showing why a broad supported grouping should not be overread. Support describes grouping stability under the analysis, not the chance that a protein oxidizes an alkane. The source annotations call both candidates ssuD, and their neighborhood has sulfur/methionine-associated context. Earlier work reported activity and heterologous complementation. Mireles et al. did not detect direct long-chain alkane hydroxylation for tested LadA proteins under their conditions. That result does not determine every untested homolog\'s substrate. Our focal candidates remain functionally unresolved. '+src.lad+' '+src.loci);
+ await fitimg(s,'explainer/assets/LadA-subtree.png',64,136,1152,360,'Source-derived LadA comparison subtree with branch lengths, UFBoot labels 100, 99 and 68, and comparison sequence');
  text(s,'Node labels show UFBoot support (%).',64,501,1140,26,21,C.muted);
- text(s,'Strong sequence grouping supports a candidate relationship.',64,534,1150,45,30,C.teal,true);
- text(s,'Its substrate remains unresolved. Nearby genes add sulfur/methionine context.',64,591,1150,67,27);
+ text(s,'UFBoot support: 100% for the focal pair, 99% for the LadA-associated clade.',64,534,1150,45,28,C.teal,true);
+ text(s,'The conserved ssuD and metNPQ context adds a sulfur-related substrate hypothesis.',64,591,1150,67,27);
 }
 {
  const s=slide('Matching assays to genomic candidates',
-  'About 2 minutes. No numerical results for these four endpoints were supplied to the genomics author. This table is an interpretation framework. Tension requires the actual interface and units, usually mN/m. E24 is emulsion-layer height over total liquid-column height after 24 hours, multiplied by 100, under a specified oil and mixing protocol. Pour point is a temperature endpoint under a stated method and thermal history. Conversion needs the exact substrate and controls for recovery, adsorption or redistribution, preferably with products or carbon accounting. A shared swrW locus cannot explain an isolate difference by itself. Regulation, abundance and mixture composition are testable explanations rather than results. A published serrawettin effect in another strain supplies precedent only. Source: manuscript four-theme passages and integration notes. Zhang et al. (2021), another strain: https://doi.org/10.1007/s00449-021-02625-4.');
+  'No numerical results for these four endpoints were supplied to the genomics author. This table is an interpretation framework. Tension requires the actual interface and units, usually mN/m. E24 is emulsion-layer height over total liquid-column height after 24 hours, multiplied by 100, under a specified oil and mixing protocol. Pour point is a temperature endpoint under a stated method and thermal history. Conversion needs the exact substrate and controls for recovery, adsorption or redistribution, preferably with products or carbon accounting. A shared swrW locus cannot explain an isolate difference by itself. Regulation, abundance and mixture composition are testable explanations rather than results. A published serrawettin effect in another strain supplies precedent only. Source: manuscript four-theme passages and integration notes. Zhang et al. (2021), another strain: https://doi.org/10.1007/s00449-021-02625-4.');
  table(s,[['Endpoint, if measured','Relevant interpretation','Evidence to pair with it'],['Surface/interfacial tension','Amphiphile contribution','Material, interface, mN/m, control'],['E24 emulsification index','Amphiphile and/or matrix contribution','Oil, 24-h protocol, layer heights'],['Aromatic conversion','Route matching the exact substrate','Substrate, products and recovery controls'],['Pour point','Low-temperature oil-flow performance','Oil, dose, method and temperature']],{h:385,widths:[325,405,422],size:25});
- text(s,'Numerical endpoint data remain with the experimental team.',64,587,1140,52,29,C.teal,true);
+ text(s,'Pair each assay value with the material tested and its control.',64,587,1140,52,29,C.teal,true);
 }
 {
  const s=slide('Host-interaction genes',
-  'About 1 minute. VFDB similarity finds reference-associated homologs under a stated search procedure. ShlA and ShlB are associated with hemolysin machinery, Has with heme acquisition, and T6SS with interbacterial competition in characterized systems. Multiple database labels may describe the same genomic locus, so a hit count is not a virulence score. These findings matter if deployment is proposed, but cannot establish pathogenicity or safety of the focal isolates. Shanks et al. also links serratamolide to hemolytic activity in a reference strain. A biosurfactant label is therefore a functional description, with no automatic safety implication. Do not claim NMZ hemolysis without a relevant assay. Source: focal VFDB profiling and manuscript comparative section. Shanks et al. (2012): https://doi.org/10.1371/journal.pone.0036398. Murdoch et al. (2011): https://doi.org/10.1128/JB.05671-11.');
+  'VFDB similarity finds reference-associated homologs under a stated search procedure. ShlA and ShlB are associated with hemolysin machinery, Has with heme acquisition, and T6SS with interbacterial competition in characterized systems. Multiple database labels may describe the same genomic locus, so a hit count is not a virulence score. These findings matter if deployment is proposed, but cannot establish pathogenicity or safety of the focal isolates. Shanks et al. also links serratamolide to hemolytic activity in a reference strain. A biosurfactant label is therefore a functional description, with no automatic safety implication. Do not claim NMZ hemolysis without a relevant assay. Source: focal VFDB profiling and manuscript comparative section. Shanks et al. (2012): https://doi.org/10.1371/journal.pone.0036398. Murdoch et al. (2011): https://doi.org/10.1128/JB.05671-11.');
  table(s,[['Reference-associated system','Biological role in characterized systems'],['ShlA–ShlB','Hemolysin machinery'],['Has','Heme acquisition'],['Type VI secretion system','Bacterial competition']],{h:300,widths:[480,672],size:29});
- text(s,'Reference matches do not quantify pathogenicity or establish safety.',64,533,1140,94,32,C.teal,true);
+ text(s,'These homologs provide context for host and microbial interactions.',64,533,1140,94,30,C.teal,true);
 }
 {
- const s=slide('The genomics contribution to the paper',
-  'About 1 minute, then discussion. Lead with the conserved swrW candidate alongside the reported serratamolides, the pig locus with the observed pigmentation, and the extracellular-matrix loci with a meaningful focal difference at pga. Aromatic routes should connect only to matching substrate experiments. Keep the LadA-like candidate as a bounded comparative finding. The TYGS and GTDB results differ in their species assignment for C14-NMZ. The most useful next discussion is which experimental endpoint leads the paper and what material generated that endpoint. Match those results to these candidate systems before attributing a mechanism. Source: revised master and both concise manuscripts, TYGS report, and the focal gene-neighborhood sidecars.');
- table(s,[['Finding','Contribution'],['SwrW and reported serratamolides','Specific surface-active metabolite lead'],['pig locus and red/pink cultures','Pigment-associated finding'],['Matrix loci and SM pga cluster','Shared systems plus a focal difference'],['Aromatic loci and LadA-like comparison','Substrate-specific context and an unresolved enzyme']],{h:355,widths:[535,617],size:27});
- text(s,'Which measured endpoint and material should lead the paper?',64,575,1150,64,31,C.teal,true);
+ const s=slide('Evidence scoreboard',
+  'Lead with the conserved swrW locus alongside the reported serratamolides, the pig cluster alongside red/pink cultures, and the shared matrix loci with the SM-NMZ pgaDCBA difference. Pigmentation is observed, while prodigiosin chemical identity is not established here. Pair the aromatic candidates with the matching substrates. Beta-oxidation supports downstream assimilation. The LadA-like candidate does not establish alkane initiation. The last column names the assays relevant to each system. It contains no inferred endpoint values or assignment of the oil response to a particular compound. Sources: revised master and concise manuscripts, focal gene-neighborhood sidecars and '+src.chem);
+ table(s,[['System / locus','Genomic candidate','Chemistry / phenotype in hand','Wet-lab assay slot'],['Biosurfactant (swrW)','Shared 1-module NRPS\n98.9% protein identity','Putative LC-HRMS: serratamolide A (W1) and C','Tension, E24 and pour point'],['Pigment (pigA–pigN)','Conserved 14-gene pathway','Red/pink cultures','Pigment identity, if measured'],['Matrix polysaccharides','Shared CPS/EPS and bcs; SM pgaDCBA','Polymer chemistry unmeasured','E24 or biofilm assays'],['Oxygenated aromatics','Shared hpa/paa; SM hydroxybenzoate/pca/gentisate','Conversion data pending','Substrate-specific conversion'],['Alkanes','β-oxidation; LadA-like candidate','Initial oxidation unresolved','Alkane conversion and products']],{y:141,h:421,widths:[215,331,317,289],size:22});
+ text(s,'Add the measured endpoints and test materials to the matching rows.',64,590,1152,57,29,C.teal,true);
 }
-
 // Optional technical backups follow the main narrative.
 {
  const s=slide('Workflow and tools by purpose',
@@ -300,9 +317,9 @@ const src={
 }
 {
  const s=slide('Chemical assignments and peak areas',
-  'Optional backup. The supplied chemistry presentation describes COCONUT-based workflows, with a second workflow adding Waters libraries, blank filtering and mass/fragment criteria. It reports serratamolide C among candidate assignments. The author has instructed that the deck/PDF covers both focal isolates. The displayed percent areas describe relative detector response under the specified denominator, not molar concentration, purity, yield or between-isolate production. Do not assign the fraction rows to an isolate without the source mapping. Authentic-standard evidence and a formal analytical confidence level should be reported only when documented. A molecular feature can support a chemical assignment without establishing which component caused an observed physical effect. '+src.chem,true);
+  'Optional backup. The supplied chemistry presentation describes COCONUT-based workflows, with a second workflow adding Waters libraries, blank filtering and mass/fragment criteria. The reported chemistry includes serrawettin W1 (= serratamolide A) and serratamolide C. Both workflows list A and C in samples 1 and 2 in the glycopeptide and DCM columns (report pp. 5–6 and 15–16). Those IDs do not establish isolate identity. The displayed percent areas describe relative detector response under the specified denominator, not molar concentration, purity, yield or between-isolate production. Do not assign the fraction rows to an isolate without the source mapping. Authentic-standard evidence and a formal analytical confidence level should be reported only when documented. A molecular feature can support a chemical assignment without establishing which component caused an observed physical effect. '+src.chem,true);
  table(s,[['Observation','What it can support'],['Exact mass and adduct','A candidate molecular composition'],['Fragmentation and reference match','Additional structural evidence'],['Authentic standard, when documented','A stronger identity comparison'],['Relative peak area','Detector signal under a stated denominator']],{h:355,widths:[510,642],size:28});
- text(s,'The source reports chemical assignments. Genomics adds biosynthetic context.',64,565,1140,77,29,C.teal,true);
+ text(s,'Serrawettin W1 (= serratamolide A) and serratamolide C fit the SwrW candidate.',64,565,1140,77,29,C.teal,true);
 }
 {
  const s=slide('Additional SM aromatic candidates',
@@ -320,10 +337,23 @@ const src={
  text(s,'Source gene qualifier: ssuD. Candidate substrate remains unresolved.',64,580,1140,65,29,C.teal,true);
 }
 
+
+{
+ const s=slide('Conserved metabolic background (DRAM)',
+  'Optional backup. DRAM profiled 98 curated traits across 13 Serratia genomes and the Prodigiosinella aquatilis PA-LS101 outgroup. Of these, 90/98 (91.8%) were invariant across all 14 genomes and 95/98 (96.9%) across the 13 Serratia, with 98.6% mean pairwise agreement within Serratia. Agreement includes shared absences. Both focal isolates scored complete for glycolysis, Entner–Doudoroff, the pentose phosphate pathway, the TCA cycle, Complex I, fumarate reductase, cytochrome bd/o oxidases and F-type ATPase. The three variable Serratia traits were succinate-dehydrogenase completeness (C14 75%, SM 50%), the GH43 arabinan-associated call and the K08357 tetrathionate-reduction marker. The plots report annotated module completeness and marker presence. Source: master manuscript section 3, Figure 4 and the NMZ DRAM outputs. Shaffer et al. (2020), https://doi.org/10.1093/nar/gkaa621.',true);
+ text(s,'Central carbon and respiration',64,142,550,38,25,C.teal,true);
+ text(s,'Auxiliary functions',636,142,580,38,25,C.teal,true);
+ await fitimg(s,'Figure3_DRAM.jpeg',64,186,550,309,'DRAM central carbon and electron transport panel');
+ await fitimg(s,'Figure3_DRAM2.jpeg',636,186,580,218,'DRAM auxiliary metabolism panel');
+ text(s,'Within Serratia, three calls varied: succinate dehydrogenase, GH43 arabinan and a tetrathionate marker.',636,423,580,102,24,C.muted);
+ text(s,'Invariant DRAM traits: 90/98 across all 14 genomes (91.8%).',64,570,1152,39,28,C.teal,true);
+ text(s,'Within Serratia: 95/98 across 13 genomes (96.9%), including shared absences.',64,622,1152,37,24,C.muted);
+}
+
 if (audit.filter(a=>!a.backup).length!==MAIN_COUNT) throw new Error('Main slide count mismatch');
 for (let i=0;i<audit.length;i++) audit[i].notes=P.slides.items[i].speakerNotes.text;
 await fs.writeFile(path.join(build,'slide-content.json'),JSON.stringify(audit,null,2));
-await fs.writeFile(path.join(output,'speaker-notes.md'),'# NMZ Serratia explainer: speaker notes\n\n23 main slides followed by 8 optional backups. Teaching session; no fixed time limit.\n\n'+audit.map(a=>`## ${a.backup?'B'+(a.number-MAIN_COUNT):a.number}. ${a.title}\n\n${a.notes}\n`).join('\n'));
+await fs.writeFile(path.join(output,'speaker-notes.md'),'# NMZ Serratia explainer: speaker notes\n\n25 main slides followed by 9 optional backups. Teaching session; no fixed time limit.\n\n'+audit.map(a=>`## ${a.backup?'B'+(a.number-MAIN_COUNT):a.number}. ${a.title}\n\n${a.notes}\n`).join('\n'));
 for(const [i,s] of P.slides.items.entries()){
  const stem=`slide-${String(i+1).padStart(2,'0')}`;
  await fs.writeFile(path.join(build,stem+'.png'),new Uint8Array(await (await P.export({slide:s,format:'png',scale:1.5})).arrayBuffer()));
