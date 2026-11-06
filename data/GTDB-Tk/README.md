@@ -13,3 +13,4 @@ This directory contains the primary taxonomic summary outputs from the GTDB-Tk c
    - **SM-NMZ**: Classified as *Serratia marcescens* (closest reference: `GCF_017299535.1`, ANI: 98.86%, AF: 0.947).
    - **C14-NMZ**: Classified as *Serratia nematodiphila* (closest reference: `GCF_000738675.1`, ANI: 98.22%, AF: 0.932; match to *S. marcescens* type radius is below the species inclusion threshold of 96.86% at 96.82%).
 2. `NMZ.bac120.ani_summary.tsv`: Detailed FastANI pairwise screening results against reference and representative genomes.
+

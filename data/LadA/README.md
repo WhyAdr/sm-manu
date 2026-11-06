@@ -20,3 +20,4 @@ This directory archives the primary phylogenetic tree and analysis log files for
 ## Included Files
 1. `LadA_smartgap.treefile`: Maximum-likelihood consensus tree in Newick format with SH-aLRT/UFBoot branch support values.
 2. `LadA_smartgap.iqtree`: Full IQ-TREE report detailing model parameters, rate categories, log-likelihood, and ASCII tree topology.
+

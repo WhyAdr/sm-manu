@@ -4,3 +4,9 @@ BGC0000760.svg
 
 # Uncut draft Word documents
 SM-C14-NMZ-WGS-manuscript.docx
+
+# Office lock files
+.~lock.*
+~$*
+
+

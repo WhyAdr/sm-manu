@@ -1,0 +1,12 @@
+filename	record_id	region_products	contig_edge	core_genes	total_genes	nrps_pks_domains	all_domains	modules	raw_pfam_hits	deduplicated_pfam_hits	diagnostics
+contig_1.region001.gbk	contig_1	NRP-metallophore; NRPS	false	4	45	14	26	3	120	60	unrecognized_feature_type; architecture_core_domain_missing; architecture_core_domain_missing
+contig_1.region002.gbk	contig_1	betalactone	false	2	20	1	15	0	59	31	unrecognized_feature_type
+contig_1.region003.gbk	contig_1	ranthipeptide	false	2	23	0	5	0	39	20	unrecognized_feature_type
+contig_1.region004.gbk	contig_1	terpene-precursor	false	1	21	0	18	0	58	30	unrecognized_feature_type
+contig_1.region005.gbk	contig_1	prodigiosin	false	4	26	7	13	1	77	39	unrecognized_feature_type
+contig_1.region006.gbk	contig_1	azole-containing-RiPP	false	2	18	1	16	0	70	35	unrecognized_feature_type
+contig_1.region007.gbk	contig_1	opine-like-metallophore	false	2	18	0	4	0	63	32	unrecognized_feature_type
+contig_1.region008.gbk	contig_1	redox-cofactor	false	3	18	2	11	0	49	25	unrecognized_feature_type
+contig_1.region009.gbk	contig_1	NRPS	false	1	38	10	19	2	111	56	unrecognized_feature_type
+contig_1.region010.gbk	contig_1	NRPS	false	1	34	6	18	1	107	54	unrecognized_feature_type
+contig_1.region011.gbk	contig_1	NRPS	false	1	41	7	20	1	102	51	unrecognized_feature_type
