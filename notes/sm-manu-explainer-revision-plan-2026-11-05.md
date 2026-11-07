@@ -1,10 +1,10 @@
 # Implementation Plan: NMZ *Serratia* Genomics Explainer Revision (2026-11-05)
 
 ## 1. Objective & Scope
-Revise and expand the NMZ *Serratia* genomics explainer presentation (`manuscript/explainer/`) so that it:
+Revise and expand the NMZ *Serratia* genomics explainer presentation (`explainer/`) so that it:
 1. Flows logically from **Genome Resources & Taxonomy** into a dedicated **antiSMASH / Biosynthetic Gene Cluster (BGC) & Biosurfactant** teaching block.
 2. Explains how to read **antiSMASH v8.0.4** outputs across two new main teaching slides—contrasting the 11-region chromosome inventory, specific multi-gene matches (`pig` 16-protein 87–100% MIBiG match; conserved `swrW`), false-friend single-protein hits (`"ririwpeptide"` at 47% identity), and focal-pair Region 10 differences (**SM-NMZ** *Gap1*-like NRPS cassette vs. **C14-NMZ** single-module D-Val NRPS, explaining why `Stephensiolide G/K` library hits in the LC-HRMS report require caution).
-3. Clearly states **closed circular chromosome** assemblies on the Genome Resources slide and explains why assembly closure guarantees intact 35–44 kb BGC neighborhoods.
+3. Clearly states **closed circular chromosome** assemblies on the Genome Resources slide and explains why assembly closure avoids contig breaks across 35–44 kb BGC neighborhoods.
 4. Resolves visual/terminology questions for wet-lab colleagues:
    - On-slide callout for the baked-in Bakta/clinker taxonomy label (`Serratia nematodiphila C14-NMZ` from GTDB vs. TYGS *S. marcescens* species cluster 6).
    - Explicit synonymy **`serrawettin W1 (= serratamolide A)`** paired with **`serratamolide C`** across LC-HRMS rows `1` and `2` (covering both isolates).
@@ -23,13 +23,13 @@ Revise and expand the NMZ *Serratia* genomics explainer presentation (`manuscrip
 
 | File Path | Action | Purpose |
 |---|---|---|
-| `manuscript/explainer/build_lada_subtree.py` | Edit & Run | Replace `Comparison A0ABS9YXJ5` with full organism/protein label, tighten `xlim` so branches fill the plot area, and regenerate `assets/LadA-subtree.png` and `.svg`. |
-| `manuscript/explainer/build_explainer.mjs` | Edit & Run | Implement the 25-main + 9-backup slide sequence (`MAIN_COUNT = 25`), strip `"About N minutes."` from notes, add new slides, upgrade closing scoreboard, and reframe bottom takeaways. |
-| `manuscript/explainer/finalize_explainer.mjs` | Edit & Run | Update `explicitTotalSlideCount: 34` and `requiredNativeTableOwnerSlides` to match the 34-slide table layout, then run package/geometry validation. |
-| `manuscript/explainer/build_glossary_and_preview.py` | Edit & Run | Update slide loop if needed, rebuild `NMZ-Serratia-genomics-explainer-2026-10-20.pdf` (34 pages) and `NMZ-Serratia-genomics-glossary-2026-10-20.pdf`. |
-| `manuscript/explainer/outline-and-glossary.md` | Edit | Update outline table to reflect the 25 main slides and 9 backups (`B1`–`B9`). |
-| `manuscript/explainer/glossary.md` | Edit | Ensure antiSMASH/MIBiG, *Gap1*/stephensiolide, `serrawettin W1 (= serratamolide A)`, and `A0ABS9YXJ5` entries align with the new slides. |
-| `manuscript/explainer/README.md` | Edit | Update slide counts (`25 main slides`, `9 optional technical backups`) and summary notes. |
+| `explainer/build_lada_subtree.py` | Edit & Run | Replace `Comparison A0ABS9YXJ5` with full organism/protein label, tighten `xlim` so branches fill the plot area, and regenerate `assets/LadA-subtree.png` and `.svg`. |
+| `explainer/build_explainer.mjs` | Edit & Run | Implement the 25-main + 9-backup slide sequence (`MAIN_COUNT = 25`), strip `"About N minutes."` from notes, add new slides, upgrade closing scoreboard, and reframe bottom takeaways. |
+| `explainer/finalize_explainer.mjs` | Edit & Run | Update `explicitTotalSlideCount: 34` and `requiredNativeTableOwnerSlides` to match the 34-slide table layout, then run package/geometry validation. |
+| `explainer/build_glossary_and_preview.py` | Edit & Run | Update slide loop if needed, rebuild `NMZ-Serratia-genomics-explainer-2026-10-20.pdf` (34 pages) and `NMZ-Serratia-genomics-glossary-2026-10-20.pdf`. |
+| `explainer/outline-and-glossary.md` | Edit | Update outline table to reflect the 25 main slides and 9 backups (`B1`–`B9`). |
+| `explainer/glossary.md` | Edit | Ensure antiSMASH/MIBiG, *Gap1*/stephensiolide, `serrawettin W1 (= serratamolide A)`, and `A0ABS9YXJ5` entries align with the new slides. |
+| `explainer/README.md` | Edit | Update slide counts (`25 main slides`, `9 optional technical backups`) and summary notes. |
 
 > **Preservation Rule**: Keep the established deliverable filenames (`NMZ-Serratia-genomics-explainer-2026-10-20.pptx`, `NMZ-Serratia-genomics-explainer-2026-10-20.pdf`, `NMZ-Serratia-genomics-glossary-2026-10-20.pdf`) unchanged. Do not modify any manuscript `.md` files or raw data files.
 
@@ -43,7 +43,7 @@ Revise and expand the NMZ *Serratia* genomics explainer presentation (`manuscrip
 | **2** | `2` | 2 | DNA, gene predictions and activity | **Yes** | Reframe bottom takeaway; strip `"About 1½ minutes."` from notes. |
 | **3** | `3` | 3 | Reads, assembly and genome annotation | No | Add bottom callout explaining that the C14-NMZ Bakta circle displays the GTDB label (*S. nematodiphila*), contrasted with TYGS on Slide 5. |
 | **4** | `4` | 4 | What each kind of evidence answers | **Yes** | Strip `"About 1½ minutes."` from notes. |
-| **5** | `5` | *7* | **Genome resources and identity** | **Yes** | Moved up from Slide 7. State **`4.971 Mb (closed circular)`** and **`5.051 Mb (closed circular)`** in table; add note on why closed assemblies guarantee intact BGC neighborhoods and why Bakta/clinker images show the GTDB label. |
+| **5** | `5` | *7* | **Genome resources and identity** | **Yes** | Moved up from Slide 7. State **`4.971 Mb (closed circular)`** and **`5.051 Mb (closed circular)`** in table; add note on why closed assemblies avoid contig breaks across BGC neighborhoods and why Bakta/clinker images show the GTDB label. |
 | **6** | `6` | *8* | **ANI and digital DNA–DNA hybridization** | **Yes** | Moved up from Slide 8. |
 | **7** | `7` | *9* | **GTDB-Tk and TYGS workflows** | No | Moved up from Slide 9. |
 | **8** | `8` | *5* | **Genes, neighborhoods, clusters and operons** | **Yes** | Moved to start the BGC block (was Slide 5). Contrasts multi-gene `pig` with single-gene `swrW`. |
@@ -149,9 +149,9 @@ Insert these two slides in `build_explainer.mjs` immediately after Slide 8 (*Gen
 
 ### 4.3. Tightening the LadA Subtree X-Axis & Full Outgroup Label (`build_lada_subtree.py` & Slide 22)
 
-In `manuscript/explainer/build_lada_subtree.py`:
+In `explainer/build_lada_subtree.py`:
 - The maximum root-to-tip distance in the extracted clade is `~0.983` substitutions/site (the `A0ABS9YXJ5` tip is at `0.7048`, and `BAM76377.1` is at `0.2786 + 0.2004 + 0.1192 + 0.5230 = 1.121` from the clade root). Previously, `ax.set_xlim(-0.03, 1.7)` left a large blank margin on the right while ticks ran out to `1.6`.
-- Update `manuscript/explainer/build_lada_subtree.py` so the labels are informative and the x-axis is tightened to fit the tree + labels snugly without wasted whitespace:
+- Update `explainer/build_lada_subtree.py` so the labels are informative and the x-axis is tightened to fit the tree + labels snugly without wasted whitespace:
   ```python
   labels=dict(zip(names,[
       'SM-NMZ  NNLMDO_015255 (focal candidate)',
@@ -228,18 +228,18 @@ Append a 9th backup slide (`B9`, Slide 34) at the end of `build_explainer.mjs`:
 ## 5. Step-by-Step Execution Checklist for the Implementing Agent (Codex / Claude)
 
 1. **Step 1 — Regenerate LadA Subtree (`build_lada_subtree.py`)**:
-   - Update `labels`, set `ax.set_xlim(-0.02, 1.48)`, and run `python manuscript/explainer/build_lada_subtree.py`.
-   - Visually inspect `manuscript/explainer/assets/LadA-subtree.png` to ensure the full `Ca. M. alkanivorans  NtaA/DmoA FMN monooxygenase (A0ABS9YXJ5)` label is crisp and unclipped, and the tree branches fill the horizontal space cleanly.
+   - Update `labels`, set `ax.set_xlim(-0.02, 1.48)`, and run `python explainer/build_lada_subtree.py`.
+   - Visually inspect `explainer/assets/LadA-subtree.png` to ensure the full `Ca. M. alkanivorans  NtaA/DmoA FMN monooxygenase (A0ABS9YXJ5)` label is crisp and unclipped, and the tree branches fill the horizontal space cleanly.
 2. **Step 2 — Update `build_explainer.mjs` (25 Main + 9 Backups = 34 Slides)**:
    - Set `const MAIN_COUNT = 25;`.
    - Reorder the Taxonomy slides to Slides 5–7, add the two new antiSMASH slides at Slides 9–10, update Slide 25 to the 4-column Evidence Scoreboard, add Backup B9 (DRAM) at Slide 34, strip `"About N minutes."` from all speaker notes, and apply the constructive bottom takeaways.
-   - Run `node manuscript/explainer/build_explainer.mjs` (with `RUNTIME_NODE_MODULES` set).
+   - Run `node explainer/build_explainer.mjs` (with `RUNTIME_NODE_MODULES` set).
 3. **Step 3 — Update `finalize_explainer.mjs` & Validate PPTX**:
    - Set `explicitTotalSlideCount: 34` and `const requiredNativeTableOwnerSlides=[2,4,5,6,8,10,11,14,20,21,23,24,25,26,28,31];`.
-   - Run `node manuscript/explainer/finalize_explainer.mjs` (with `PRESENTATIONS_SKILL_DIR` and `RUNTIME_PYTHON` set).
+   - Run `node explainer/finalize_explainer.mjs` (with `PRESENTATIONS_SKILL_DIR` and `RUNTIME_PYTHON` set).
    - Confirm `"slides": 34`, `"layoutFindings": 0`, and `"importPassed": true`. If any text box triggers a layout finding (e.g., line-wrap height overflow), adjust `fontSize` by 1–2 pt or increase box `height` slightly and re-run until `"layoutFindings": 0`.
-   - Copy the validated `.pptx` to `manuscript/explainer/NMZ-Serratia-genomics-explainer-2026-10-20.pptx`.
+   - Copy the validated `.pptx` to `explainer/NMZ-Serratia-genomics-explainer-2026-10-20.pptx`.
 4. **Step 4 — Update Companion Markdown & Rebuild PDFs**:
-   - Update `manuscript/explainer/outline-and-glossary.md`, `manuscript/explainer/glossary.md`, and `manuscript/explainer/README.md` to reflect the 25 main slides and 9 backups.
-   - Run `python manuscript/explainer/build_glossary_and_preview.py` to regenerate the 34-page `NMZ-Serratia-genomics-explainer-2026-10-20.pdf` and `NMZ-Serratia-genomics-glossary-2026-10-20.pdf`.
+   - Update `explainer/outline-and-glossary.md`, `explainer/glossary.md`, and `explainer/README.md` to reflect the 25 main slides and 9 backups.
+   - Run `python explainer/build_glossary_and_preview.py` to regenerate the 34-page `NMZ-Serratia-genomics-explainer-2026-10-20.pdf` and `NMZ-Serratia-genomics-glossary-2026-10-20.pdf`.
    - Inspect the rendered PNGs (`slide-01.png` to `slide-34.png`) in `tmp/explainer-expansion-2026-10-21/`.
