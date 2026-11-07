@@ -18,9 +18,9 @@ pdfmetrics.registerFont(TTFont('ArialBold', 'C:/Windows/Fonts/arialbd.ttf'))
 pdfmetrics.registerFont(TTFont('ArialItalic', 'C:/Windows/Fonts/ariali.ttf'))
 pdfmetrics.registerFontFamily('Arial', normal='Arial',bold='ArialBold',italic='ArialItalic',boldItalic='ArialBold')
 
-slides = [BUILD / f'slide-{i:02}.png' for i in range(1, 41)]
+slides = [BUILD / f'slide-{i:02}.png' for i in range(1, 45)]
 if not all(slide.is_file() for slide in slides):
-    raise FileNotFoundError('Render all 40 slides before building the PDF preview.')
+    raise FileNotFoundError('Render all 44 slides before building the PDF preview.')
 preview=Canvas(str(BUILD/'NMZ-Serratia-genomics-explainer-2026-10-20.pdf'),pagesize=(960,540))
 preview.setTitle('NMZ Serratia genomics explainer')
 preview.setAuthor('NMZ Serratia research project')

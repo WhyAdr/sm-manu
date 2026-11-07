@@ -1,6 +1,6 @@
 # NMZ *Serratia* genomics: glossary
 
-Companion to the research-group explainer, revised 6 November 2026.
+Companion to the research-group explainer, revised 8 November 2026.
 
 | Term | Plain-language meaning and study relevance |
 |---|---|
@@ -71,3 +71,6 @@ Companion to the research-group explainer, revised 6 November 2026.
 | Adduct; mass error; authentic standard | An ion associated with another species such as H⁺ or Na⁺; measured versus expected mass difference; a reference compound measured for comparison. |
 | ShlA–ShlB; Has; T6SS; VFDB | Hemolysin/secretion-activation pair; heme-acquisition system; type VI secretion system, often involved in competition; Virulence Factor Database. Multiple labels may match the same locus. |
 | Causality; controls; replicate | Evidence that changing a factor changes an outcome; comparisons addressing alternative explanations; independently repeated units whose biological or technical level must be defined. |
+| ProteinOrtho; orthologous group; core, shared and genome-specific groups | ProteinOrtho clusters similar proteins from several genomes into groups. A core group has a member in every genome, a shared group in some genomes, and a genome-specific group in one. Groups are sequence-based, so they show relatedness, not function, and a single-genome group can reflect a divergent gene or an annotation difference. |
+| m/z; adduct; [M+H]+; ppm error | Mass-to-charge ratio measured by the mass spectrometer; an ion formed when the molecule picks up a proton or a metal ion (H+, Na+, K+). [M+H]+ is the molecule plus one proton. Parts-per-million error compares the observed and calculated m/z. A match supports a formula, not a unique structure. |
+| Depsipeptide; lactone; congener series | A peptide-like ring that contains ester bonds as well as amide bonds; an ester inside a ring. Serratamolide A (= serrawettin W1) is a 14-membered ring of two 3-hydroxydecanoyl-serine units. Congeners are related compounds, often differing in acyl-chain length (each extra CH2 adds 14.0157 Da). |

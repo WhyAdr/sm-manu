@@ -10,10 +10,10 @@ const build=path.join(workspaceDir,'tmp/explainer-revision-2026-11-05');
 const runId=new Date().toISOString().replace(/[:.]/g,'-');
 const finalPath=path.join(build,'validated',runId,'NMZ-Serratia-genomics-explainer-2026-10-20.pptx');
 await fs.mkdir(path.dirname(finalPath),{recursive:true});
-const requiredNativeTableOwnerSlides=[2,4,5,6,8,16,17,20,26,27,29,30,31,32,34,37,40];
+const requiredNativeTableOwnerSlides=[2,4,5,6,8,12,16,17,19,21,26,27,29,30,32,33,34,35,36,38,41,44];
 const result=await finalizePresentation({
  workspaceDir,candidatePath:path.join(build,'candidate.pptx'),finalPath,
- explicitTotalSlideCount:40,
+ explicitTotalSlideCount:44,
  pythonExecutable:python,
  integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),
  layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),
