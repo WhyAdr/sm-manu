@@ -1,6 +1,6 @@
 # NMZ *Serratia* genomics explainer
 
-Updated 6 November 2026. The teaching sequence has **25 main slides** and **9 optional technical backups** (34 slides total). It is designed as an expanded session for colleagues with limited genomics experience; the glossary is also available as a separate handout. Established output filenames retain their original creation date.
+Updated 7 November 2026. The teaching sequence has **31 main slides** and **9 optional technical backups** (40 slides total). It is designed as an expanded session for colleagues with limited genomics experience; the glossary is also available as a separate handout. Established output filenames retain their original creation date.
 
 - [PowerPoint](NMZ-Serratia-genomics-explainer-2026-10-20.pptx): editable slide text and tables, source figures, and explanatory speaker notes with references.
 - [Slide PDF preview](NMZ-Serratia-genomics-explainer-2026-10-20.pdf): slides in presentation order.

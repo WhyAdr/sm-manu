@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -11,10 +12,10 @@ const output=path.resolve(import.meta.dirname);
 const build=path.resolve(root,'../tmp/explainer-revision-2026-11-05');
 await fs.mkdir(build,{recursive:true});
 const P=Presentation.create({slideSize:{width:1280,height:720}});
-const C={ink:'#183642',teal:'#136C74',muted:'#526770',line:'#D5DFE1',pale:'#EFF5F4',white:'#FFFFFF',amber:'#A76022'};
+const C={ink:'#183642',teal:'#136C74',muted:'#526770',line:'#D5DFE1',pale:'#EFF5F4',white:'#FFFFFF',amber:'#A76022',gold:'#A76022'};
 const font='Arial';
 const audit=[];
-const MAIN_COUNT=25;
+const MAIN_COUNT=31;
 let backupNumber=0;
 function text(s,copy,x,y,w,h,size=28,color=C.ink,bold=false){
  const q=s.shapes.add({geometry:'textbox',name:copy.slice(0,65),position:{left:x,top:y,width:w,height:h},fill:'none',line:{fill:'none',width:0}});
@@ -41,9 +42,18 @@ function table(s,values,{x=64,y=152,w=1152,h=390,widths=null,size=26}={}){
  }
  return t;
 }
+function resolveRelative(relative){
+ const p1=path.resolve(root,relative);
+ if(fsSync.existsSync(p1)) return p1;
+ const p2=path.resolve(root,'explainer/assets',relative);
+ if(fsSync.existsSync(p2)) return p2;
+ return p1;
+}
+
 async function img(s,relative,x,y,w,h,alt,crop=null){
- const bytes=await fs.readFile(path.resolve(root,relative));
- return s.images.add({blob:new Uint8Array(bytes),contentType:/\.svg$/i.test(relative)?'image/svg+xml':/\.jpe?g$/i.test(relative)?'image/jpeg':'image/png',
+ const resolved=resolveRelative(relative);
+ const bytes=await fs.readFile(resolved);
+ return s.images.add({blob:new Uint8Array(bytes),contentType:/\.svg$/i.test(resolved)?'image/svg+xml':/\.jpe?g$/i.test(resolved)?'image/jpeg':'image/png',
   alt,fit:'contain',position:{left:x,top:y,width:w,height:h},...(crop?{crop}:{}),geometry:'rect'});
 }
 
@@ -51,7 +61,8 @@ async function img(s,relative,x,y,w,h,alt,crop=null){
 const sharpPackage=JSON.parse(await fs.readFile(path.join(runtime,'sharp/package.json'),'utf8'));
 const sharp=(await import(pathToFileURL(path.join(runtime,'sharp',sharpPackage.main)).href)).default;
 async function fitimg(s,relative,x,y,w,h,alt,crop=null){
- const m=await sharp(await fs.readFile(path.resolve(root,relative))).metadata();
+ const resolved=resolveRelative(relative);
+ const m=await sharp(await fs.readFile(resolved)).metadata();
  const ar=(m.width*(1-(crop?.left||0)-(crop?.right||0)))/(m.height*(1-(crop?.top||0)-(crop?.bottom||0)));
  const ww=Math.min(w,h*ar),hh=ww/ar;
  return img(s,relative,x+(w-ww)/2,y+(h-hh)/2,ww,hh,alt,crop);
@@ -112,8 +123,8 @@ const src={
  const s=slide('Genome resources and identity',
   'A megabase is one million base pairs. Autocycler consensus assembly, dnaapler reorientation and Dorado polishing yielded two closed circular chromosomes. The displayed 35–44 kb biosynthetic neighborhoods can therefore be compared end to end without contig breaks. Closure does not validate predicted cluster boundaries or biochemical function. GTDB r232 assigns C14-NMZ to S. nematodiphila, the name shown in the Bakta plot and the pig clinker comparison. TYGS places both isolates in S. marcescens species cluster 6, with separate subspecies clusters. C14 has 98.22% ANI to the nematodiphila representative. Its 96.82% match to the marcescens representative falls below that representative\'s 96.86% radius. '+src.genome+' '+src.tygs);
  table(s,[['Feature','SM-NMZ','C14-NMZ'],['Chromosome (closed circular)','4.971 Mb','5.051 Mb'],['Additional replicon','3.581-kb circular plasmid','None recovered'],['Bakta CDSs','4,566','4,626'],['GTDB r232 label','S. marcescens','S. nematodiphila'],['TYGS species / subspecies cluster','6 / 11','6 / 10']],{y:145,h:370,widths:[440,340,372],size:25});
- text(s,'Closed assemblies let us compare 35–44 kb neighborhoods without contig breaks.',64,542,1152,42,27,C.teal,true);
- text(s,'TYGS groups both as S. marcescens. The Bakta and pig plots retain C14’s GTDB label.',64,601,1152,42,25,C.muted);
+ text(s,'Closed circular chromosomes avoid contig breaks across our 35–44 kb BGC neighborhoods.',64,545,1152,40,26,C.teal,true);
+ text(s,'TYGS groups both in S. marcescens cluster 6; Bakta and clinker plots retain C14-NMZ\'s GTDB label (S. nematodiphila).',64,602,1152,36,22,C.muted);
 }
 {
  const s=slide('ANI and digital DNA–DNA hybridization',
@@ -145,29 +156,111 @@ const src={
  text(s,'pig: a multi-gene example. SwrW: a multifunctional enzyme encoded by one gene.',64,608,1152,58,27,C.teal,true);
 }
 
+// Slide 9: Genome-wide BGC mining with antiSMASH
 {
  const s=slide('Genome-wide BGC mining with antiSMASH',
-  'antiSMASH v8.0.4 uses rules based on protein domains and gene context to flag candidate biosynthetic gene clusters (BGCs). Each focal chromosome has 11 predicted regions, all recorded as internal (contig_edge=False). Numbers follow the order along each chromosome. Shared numbering does not establish homology. The isolates share the Region 5 pig locus, Region 8 PQQ cofactor cassette and Region 11 SwrW locus. C14 Region 3 is called ranthipeptide and Region 7 opine-like metallophore. The Region 10 NRPS architectures differ. The overview is a map of predictions. Read the gene and domain evidence before assigning products. Sources: master manuscript section 3, original focal antiSMASH v8.0.4 overviews and Blin et al. (2025), https://doi.org/10.1093/nar/gkaf334.');
- text(s,'SM-NMZ · 11 predicted regions',64,143,550,39,28,C.teal,true);
- text(s,'C14-NMZ · 11 predicted regions',656,143,560,39,28,C.teal,true);
- await fitimg(s,'Figure3_SM-NMZ-antismash-overview.jpeg',64,192,560,310,'antiSMASH v8.0.4 overview showing 11 SM-NMZ chromosome regions');
- await fitimg(s,'Figure3_C14-NMZ-antismash-overview.jpeg',656,192,560,204,'antiSMASH v8.0.4 overview showing 11 C14-NMZ chromosome regions');
- text(s,'antiSMASH v8.0.4 lists regions in chromosome order. Check the underlying matches before using the displayed product name.',656,421,560,100,24,C.muted);
- text(s,'Shared regions include pig (5), the PQQ cofactor cassette (8) and swrW (11).',64,553,1152,43,27,C.teal,true);
- text(s,'C14 adds ranthipeptide (3) and opine-like (7) calls. Region 10 differs between isolates.',64,612,1152,40,25,C.muted);
+  'antiSMASH v8.0.4 scans each closed chromosome using rule-based profile HMMs for biosynthetic gene clusters (BGCs). Both SM-NMZ and C14-NMZ carry 11 chromosomal BGC regions, all internal to the chromosome (contig_edge=False). Region numbers are assigned sequentially from the chromosomal origin (dnaA), so a shared region number does not imply orthology. Nine region calls are shared across both genomes, while two regions per isolate are unique: SM-NMZ uniquely carries Region 2 (NRPS-like A–PCP–TD reductase) and Region 7 (a 2-module NRPS), whereas C14-NMZ uniquely carries Region 3 (ranthipeptide) and Region 7 (a yersinopine-like opine metallophore). In addition, Region 10 encodes completely different NRPS architectures in the two isolates. When evaluating any region, we distinguish three comparison tabs: KnownClusterBlast and MIBiG comparison compare against curated reference BGCs in MIBiG, whereas ClusterBlast searches general GenBank genome assemblies for syntenic homologs. Source: manuscript Section 3 and data/antiSMASH/antiSMASH-region-comparison.md.');
+ text(s,'SM-NMZ · 11 chromosomal BGC regions (4 NRPS + 1 NRPS-like)',64,136,545,32,23,C.teal,true);
+ text(s,'C14-NMZ · 11 chromosomal BGC regions (3 NRPS + ranthipeptide + opine)',655,136,561,32,23,C.teal,true);
+ await fitimg(s,'Figure3_SM-NMZ-antismash-overview.jpeg',64,174,545,325,'antiSMASH v8.0.4 overview of the 11 chromosomal BGC regions in SM-NMZ');
+ await fitimg(s,'Figure3_C14-NMZ-antismash-overview.jpeg',655,174,561,325,'antiSMASH v8.0.4 overview of the 11 chromosomal BGC regions in C14-NMZ');
+ text(s,'Shared core (8 loci): prodigiosin (Reg 5), SwrW (Reg 11), PQQ (Reg 8), catecholate siderophores (Reg 1 & 9), RiPP/terpene/β-lactone.',64,518,1152,38,22,C.teal,true);
+ text(s,'Symmetric differences: SM-only Reg 2 (NRPS-like) & Reg 7 (NRPS) · C14-only Reg 3 (ranthipeptide) & Reg 7 (opine) · divergent Reg 10 NRPSs.',64,564,1152,38,21,C.ink);
+ text(s,'Three similarity lenses: MIBiG comparison / KnownClusterBlast (curated pathways) vs. ClusterBlast (general GenBank synteny).',64,610,1152,34,20,C.muted);
 }
+
+// Slide 10: Orienting in antiSMASH: Region 11 (swrW) full-window view
 {
- const s=slide('Reading antiSMASH reference matches',
-  'KnownClusterBlast compares the region with MIBiG entries. Inspect the number and coverage of matched proteins, core genes and domain organization. Region 5 matches 16 reference proteins at 87–100% amino-acid identity with near-full-length coverage. The conserved pigA–pigN core contains 14 genes. The red/pink cultures are consistent with the pathway prediction. The SM Region 11 ririwpeptide A/B/C hit is one protein at 47% identity and 45.9% coverage. The conserved focal SwrW homologs and the Ser-selective C–A–PCP–TE module support a W1 synthetase assignment alongside the reported chemistry. The partial metallophore matches support class-level interpretation. C14 Region 7 is yersinopine-like, based on CntM/CntL and a partial six-protein match. Region 10 in SM is a Gap1-like NRPS/acyl-loading cassette with three amino-acid modules across two proteins with about 30 mostly near-full-length protein matches to the UENF-22GI locus, typically at 97–100% identity. C14 has a distinct single-module NRPS with a predicted D-Val feature. The focal architectures do not support assigning library-only stephensiolide G/K hits to these regions. Sources: master manuscript section 3, focal antiSMASH files and https://docs.antismash.secondarymetabolites.org/modules/clusterblast/. '+src.swrw+' '+src.chem);
- table(s,[['Region','Match or architecture','Interpretation'],['5 · pig','16 proteins, 87–100% identity; near-full-length matches','Conserved 14-gene prodigiosin pathway'],['11 · swrW','SM “ririwpeptide” hit: 1 protein, 47% identity, 45.9% coverage','Curated SwrW call fits the Ser-selective module and reported chemistry'],['1, 9 and C14 7 · metal binding','Partial MIBiG matches, 5–6 proteins','Supports metallophore class potential'],['10 · focal NRPSs','SM: Gap1-like, 3 modules\nC14: 1 module, predicted D-Val','Neither architecture supports a stephensiolide G/K assignment.']],{y:141,h:405,widths:[238,424,490],size:24});
- text(s,'Compare how much matches, which genes match and how their domains are arranged.',64,582,1152,70,27,C.teal,true);
+ const s=slide('Orienting in antiSMASH: Region 11 (swrW) full view',
+  'Before comparing individual clusters, this slide shows how a single antiSMASH region page is organized using SM-NMZ Region 11 (the 43,936-nt serrawettin W1 neighborhood, 4,428,765–4,472,700 nt). At the top left, the dark-red arrow marks the sole core biosynthetic CDS (NNLMDO_021205, 3,936 nt), surrounded by the ~20-kb flanking window included by the NRPS rule. At the bottom left, toggling “Show module domains” ON in the NRPS/PKS domains tab reveals all four domains of the unimodular SwrW synthetase: an N-terminal Condensation_Starter domain (1–298 AA, active-site motif HHLIADG, which acylates the first L-Ser with a beta-hydroxy fatty acid), an AMP-binding adenylation domain (A), a peptidyl-carrier protein domain (PCP, 976–1042 AA, shown as an unlabeled blue oval until hovered), and a C-terminal Thioesterase (TE) domain. On the right, the Gene details and NRPS/PKS substrates panels report a 100% Stachelhaus code match (DVWHVSLVDK) to L-Serine. Source: SM-NMZ antiSMASH v8.0.4 report (#r1c11) and data/antiSMASH/SM-NMZ-domains.tsv.');
+ await fitimg(s,'explainer/assets/antismash-sm-r1c11-full.png',64,134,1152,445,'Full antiSMASH v8.0.4 view of SM-NMZ Region 11 showing SwrW domains, Condensation_Starter popup, PCP badge, and Ser Stachelhaus prediction');
+ text(s,'1) Top track: 43.9-kb region window centered on the 3,936-nt core swrW NRPS (dark red, NNLMDO_021205).',64,590,1152,32,21,C.teal,true);
+ text(s,'2) Bottom-left (“Show module domains” ON): C_Starter (1–298 AA, lipoinitiation) – A(Ser, 100% Stachelhaus) – PCP – TE.',64,624,1152,32,20,C.ink);
+}
+
+// Slide 11: Zooming into Region 11: core SwrW domains vs. flanking window hits
+{
+ const s=slide('Region 11: core SwrW domains vs. flanking window hits',
+  'Zooming into the Region 11 detail panels answers two common questions when reading antiSMASH outputs. First, why does the NRPS/PKS domains panel list four genes (NNLMDO_021205, 021255, 021280 and 021300) when SwrW is a single-gene synthetase? Because antiSMASH scans the entire 43.9-kb region window for any distant pHMM domain hit: NNLMDO_021205 is the only core NRPS (C_Starter–A–PCP–TE), whereas NNLMDO_021255 is a flanking housekeeping 3-oxoacyl-ACP reductase (fabG, whose short-chain dehydrogenase fold triggers a weak KR hit, E = 7.1e-10), NNLMDO_021280 is a flanking zinc alcohol dehydrogenase (adhP/yahK, triggering a weak ER hit, E = 1.5e-11), and NNLMDO_021300 is a boundary aromatic aminotransferase (tyrB, triggering an AmT hit). Second, switching to the ClusterBlast tab confirms that the entire 43.9-kb neighborhood—including the core SwrW synthetase (100% identity, 100% coverage to Serratia marcescens BVG90_RS18855)—is collinear across complete S. marcescens chromosomes. Source: SM-NMZ antiSMASH report (#r1c11) and Bakta annotations.');
+ text(s,'NRPS/PKS domains: core SwrW vs. 3 flanking housekeeping enzymes',64,136,560,30,21,C.teal,true);
+ text(s,'ClusterBlast: 100% identity & synteny across S. marcescens genomes',648,136,568,30,21,C.teal,true);
+ await fitimg(s,'explainer/assets/antismash-sm-r1c11-domains-crop.png',64,172,560,210,'Cropped NRPS/PKS domains panel of SM-NMZ Region 11 distinguishing core SwrW from flanking fabG, adhP and tyrB');
+ await fitimg(s,'explainer/assets/antismash-sm-r1c11-clusterblast-crop.png',648,172,568,365,'Cropped ClusterBlast panel of SM-NMZ Region 11 showing 100% identity to Serratia marcescens swrW');
+ text(s,'Why 4 rows appear on the left: antiSMASH flags any SDR/dehydrogenase (fabG, adhP) or aminotransferase (tyrB) in the 20-kb flanking window.',64,405,560,120,19.5,C.ink);
+ text(s,'Only NNLMDO_021205 (SM) and OJMJKD_021655 (C14) form the unimodular C_Starter–A(Ser)–PCP–TE serrawettin W1 synthetase.',64,556,1152,36,23,C.teal,true);
+ text(s,'ClusterBlast confirms 100% coverage and neighborhood collinearity with reference S. marcescens chromosomes.',64,602,1152,34,21,C.muted);
+}
+
+// Slide 12: Why Region 11's 0.69 MIBiG score misleads vs. Region 5 (pig, 0.93)
+{
+ const s=slide('Why Region 11’s 0.69 MIBiG score misleads vs. Region 5 (pig)',
+  'Comparing the MIBiG comparison (Protocluster to Region) panels for Region 11 and Region 5 illustrates the central BGC lesson of our manuscript: a moderate composite similarity score does not identify a pathway. In Region 11 (left), the top MIBiG row is BGC0002286.3 (“ririwpeptide A/B/C” from Photorhabdus laumondii) with a similarity score of 0.69 (0.688 in JSON: id = 0.49, order = N/A, components = 0.67). Only a single vertical line connects the two clusters because a single core NRPS gene (NNLMDO_021205) aligns partially to plu3123 at 46.7% identity and 45.9% coverage—and five other unrelated lipopeptides (icosalide, xenotetrapeptide, gamexpeptide, xenematide, rhizomide) score 0.67–0.68 for the exact same reason (generic C–A–PCP–TE domain homology). By contrast, in Region 5 (right), the prodigiosin reference BGC0000259.3 scores 0.93 (id = 0.84, order = 1.00, components = 0.96) with 16 parallel connecting lines across pigA–pigN, cueR and copA at 86.7–100% identity and 100% coverage. Source: SM_antismash.json (ProtoToRegion_RiQ) and manuscript Section 3.');
+ text(s,'Region 11 (swrW): 0.69 score from 1 generic NRPS gene hit (46.7% id)',64,136,560,30,21,C.gold,true);
+ text(s,'Region 5 (pig): 0.93 score across 16 collinear genes (86.7–100% id)',648,136,568,30,21,C.teal,true);
+ await fitimg(s,'explainer/assets/antismash-sm-r1c11-mibig-crop.png',64,172,560,365,'MIBiG comparison for SM-NMZ Region 11 showing single-gene 0.69 match to ririwpeptide');
+ await fitimg(s,'explainer/assets/antismash-sm-r1c5-pig-mibig-crop.png',648,172,568,365,'MIBiG comparison for SM-NMZ Region 5 showing 16-gene 0.93 match to prodigiosin');
+ text(s,'Rule of thumb: inspect matched gene count, gene order (synteny) and domain architecture—never rely on the top MIBiG compound name alone.',64,556,1152,38,22.5,C.teal,true);
+ text(s,'Curated call: Region 11 is SwrW (serrawettin W1 / serratamolide synthetase); Region 5 is the complete pigA–pigN prodigiosin pathway.',64,602,1152,34,21,C.muted);
+}
+
+// Slide 13: Catecholate siderophore potential: Regions 1 and 9 in SM-NMZ & C14-NMZ
+{
+ const s=slide('Catecholate siderophore potential: Regions 1 and 9',
+  'Both SM-NMZ and C14-NMZ carry two conserved catecholate siderophore-associated regions: Region 1 (called as NRP-metallophore; NRPS, 48.3 kb) and Region 9 (called as NRPS, 44.0 kb). In both regions, the core genes encode classic catecholate siderophore assembly and transport components—2,3-dihydroxybenzoate-AMP ligase (entE), catecholate NRPS modules (entF / entF2), an MbtH-like NRPS chaperone (mbtH), and an enterobactin/siderophore exporter (entS). In the MIBiG comparison tables (shown here for SM-NMZ), these conserved catecholate building blocks produce partial 5- to 6-protein matches (47–78% identity) against multiple reference clusters (pyreudione, enterobactin, trichrysobactin, serratiochelin and viobactin). Because only the shared catecholate core genes match—rather than an entire species-specific tailoring pathway—the manuscript reports Regions 1 and 9 as catecholate siderophore biosynthetic potential rather than assigning a single named siderophore product. Source: manuscript Section 3 and data/antiSMASH/SM-NMZ.tsv.');
+ text(s,'Region 1 (NRP-metallophore / NRPS): entE, entF, mbtH, entS core',64,136,560,30,21,C.teal,true);
+ text(s,'Region 9 (NRPS): 2nd catecholate NRPS locus (partial 5–6 gene matches)',648,136,568,30,21,C.teal,true);
+ await fitimg(s,'explainer/assets/antismash-sm-r1c1-metallophore-crop.png',64,172,560,365,'MIBiG comparison for SM-NMZ Region 1 showing catecholate siderophore core match');
+ await fitimg(s,'explainer/assets/antismash-sm-r1c9-metallophore-crop.png',648,172,568,365,'MIBiG comparison for SM-NMZ Region 9 showing partial catecholate NRPS match');
+ text(s,'Both chromosomes encode two conserved catecholate siderophore assembly/export loci (entE, entF/entF2, mbtH, entS).',64,556,1152,36,23,C.teal,true);
+ text(s,'Partial 5–6 protein MIBiG hits (47–78% identity) support catecholate class potential without over-claiming a named product.',64,602,1152,34,21,C.muted);
+}
+
+// Slide 14: C14-NMZ Region 7 (opine-like-metallophore) vs. SM-NMZ Regions 2 & 7 (NRPS)
+{
+ const s=slide('C14 Region 7 (opine metallophore) vs. SM Regions 2 & 7 (NRPS)',
+  'This slide shows the symmetric accessory BGC differences between the two isolates outside Region 10. On the left, C14-NMZ uniquely carries Region 7 (opine-like-metallophore, 22.1 kb), which encodes nicotianamine-synthase-like and opine-dehydrogenase-like metallophore enzymes (CntM and CntL) flanked by exporters. Its MIBiG comparison shows a collinear 6-protein match (score 0.84, 64–86% identity, with one hit at ~47% coverage) to the Yersinia pestis yersinopine cluster (BGC0002490.2), supporting yersinopine-like metallophore potential in C14-NMZ. On the right, SM-NMZ uniquely carries two NRPS-family regions absent from C14-NMZ: Region 2 (NRPS-like, 43.0 kb), driven by NNLMDO_002205 with an A–PCP–TD (terminal reductase) domain architecture, and Region 7 (NRPS, 48.0 kb), encoding a two-module NRPS pair (NNLMDO_010830 C–A–PCP–TE and NNLMDO_010835 C–A–PCP) alongside a short-chain KR and alpha/beta-hydrolase (AbH). Reporting both sets of unique loci gives a balanced, symmetric view of the two chromosomes. Source: manuscript Section 3 and data/antiSMASH/.');
+ text(s,'C14-NMZ Unique Region 7: opine-like metallophore (CntM + CntL)',64,136,560,30,21,C.teal,true);
+ text(s,'SM-NMZ Unique Regions 2 (NRPS-like A–PCP–TD) & 7 (2-module NRPS)',648,136,568,30,21,C.gold,true);
+ await fitimg(s,'explainer/assets/antismash-c14-r1c7-opine-crop.png',64,172,560,368,'C14-NMZ Region 7 opine-like-metallophore map and 6-protein yersinopine MIBiG alignment');
+ await fitimg(s,'explainer/assets/antismash-sm-r1c2-r1c7-domains-crop.png',648,172,568,368,'SM-NMZ unique Region 2 (NRPS-like A–PCP–TD) and Region 7 (two-module NRPS) domain architectures');
+ text(s,'Symmetric focal divergence: SM-NMZ has 4 NRPS + 1 NRPS-like regions; C14-NMZ has 3 NRPS + 1 opine-metallophore + 1 ranthipeptide.',64,556,1152,36,22.5,C.teal,true);
+ text(s,'All three isolate-specific loci are retained as uncharacterized genomic candidates rather than assigned speculative compound names.',64,602,1152,34,21,C.muted);
+}
+
+// Slide 15: Same region number, different NRPS machinery: Region 10 in SM-NMZ vs. C14-NMZ
+{
+ const s=slide('Same region number, different NRPS machinery: Region 10',
+  'Region 10 is the sharpest biosynthetic contrast between the two focal isolates and demonstrates why ordinal region numbers must be compared at the domain level. In SM-NMZ (left, 51.3 kb), Region 10 is a complex multi-gene NRPS/acyl-loading cassette: it encodes a standalone alpha/beta-hydrolase (AbH, NNLMDO_014990), a standalone type-II thioesterase (TE, NNLMDO_015030), a free-standing adenylation protein (A[Thr], NNLMDO_015035), a two-module NRPS (NNLMDO_015060: C–A[Val]–PCP–C–A[Ser]–PCP), a hybrid co-enzyme A ligase / NRPS module (NNLMDO_015065: CAL–ACP–C–A[Leu]–PCP), and a malonyl-CoA acyltransferase/carrier protein (NNLMDO_015080: PKS_AT–ACP). ClusterBlast shows 97–100% identity across ~30 collinear proteins to the Serratia marcescens UENF-22GI Gap1 locus. In C14-NMZ (right, 45.8 kb), Region 10 is an unrelated single-module D-Val NRPS (OJMJKD_018290: C–A[Val]–PCP–E–TIGR01720–C_DCL) located near a T6SS neighborhood. Neither locus encodes the multidomain stephensiolide synthetase, explaining why library-only “Stephensiolide G/K” LC-HRMS hits are treated with caution. Source: manuscript Section 3 and data/antiSMASH/.');
+ text(s,'SM-NMZ Region 10: 3-module Gap1-like NRPS + CAL/ACP + AT/ACP + TE',64,136,560,30,20.5,C.teal,true);
+ text(s,'C14-NMZ Region 10: single-module D-Val NRPS (C–A–PCP–E–C_DCL)',648,136,568,30,20.5,C.gold,true);
+ await fitimg(s,'explainer/assets/antismash-sm-r1c10-domains-crop.png',64,172,560,368,'SM-NMZ Region 10 NRPS/PKS domains showing the Gap1-like multi-protein NRPS/CAL/AT/TE architecture');
+ await fitimg(s,'explainer/assets/antismash-c14-r1c10-domains-crop.png',648,172,568,368,'C14-NMZ Region 10 NRPS/PKS domains showing the single-module D-Val epimerization NRPS architecture');
+ text(s,'SM-NMZ Region 10 matches the S. marcescens UENF-22GI Gap1 cassette (97–100% id); C14-NMZ Region 10 is a 1-module D-Val NRPS.',64,556,1152,36,22.5,C.teal,true);
+ text(s,'Neither architecture matches a canonical stephensiolide BGC—providing a clear structural check on untargeted LC-HRMS library hits.',64,602,1152,34,21,C.muted);
+}
+
+// Slide 16: Class-level RiPP, redox-cofactor (PQQ), beta-lactone and terpene-precursor calls
+{
+ const s=slide('Class-level RiPP, PQQ, beta-lactone and terpene calls',
+  'Rounding out the 11-region antiSMASH inventory, this slide covers the five non-NRPS region types across SM-NMZ and C14-NMZ. Top left shows the shared Region 8 redox-cofactor locus (22.2 kb), which encodes the conserved pyrroloquinoline quinone (PQQ) biosynthesis operon (pqqA–pqqF; matching canonical PQQ reference clusters in KnownClusterBlast, while MIBiG Protocluster-to-Region shows only low-score flanking hits). Top right shows C14-NMZ unique Region 3 (ranthipeptide, 21.4 kb), detected by its radical SAM / SPASM domain protein (TIGR04085 / PF04055) and PqqD-like RiPP recognition element (RRE). The summary table below lists all five non-NRPS calls—including the shared Region 6 azole-containing-RiPP (YcaO + PF04055), the shared betalactone locus (SM Reg 3 / C14 Reg 2, HMGL-like + AMP-binding), and the shared Region 4 terpene-precursor locus (ispG / LytB-like). In our manuscript, PQQ is reported as a conserved redox cofactor pathway, while the RiPP, beta-lactone and terpene-precursor regions are reported strictly as class-level rule detections. Source: manuscript Section 3 and data/antiSMASH/antiSMASH-region-comparison.md.');
+ text(s,'Shared Region 8 (redox-cofactor): conserved pqqA–pqqF PQQ operon',64,132,560,28,20,C.teal,true);
+ text(s,'C14-NMZ Unique Region 3 (ranthipeptide): rSAM/SPASM + RRE locus',648,132,568,28,20,C.gold,true);
+ await fitimg(s,'explainer/assets/antismash-sm-r1c8-pqq-crop.png',64,164,560,218,'SM-NMZ Region 8 redox-cofactor PQQ locus');
+ await fitimg(s,'explainer/assets/antismash-c14-r1c3-ranthipeptide-crop.png',648,164,568,218,'C14-NMZ Region 3 ranthipeptide locus and TIGRFAM domains');
+ table(s,[
+  ['Region (SM / C14)','antiSMASH Rule Call','Core Rule Signature','Manuscript Interpretation'],
+  ['Reg 8 / Reg 8','redox-cofactor','pqqA–pqqF operon (PqqD RRE + PqqE rSAM + PqqC)','Conserved PQQ redox-cofactor biosynthesis'],
+  ['— / Reg 3 (C14 only)','ranthipeptide','Radical SAM / SPASM (TIGR04085) + PqqD RRE','Class-level RiPP call unique to C14-NMZ'],
+  ['Reg 6 / Reg 6','azole-containing-RiPP','YcaO cyclodehydratase + PF04055 radical SAM','Conserved class-level RiPP call (no MIBiG hit)'],
+  ['Reg 3 / Reg 2 & Reg 4 / Reg 4','betalactone & terpene-precursor','HMGL-like + AMP-binding (β-lactone); ispG (terpene)','Conserved primary/secondary class rule calls']
+ ],{y:394,h:236,widths:[220,250,362,320],size:18.5});
 }
 {
  const s=slide('SwrW evidence in the NMZ study',
   'Walk through the original evidence table with one concrete example. The related SwrW proteins and their C–A–PCP–TE domains support a family-level biosynthetic candidate. Conserved local organization gives context and does not prove co-transcription or which neighboring genes are required. The reported LC-HRMS assignments add chemical evidence at the actual analytical confidence documented by the chemistry team. Tension and E24 measurements would answer what the tested material does, while controlled interventions or purified-compound comparisons could test a contribution to that effect. No such NMZ causal experiment is reported here, and no missing endpoint value is inferred. Shanks et al. performed relevant genetic and purified-compound experiments in their reference strains; that evidence establishes precedent, not a result in NMZ. '+src.swrw+' '+src.chem);
  table(s,[['Observation or test','What it supports'],['SwrW sequence, domains and context','A plausible biosynthetic candidate'],['Putative LC-HRMS assignments','Serrawettin W1 (= serratamolide A) and serratamolide C'],['Tension or E24 assay','Effect of the particular material tested'],['Controlled intervention / purified compound','A test of contribution to that effect']],{y:158,h:385,widths:[550,602],size:27});
- text(s,'The conserved SwrW candidate and reported LC-HRMS assignments agree.',64,568,1152,43,28,C.teal,true);
- text(s,'Pair the chemistry with activity measured on the same test material.',64,621,1152,35,25,C.muted);
+ text(s,'The three evidence layers are consistent; targeted assays test whether SwrW drives crude-oil activity.',64,552,1152,38,24,C.teal,true);
+ text(s,'Pair the chemistry with activity measured on the same test material.',64,606,1152,35,22,C.muted);
 }
 
 {
@@ -274,13 +367,21 @@ const src={
  const s=slide('Host-interaction genes',
   'VFDB similarity finds reference-associated homologs under a stated search procedure. ShlA and ShlB are associated with hemolysin machinery, Has with heme acquisition, and T6SS with interbacterial competition in characterized systems. Multiple database labels may describe the same genomic locus, so a hit count is not a virulence score. These findings matter if deployment is proposed, but cannot establish pathogenicity or safety of the focal isolates. Shanks et al. also links serratamolide to hemolytic activity in a reference strain. A biosurfactant label is therefore a functional description, with no automatic safety implication. Do not claim NMZ hemolysis without a relevant assay. Source: focal VFDB profiling and manuscript comparative section. Shanks et al. (2012): https://doi.org/10.1371/journal.pone.0036398. Murdoch et al. (2011): https://doi.org/10.1128/JB.05671-11.');
  table(s,[['Reference-associated system','Biological role in characterized systems'],['ShlA–ShlB','Hemolysin machinery'],['Has','Heme acquisition'],['Type VI secretion system','Bacterial competition']],{h:300,widths:[480,672],size:29});
- text(s,'These homologs provide context for host and microbial interactions.',64,533,1140,94,30,C.teal,true);
+ text(s,'VFDB sequence matches provide comparative context and do not quantify pathogenicity or establish environmental biosafety.',64,548,1152,40,22.5,C.gold,true);
+ text(s,'Deployment readiness requires dedicated antimicrobial susceptibility, virulence-expression and regulatory biosafety testing.',64,598,1152,36,20.5,C.muted);
 }
 {
- const s=slide('Evidence scoreboard',
-  'Lead with the conserved swrW locus alongside the reported serratamolides, the pig cluster alongside red/pink cultures, and the shared matrix loci with the SM-NMZ pgaDCBA difference. Pigmentation is observed, while prodigiosin chemical identity is not established here. Pair the aromatic candidates with the matching substrates. Beta-oxidation supports downstream assimilation. The LadA-like candidate does not establish alkane initiation. The last column names the assays relevant to each system. It contains no inferred endpoint values or assignment of the oil response to a particular compound. Sources: revised master and concise manuscripts, focal gene-neighborhood sidecars and '+src.chem);
- table(s,[['System / locus','Genomic candidate','Chemistry / phenotype in hand','Wet-lab assay slot'],['Biosurfactant (swrW)','Shared 1-module NRPS\n98.9% protein identity','Putative LC-HRMS: serratamolide A (W1) and C','Tension, E24 and pour point'],['Pigment (pigA–pigN)','Conserved 14-gene pathway','Red/pink cultures','Pigment identity, if measured'],['Matrix polysaccharides','Shared CPS/EPS and bcs; SM pgaDCBA','Polymer chemistry unmeasured','E24 or biofilm assays'],['Oxygenated aromatics','Shared hpa/paa; SM hydroxybenzoate/pca/gentisate','Conversion data pending','Substrate-specific conversion'],['Alkanes','β-oxidation; LadA-like candidate','Initial oxidation unresolved','Alkane conversion and products']],{y:141,h:421,widths:[215,331,317,289],size:22});
- text(s,'Add the measured endpoints and test materials to the matching rows.',64,590,1152,57,29,C.teal,true);
+ const s=slide('The genomics contribution: evidence scoreboard',
+  'Lead the collaborative manuscript with the conserved swrW locus paired with the LC-HRMS serratamolide A (= serrawettin W1) and serratamolide C detections, the 14-gene pig cluster paired with red/pink colony pigmentation, and the extracellular-matrix repertoire featuring the SM-NMZ pgaDCBA difference. Connect the shared hpa/paa and SM-specific hydroxybenzoate/pca/gentisate loci to oxygenated-aromatic substrates, and present the LadA-like flavin monooxygenase as a bounded comparative candidate. The fourth column pairs each wet-lab assay slot with the decisive experimental test needed to move from genomic candidate to causal mechanism. Source: revised master and concise manuscripts, TYGS report, LC-HRMS-SM reports, and focal gene-neighborhood sidecars.');
+ table(s,[
+  ['System / locus','Genomic candidate','Chemistry / phenotype in hand','Assay slot & decisive test'],
+  ['Biosurfactant (swrW)','Conserved 1-module NRPS (98.9% id)','LC-HRMS: serratamolide A (W1) & C','Tension, E24, pour point · ΔswrW + isolate LC-HRMS'],
+  ['Pigment (pigA–pigN)','Conserved 14-gene cluster (87–100% id)','Red/pink colony pigmentation','Phenotypic confirmation complete (pigment extract)'],
+  ['Biofilm / matrix','Shared CPS/EPS2/bcs + SM pgaDCBA','— (polymer chemistry unmeasured)','E24 stability · DspB (PNAG) & cellulase sensitivity'],
+  ['Oxygenated aromatics','Shared hpa/paa + SM pobA/pca/gtdA','—','Single-substrate growth (4-HBA, PCA, phenylacetate)'],
+  ['Alkane / monooxygenase','Fad β-oxidation + LadA-like (ssuD)','— (initiator unresolved)','Alkane GC-MS · purified enzyme FMNH2 assay']
+ ],{y:142,h:415,widths:[235,305,285,327],size:20.5});
+ text(s,'Next step: plug in the wet-lab assay tables and prioritize decisive tests for our joint paper.',64,585,1152,55,26,C.teal,true);
 }
 // Optional technical backups follow the main narrative.
 {
@@ -340,20 +441,22 @@ const src={
 
 {
  const s=slide('Conserved metabolic background (DRAM)',
-  'Optional backup. DRAM profiled 98 curated traits across 13 Serratia genomes and the Prodigiosinella aquatilis PA-LS101 outgroup. Of these, 90/98 (91.8%) were invariant across all 14 genomes and 95/98 (96.9%) across the 13 Serratia, with 98.6% mean pairwise agreement within Serratia. Agreement includes shared absences. Both focal isolates scored complete for glycolysis, Entner–Doudoroff, the pentose phosphate pathway, the TCA cycle, Complex I, fumarate reductase, cytochrome bd/o oxidases and F-type ATPase. The three variable Serratia traits were succinate-dehydrogenase completeness (C14 75%, SM 50%), the GH43 arabinan-associated call and the K08357 tetrathionate-reduction marker. The plots report annotated module completeness and marker presence. Source: master manuscript section 3, Figure 4 and the NMZ DRAM outputs. Shaffer et al. (2020), https://doi.org/10.1093/nar/gkaa621.',true);
- text(s,'Central carbon and respiration',64,142,550,38,25,C.teal,true);
- text(s,'Auxiliary functions',636,142,580,38,25,C.teal,true);
- await fitimg(s,'Figure3_DRAM.jpeg',64,186,550,309,'DRAM central carbon and electron transport panel');
- await fitimg(s,'Figure3_DRAM2.jpeg',636,186,580,218,'DRAM auxiliary metabolism panel');
- text(s,'Within Serratia, three calls varied: succinate dehydrogenase, GH43 arabinan and a tetrathionate marker.',636,423,580,102,24,C.muted);
- text(s,'Invariant DRAM traits: 90/98 across all 14 genomes (91.8%).',64,570,1152,39,28,C.teal,true);
- text(s,'Within Serratia: 95/98 across 13 genomes (96.9%), including shared absences.',64,622,1152,37,24,C.muted);
+  'Optional backup. DRAM profiled 98 curated metabolic and respiratory traits across the 14-genome panel (13 Serratia genomes plus the Prodigiosinella aquatilis PA-LS101 outgroup). Across all 14 genomes, 90 of 98 traits (91.8%) were invariant; within the 13 Serratia genomes, 95 of 98 traits (96.9%) were invariant, with 98.6% mean pairwise agreement. Both SM-NMZ and C14-NMZ scored 100% for glycolysis, the Entner-Doudoroff pathway, the pentose phosphate pathway, the TCA cycle, Complex I, fumarate reductase, cytochrome bd/o oxidases and the F-type ATPase. Because the full 98-column DRAM heatmaps are dense at slide scale, the table below isolates the only 3 traits that vary across the 13 Serratia genomes. This high core metabolic conservation explains why the main manuscript focuses on accessory biosurfactant, matrix and specialized aromatic loci. Source: manuscript Section 3 and NMZ-DRAM outputs.',true);
+ await fitimg(s,'Figure3_DRAM.jpeg',64,132,545,250,'DRAM heatmap Panel A: central carbon metabolism and electron transport chain');
+ await fitimg(s,'Figure3_DRAM2.jpeg',635,132,580,250,'DRAM heatmap Panel B: auxiliary CAZy, nitrogen, sulfur and reductase categories');
+ table(s,[
+  ['DRAM Trait (only 3/98 vary within Serratia)','SM-NMZ','C14-NMZ','Variation Across 13 Serratia Genomes'],
+  ['Succinate dehydrogenase (ETC Complex II)','50%','75%','Ranges 50–100% module completeness across panel'],
+  ['CAZy GH43 arabinan cleavage call','Absent','Absent','Present only in S. marcescens KS10 & S. nematodiphila DSM 21420'],
+  ['Tetrathionate reductase marker (K08357)','Present','Present','Absent only in S. marcescens ATCC 13880 (present in 12/13)']
+ ],{y:396,h:198,widths:[350,145,145,512],size:18.5});
+ text(s,'95 of 98 DRAM traits (96.9%) are invariant across the 13 Serratia genomes; core metabolism is conserved.',64,606,1152,34,22,C.teal,true);
 }
 
 if (audit.filter(a=>!a.backup).length!==MAIN_COUNT) throw new Error('Main slide count mismatch');
 for (let i=0;i<audit.length;i++) audit[i].notes=P.slides.items[i].speakerNotes.text;
 await fs.writeFile(path.join(build,'slide-content.json'),JSON.stringify(audit,null,2));
-await fs.writeFile(path.join(output,'speaker-notes.md'),'# NMZ Serratia explainer: speaker notes\n\n25 main slides followed by 9 optional backups. Teaching session; no fixed time limit.\n\n'+audit.map(a=>`## ${a.backup?'B'+(a.number-MAIN_COUNT):a.number}. ${a.title}\n\n${a.notes}\n`).join('\n'));
+await fs.writeFile(path.join(output,'speaker-notes.md'),'# NMZ Serratia explainer: speaker notes\n\n31 main slides followed by 9 optional backups. Teaching session; no fixed time limit.\n\n'+audit.map(a=>`## ${a.backup?'B'+(a.number-MAIN_COUNT):a.number}. ${a.title}\n\n${a.notes}\n`).join('\n'));
 for(const [i,s] of P.slides.items.entries()){
  const stem=`slide-${String(i+1).padStart(2,'0')}`;
  await fs.writeFile(path.join(build,stem+'.png'),new Uint8Array(await (await P.export({slide:s,format:'png',scale:1.5})).arrayBuffer()));
